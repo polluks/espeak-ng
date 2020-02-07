@@ -38,7 +38,7 @@
 #define ESPEAK_API
 #endif
 
-#define ESPEAK_API_REVISION  10
+#define ESPEAK_API_REVISION  12
 /*
 Revision 2
    Added parameter "options" to eSpeakInitialize()
@@ -67,6 +67,12 @@ Revision 9  30.May.2013
 
 Revision 10 29.Aug.2014
   Changed phonememode parameter to espeak_TextToPhonemes() and espeak_SetPhonemeTrace
+
+Revision 11 (espeak-ng)
+  Made ESPEAK_API import/export symbols correctly on Windows.
+
+Revision 12 (espeak-ng)
+  Exposed espeak_SetPhonemeCallback. This is available in eSpeak, but was not exposed in this header.
 
 */
          /********************/
@@ -260,6 +266,11 @@ int UriCallback(int type, const char *uri, const char *base);
              occurs.  The calling program can then play the sound at that point.
 */
 
+#ifdef __cplusplus
+extern "C"
+#endif
+ESPEAK_API void espeak_SetPhonemeCallback(int (*PhonemeCallback)(const char *));
+
 
          /********************/
          /*    Synthesis     */
@@ -318,7 +329,7 @@ ESPEAK_API espeak_ERROR espeak_Synth(const void *text,
 
       espeakSSML   Elements within < > are treated as SSML elements, or if not recognised are ignored.
 
-      espeakPHONEMES  Text within [[ ]] is treated as phonemes codes (in espeak's Hirshenbaum encoding).
+      espeakPHONEMES  Text within [[ ]] is treated as phonemes codes (in espeak's Kirshenbaum encoding).
 
       espeakENDPAUSE  If set then a sentence pause is added at the end of the text.  If not set then
          this pause is suppressed.
@@ -593,6 +604,19 @@ ESPEAK_API const espeak_VOICE **espeak_ListVoices(espeak_VOICE *voice_spec);
    If voice_spec is NULL then all voices are listed.
    If voice spec is given, then only the voices which are compatible with the voice_spec
    are listed, and they are listed in preference order.
+*/
+
+#ifdef __cplusplus
+extern "C"
+#endif
+ESPEAK_API espeak_ERROR espeak_SetVoiceByFile(const char *filename);
+/* Loads a voice given the file path.  Language is not considered.
+   "filename" is a UTF8 string.
+
+   Return: EE_OK: operation achieved
+           EE_BUFFER_FULL: the command can not be buffered;
+             you may try after a while to call the function again.
+	   EE_INTERNAL_ERROR.
 */
 
 #ifdef __cplusplus

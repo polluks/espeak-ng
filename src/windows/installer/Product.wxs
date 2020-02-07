@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?define ProductName = "eSpeak NG Text-to-Speech" ?>
 <?define ProductVendor = "Cainteoir Text-to-Speech" ?>
-<?define ProductVersion = "1.49.2" ?>
+<?define ProductVersion = "1.49.3" ?>
 <?define CLSID_TtsEngine = "{61D23633-CE59-4101-8158-569FC6B51B49}" ?>
 <?if $(var.Platform) = x64 ?>
 <?define ProductDisplayName = "$(var.ProductName) 64-bit" ?>
@@ -772,7 +772,7 @@
                   <File Name="hy" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\ine\hy" KeyPath="yes"/>
                 </Component>
                 <Component Id="hy_arevmda" Win64="$(var.Win64)" Guid="E7510729-A886-4BCD-A616-9B4D74D8BA43">
-                  <File Name="hy-arevmda" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\ine\hy-arevmda" KeyPath="yes"/>
+                  <File Name="hyw" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\ine\hyw" KeyPath="yes"/>
                 </Component>
                 <Component Id="sq" Win64="$(var.Win64)" Guid="80790CCF-4B20-4AC3-A19F-72890470D4F5">
                   <File Name="sq" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\ine\sq" KeyPath="yes"/>

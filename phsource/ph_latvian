@@ -1,32 +1,26 @@
-//  IF thisPh(isStressed) THEN
-//  FMT(vowel/..., 100)
-//  ELIF thisPh(isDiminished) AND NOT prevVowel(isStressed) THEN
-//  FMT(vowel/..., 50)
-//  ELSE
-//  FMT(vowel/..., 75)
-//  ENDIF
-
 phoneme a
   vwl starttype #a endtype #a
-  length 120
+  length 130
   FMT(vwl_lv/a, 100)           // adjusted from aa_3
 endphoneme
 
 phoneme a:
   vwl starttype #a endtype #a
-  length 300
+  length 310
   lng
   FMT(vwl_lv/aa, 90)
 endphoneme
 
 phoneme E
   vwl starttype #e endtype #e
+  ipa æ
   length 120
   FMT(vwl_lv/e2, 100)
 endphoneme
 
 phoneme E:
   vwl starttype #e endtype #e
+  ipa æː
   length 300
   FMT(vwl_lv/ee2, 100)
 endphoneme
@@ -51,21 +45,20 @@ endphoneme
 
 phoneme i:
   vwl starttype #i endtype #i
-  length 300
-  FMT(vwl_lv/ii, 100) // was i_7
+  length 280
+  FMT(vwl_lv/ii, 90) // was i_7
 endphoneme
-
 
 phoneme y   // English y, short Latgalian "hard i"
   vwl starttype #i endtype #i
   length 120
-  FMT(vowel/y_2)
+  FMT(vwl_lv/y, 100)
 endphoneme
 
 phoneme y:   // Long Latgalian "hard i"
   vwl starttype #i endtype #i
   length 300
-  FMT(vowel/y_2)
+  FMT(vwl_lv/yy, 90)
 endphoneme
 
 phoneme o
@@ -83,32 +76,32 @@ endphoneme
 phoneme u
   vwl starttype #u endtype #u
   length 120
-  FMT(vwl_lv/u, 140)
+  FMT(vwl_lv/u, 100)
 endphoneme
 
 phoneme u:
   vwl starttype #u endtype #u
   length 300
-  FMT(vwl_lv/uu, 120)
+  FMT(vwl_lv/uu, 90)
 endphoneme
 
 phoneme ai
   vwl starttype #a endtype #i
-  length 250
+  length 280
   lng
   FMT(vdiph/aai, 100)
 endphoneme
 
 phoneme au
   vwl starttype #a endtype #u
-  length 275
+  length 300
   lng
   FMT(vdiph/aau, 100)
 endphoneme
 
 phoneme ei
   vwl starttype #e endtype #i
-  length 250
+  length 280
   lng
   FMT(vdiph/eei_2, 100)
 endphoneme
@@ -136,16 +129,17 @@ endphoneme
 
 phoneme uo
   vwl starttype #u endtype #a
-  length 260
+  length 280
   lng
-  FMT(vdiph2/uaa, 100)
+  FMT(vdiph2/ua, 110)
 endphoneme
 
-phoneme o`       // shorter version of uo
+phoneme uo`     // shorter version of uo
   vwl starttype #u endtype #a
-  length 180
+  ipa uo
+  length 150
   lng
-  FMT(vdiph2/uaa, 100)
+  FMT(vdiph2/ua, 90)
 endphoneme
 
 phoneme oi
@@ -157,6 +151,7 @@ endphoneme
 
 phoneme ts
   vls alv afr nolink
+  ipa t͡s
   voicingswitch J
   length 55
   lengthmod 1
@@ -165,59 +160,74 @@ endphoneme
 
 phoneme tS
   vls pla afr sib
+  ipa t͡ʃ
   voicingswitch dZ
   lengthmod 2
   length 80
   WAV(ustop/tsh,40)
 endphoneme
 
-phoneme n-
-  vwl starttype #a endtype #a
-  ipa nU+0329
-  lengthmod 4
-  length 120
-  FMT(n/n-syl)
-endphoneme
+phoneme D   // louder and shorter version of d
+  vcd alv stp
+  ipa d
+  voicingswitch t
+  length 8
+  lengthmod 5
+  Vowelin f1=1  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=2 f2=1700 -300 300  f3=-100 80 brk
 
-phoneme R // Latvian hard r
-  liquid trl
-  lengthmod 6
-  Vowelin  f1=0  f2=1700 -300 300  f3=-300 80
-  Vowelout f1=2  f2=1700 -300 300  f3=-300 80 brk
-FMT(r3/r_trill) addWav(r3/r_trill.wav, 60)
-endphoneme
+  IF PreVoicing THEN
+    FMT(d/xd, 110)
+  ENDIF
 
-phoneme r // Latvian soft r
-  liquid trl
-  lengthmod 6
-  Vowelin  f1=0  f2=1700 -300 300  f3=-300 80
-  Vowelout f1=2  f2=1700 -300 300  f3=-300 80 brk
-  FMT(j/j_) addWav(r3/r_trill.wav, 25)
-endphoneme
-
-phoneme t
-  vls alv stp //lengthenstop
-  lengthmod 1
-  voicingswitch d
   IF nextPh(isPause2) THEN
-    WAV(ustop/t_dnt, 40)
+    FMT(d/d_, 120)  addWav(x/d_,110)
   ENDIF
-  WAV(ustop/t_dnt, 50)
+
+  FMT(d/d, 110) addWav(x/d,110)
 endphoneme
 
-phoneme p
-  vls blb stp
-  lengthmod 2
-  voicingswitch b
-  Vowelin  f1=0  f2=1000 -50 -100  f3=-200 80
-  Vowelout f1=0  f2=1000 -500 -350  f3=-300 80 rms=30
-  IF nextPh(isPause2) THEN
-    WAV(ustop/p_unasp_, 80)
+phoneme h // more quiet version of standard h
+  vls glt apr
+  lengthmod 3
+  ipa h
+
+  IF nextPh(#a) THEN
+    WAV(h/h-lv, 10)
+  ELIF nextPh(#e) THEN
+    WAV(h/h-lv, 10)
+  ELIF nextPh(#i) THEN
+    WAV(h/h-lv, 10)
+  ELIF nextPh(#o) THEN
+    WAV(h/h-lv, 10)
+  ELIF nextPh(#u) THEN
+    WAV(h/h-lv, 10)
+  ELIF nextPh(isPause) THEN
+    WAV(h/h-lv, 20)
   ENDIF
-  IF nextPh(l) THEN
-    WAV(ustop/pl)
+  WAV(h/h-lv, 10)  // no vowel following
+endphoneme
+
+phoneme j // **y**es
+  liquid pal starttype #i
+  IF nextPhW(isVowel) THEN
+    NextVowelStarts
+      VowelStart(j/j@)
+      VowelStart(j/ja)
+      VowelStart(j/je)
+      VowelStart(j/ji)
+      VowelStart(j/jo)
+      VowelStart(j/ju)
+    EndSwitch
+    VowelEnding(j/xj, 127) // In difference with English, vowel is lengthened, not shortened
+  ELSE
+    Vowelout len=127      // no vowel follows
+    FMT(j/xj)
   ENDIF
-  WAV(ustop/p_unasp, 120)
+
+  IF prevPh(isPause) THEN
+    FMT(j/_j)
+  ENDIF
 endphoneme
 
 phoneme k
@@ -244,31 +254,212 @@ phoneme c
   WAV(ustop/c, 80)
 endphoneme
 
-phoneme D   // louder and shorter version of d
-  vcd alv stp
-  voicingswitch t
-  length 10
-  lengthmod 5
-  Vowelin f1=1  f2=1700 -300 300  f3=-100 80
-  Vowelout f1=2 f2=1700 -300 300  f3=-100 80 brk
+phoneme l
+  liquid
 
-  IF PreVoicing THEN
-    FMT(d/xd, 110)
+  IF nextPh(isNotVowel) THEN
+    PrevVowelEndings
+      VowelEnding(l/L1_@L)
+      VowelEnding(l/L1_aL)
+      VowelEnding(l/L1_eL)
+      VowelEnding(l/L1_iL)
+      VowelEnding(l/L1_oL)
+      VowelEnding(l/L1_uL)
+    EndSwitch
+
+    FMT(l/l_)
+    RETURN
+  ENDIF
+
+  CALL vowelstart_l
+
+  IF prevPh(a) OR prevPh(a:) THEN
+    VowelEnding(l/xl, 20) // FIXME
+  ELSEIF prevPh(isVowel) THEN
+    VowelEnding(l/xl, 10)
+  ENDIF
+
+  IF prevPh(isPause) THEN
+    FMT(l/_l)
+  ENDIF
+
+  IF prevPh(t) THEN
+    FMT(l/tl)
+  ENDIF
+
+  IF prevPh(l/) THEN
+    FMT(l/l_long)    // double l, make it longer
+  ENDIF
+
+  FMT(l/l)
+endphoneme
+
+phoneme l^    // Latvian ļ, customized from standard l^
+  liquid
+  ipa ʎ
+  lengthmod 7
+  Vowelout len=60 lenadd rate
+  length 100
+
+  NextVowelStarts
+    VowelStart(l^/j2@)
+    VowelStart(l^/j2a)
+    VowelStart(l^/j2e)
+    VowelStart(l^/j2i)
+    VowelStart(l^/j2o)
+    VowelStart(l^/j2u)
+  EndSwitch
+
+  IF prevPh(isPause) THEN
+    FMT(l^/_l^)
+  ELSEIF nextPh(isPause) THEN
+    FMT(l^/l^_)
+  ENDIF
+
+  FMT(l^/l^)
+
+endphoneme
+
+phoneme m // copied from standard m phoneme with rule for 'mm'
+  vcd blb nas
+  Vowelout f1=2  f2=1000 -500 -350  f3=-200 80 brk
+  lengthmod 4
+
+  IF KlattSynth THEN
+    Vowelin  f1=0  f2=1000 -50 -200  f3=-200 80
+    IF nextPh(isPause2) THEN
+      FMT(klatt/m_)
+    ENDIF
+    FMT(klatt/m)
+  ENDIF
+
+  NextVowelStarts
+    VowelStart(m/m@)
+    VowelStart(m/ma)
+    VowelStart(m/me)
+    VowelStart(m/mi)
+    VowelStart(m/mo)
+    VowelStart(m/mu)
+  EndSwitch
+
+  IF prevPh(isNotVowel) AND nextPhW(isLiquid) THEN
+    FMT(m/mj)
+  ELIF prevPh(isPause) THEN
+    FMT(m/_m)
+  ELIF nextPh(isNotVowel) THEN
+    FMT(m/m_)
+  ELIF nextPh(m) THEN // m/mj has no volume change, so doubled 'mm' merges better
+    FMT(m/mj)
+  ENDIF
+endphoneme
+
+phoneme n- // more voiced variant of n
+  vwl starttype #a endtype #a
+  ipa ŋ
+  lengthmod 4
+  length 140
+  FMT(n/n-syl)
+endphoneme
+
+phoneme p
+  vls blb stp
+  lengthmod 2
+  voicingswitch b
+  Vowelin  f1=0  f2=1000 -50 -100  f3=-200 80
+  Vowelout f1=0  f2=1000 -500 -350  f3=-300 80 rms=30
+  IF nextPh(isPause2) THEN
+    WAV(ustop/p_unasp_, 80)
+  ENDIF
+  IF nextPh(l) THEN
+    WAV(ustop/pl)
+  ENDIF
+  WAV(ustop/p_unasp, 120)
+endphoneme
+
+phoneme R // Latvian hard r
+  liquid trl
+  ipa r
+  lengthmod 6
+  Vowelin  f1=0  f2=1700 -300 300  f3=-300 80
+  Vowelout f1=2  f2=1700 -300 300  f3=-300 80 brk
+FMT(r3/r_trill) addWav(r3/r_trill.wav, 60)
+endphoneme
+
+phoneme r // Latvian soft r
+  liquid trl
+  ipa r̝
+  lengthmod 6
+  Vowelin  f1=0  f2=1700 -300 300  f3=-300 80
+  Vowelout f1=2  f2=1700 -300 300  f3=-300 80 brk
+  FMT(j/j_) addWav(r3/r_trill.wav, 25)
+endphoneme
+
+phoneme s
+  vls alv frc sib
+  voicingswitch z
+  lengthmod 3
+  Vowelin  f1=0  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=0  f2=1700 -300 250  f3=-100 80  rms=20
+  WAV(ufric/s,60)
+endphoneme
+
+phoneme t
+  vls alv stp //lengthenstop
+  lengthmod 1
+  voicingswitch d
+  IF nextPh(isPause2) THEN
+    WAV(ustop/t_dnt, 40)
+  ENDIF
+  WAV(ustop/t_dnt, 50)
+endphoneme
+
+phoneme v        // from v# in standard phonemes
+  vcd lbd frc
+  ipa ʋ
+  lengthmod 6
+  voicingswitch f
+  Vowelin  f1=0  f2=1000 -300 -200  f3=-300 100
+  Vowelout f1=0  f2=1000 -500 -300  f3=-300 60  len=50
+  IF nextPh(isPause2) THEN
+    FMT(voc/v#_)
+  ENDIF
+  FMT(voc/v#)
+endphoneme
+
+phoneme v`        // shortened v
+  vcd lbd frc
+  ipa ʋ
+  lengthmod 6
+  voicingswitch f
+  Vowelin  f1=0  f2=1000 -300 -200  f3=-300 100
+  Vowelout f1=0  f2=1000 -500 -300  f3=-300 60  len=50
+  length 8
+  FMT(voc/v#_)
+endphoneme
+
+phoneme z- // Shorter version of z
+  vcd alv frc sib
+  length 30
+  voicingswitch s
+  Vowelout f1=0  f2=1700 -300 300  f3=-100 60  len=50
+
+  IF KlattSynth THEN
+    Vowelin f1=0 f2=1390 -300 300 f3=0 0
+    Vowelout f1=1  f2=1390 -300 300  f3=-100 60  len=50 brk
   ENDIF
 
   IF nextPh(isPause2) THEN
-    FMT(d/d_, 120)  addWav(x/d_,110)
+    FMT(voc/z_) addWav(ufric/s_, 70)
   ENDIF
-
-  FMT(d/d, 110) addWav(x/d,110)
+  FMT(voc/z) addWav(ufric/s_, 85)
 endphoneme
 
 
-phoneme z`  // Shortened version of z for diphthong dz
+phoneme z`  // Shortest version of z for diphthong dz
   vcd alv frc sib
+  ipa z
   voicingswitch s
-  length 10
-  lengthmod 6
+  length 8
   Vowelout f1=0  f2=1700 -300 300  f3=-100 60  len=50
 
   IF KlattSynth THEN
@@ -285,6 +476,7 @@ endphoneme
 
 phoneme Z` // Shortened version of Z for diphthong dZ
   vcd pla frc sib
+  ipa ʐ
   voicingswitch S
   length 30
   lengthmod 6
@@ -305,33 +497,18 @@ phoneme Z` // Shortened version of Z for diphthong dZ
 endphoneme
 
 phoneme >  // lengthen previous vowel less than using ":"
+  ipa ː
   virtual
   length 20 // it actually seems working shorter, but anyway...
 endphoneme
 
 phoneme } // Tiny, 5ms non-linked pause (used between phonemes in word)
+  ipa ʔ
   pause
-//  starttype _ endtype _
-//  lengthmod 1
   nolink
   length 5
 endphoneme
 
-// TODO should use this with correct lengthening
-//phoneme l
-//  liquid
-//  unstressed
-//  dnt
-//  length 150
-//  FMT(vwl_hi/l-voc)
-//endphoneme
 
-phoneme s
-  vls alv frc sib
-  voicingswitch z
-  lengthmod 3
-  Vowelin  f1=0  f2=1700 -300 300  f3=-100 80
-  Vowelout f1=0  f2=1700 -300 250  f3=-100 80  rms=20
-  WAV(ufric/s,60)
-endphoneme
+
 

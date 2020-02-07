@@ -22,6 +22,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <math.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,17 +32,25 @@
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
 
+#include "dictionary.h"
+#include "mbrola.h"
+#include "readclause.h"
+#include "setlengths.h"
+#include "synthdata.h"
+#include "wavegen.h"
+
+
 #include "speech.h"
 #include "phoneme.h"
+#include "voice.h"
 #include "synthesize.h"
 #include "translate.h"
-#include "voice.h"
+
+// included here so tests can find these even without OPT_MBROLA set
+int mbrola_delay;
+char mbrola_name[20];
 
 #ifdef INCLUDE_MBROLA
-
-extern int Read4Bytes(FILE *f);
-extern void SetPitch2(voice_t *voice, int pitch1, int pitch2, int *pitch_base, int *pitch_range);
-extern unsigned char *outbuf;
 
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
@@ -141,7 +150,7 @@ static int GetMbrName(PHONEME_LIST *plist, PHONEME_TAB *ph, PHONEME_TAB *ph_prev
 
 	MBROLA_TAB *pr;
 	PHONEME_TAB *other_ph;
-	int found = 0;
+	bool found = false;
 	static int mnem;
 
 	// control
@@ -162,9 +171,9 @@ static int GetMbrName(PHONEME_LIST *plist, PHONEME_TAB *ph, PHONEME_TAB *ph_prev
 	while (pr->name != 0) {
 		if (mnem == pr->name) {
 			if (pr->next_phoneme == 0)
-				found = 1;
+				found = true;
 			else if ((pr->next_phoneme == ':') && (plist->synthflags & SFLAG_LENGTHEN))
-				found = 1;
+				found = true;
 			else {
 				if (pr->control & 2)
 					other_ph = ph_prev;
@@ -176,17 +185,17 @@ static int GetMbrName(PHONEME_LIST *plist, PHONEME_TAB *ph, PHONEME_TAB *ph_prev
 				if ((pr->next_phoneme == other_ph->mnemonic) ||
 				    ((pr->next_phoneme == 2) && (other_ph->type == phVOWEL)) ||
 				    ((pr->next_phoneme == '_') && (other_ph->type == phPAUSE)))
-					found = 1;
+					found = true;
 			}
 
 			if ((pr->control & 4) && (plist->newword == 0)) // only at start of word
-				found = 0;
+				found = false;
 
 			if ((pr->control & 0x40) && (plist[1].newword == 0)) // only at the end of a word
-				found = 0;
+				found = false;
 
 			if ((pr->control & 0x20) && (plist->stresslevel < plist->wordstress))
-				found = 0; // only in stressed syllables
+				found = false; // only in stressed syllables
 
 			if (found) {
 				*name2 = pr->mbr_name2;
@@ -304,7 +313,7 @@ static char *WritePitch(int env, int pitch1, int pitch2, int split, int final)
 	return output;
 }
 
-int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, int resume, FILE *f_mbrola)
+int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, bool resume, FILE *f_mbrola)
 {
 	// Generate a mbrola pho file
 	unsigned int name;
@@ -318,10 +327,10 @@ int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, int resume, FILE *f_mbr
 	PHONEME_DATA phdata;
 	FMT_PARAMS fmtp;
 	int pause = 0;
-	int released;
+	bool released;
 	int name2;
 	int control;
-	int done;
+	bool done;
 	int len_percent;
 	const char *final_pitch;
 	char *ptr;
@@ -352,9 +361,9 @@ int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, int resume, FILE *f_mbr
 		if (p->synthflags & SFLAG_EMBEDDED)
 			DoEmbedded(&embedded_ix, p->sourceix);
 
-		if (p->newword & 4)
+		if (p->newword & PHLIST_START_OF_SENTENCE)
 			DoMarker(espeakEVENT_SENTENCE, (p->sourceix & 0x7ff) + clause_start_char, 0, count_sentences);
-		if (p->newword & 1)
+		if (p->newword & PHLIST_START_OF_SENTENCE)
 			DoMarker(espeakEVENT_WORD, (p->sourceix & 0x7ff) + clause_start_char, p->sourceix >> 11, clause_start_word + word_count++);
 
 		name = GetMbrName(p, ph, ph_prev, ph_next, &name2, &len_percent, &control);
@@ -389,7 +398,7 @@ int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, int resume, FILE *f_mbr
 			name2 = 0;
 		}
 
-		done = 0;
+		done = false;
 		final_pitch = "";
 
 		switch (ph->type)
@@ -416,14 +425,14 @@ int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, int resume, FILE *f_mbr
 				pitch = WritePitch(p->env, p->pitch1, p->pitch2, -len_percent, 0);
 				ptr += sprintf(ptr, "%s\t%d\t%s", WordToString(name2), len-len1, pitch);
 			}
-			done = 1;
+			done = true;
 			break;
 		case phSTOP:
-			released = 0;
-			if (next->type == phVOWEL) released = 1;
-			if (next->type == phLIQUID && !next->newword) released = 1;
+			released = false;
+			if (next->type == phVOWEL) released = true;
+			if (next->type == phLIQUID && !next->newword) released = true;
 
-			if (released == 0)
+			if (released == false)
 				p->synthflags |= SFLAG_NEXT_PAUSE;
 			InterpretPhoneme(NULL, 0, p, &phdata, NULL);
 			len = DoSample3(&phdata, 0, -1);
@@ -506,7 +515,7 @@ int MbrolaTranslate(PHONEME_LIST *plist, int n_phonemes, int resume, FILE *f_mbr
 	return 0;
 }
 
-int MbrolaGenerate(PHONEME_LIST *phoneme_list, int *n_ph, int resume)
+int MbrolaGenerate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 {
 	FILE *f_mbrola = NULL;
 
@@ -518,13 +527,13 @@ int MbrolaGenerate(PHONEME_LIST *phoneme_list, int *n_ph, int resume)
 		f_mbrola = f_trans;
 	}
 
-	int again = MbrolaTranslate(phoneme_list, *n_ph, resume, f_mbrola);
+	int  again = MbrolaTranslate(phoneme_list, *n_ph, resume, f_mbrola);
 	if (!again)
 		*n_ph = 0;
 	return again;
 }
 
-int MbrolaFill(int length, int resume, int amplitude)
+int MbrolaFill(int length, bool resume, int amplitude)
 {
 	// Read audio data from Mbrola (length is in millisecs)
 
@@ -573,16 +582,25 @@ void MbrolaReset(void)
 
 espeak_ng_STATUS LoadMbrolaTable(const char *mbrola_voice, const char *phtrans, int *srate)
 {
+	(void)mbrola_voice; // unused parameter
+	(void)phtrans; // unused parameter
+	(void)srate; // unused parameter
 	return ENS_NOT_SUPPORTED;
 }
 
-int MbrolaGenerate(PHONEME_LIST *phoneme_list, int *n_ph, int resume)
+int MbrolaGenerate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 {
+	(void)phoneme_list; // unused parameter
+	(void)n_ph; // unused parameter
+	(void)resume; // unused parameter
 	return 0;
 }
 
-int MbrolaFill(int length, int resume, int amplitude)
+int MbrolaFill(int length, bool resume, int amplitude)
 {
+	(void)length; // unused parameter
+	(void)resume; // unused parameter
+	(void)amplitude; // unused parameter
 	return 0;
 }
 

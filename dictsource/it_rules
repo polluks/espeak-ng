@@ -1,7 +1,7 @@
 
 // Italian translation rules
 // This file is UTF-8 encoded
-// Last update: 2017 may   31 by Christian Leo Mameli <llajta2012@gmail.com>
+// Last update: 2019 october 19 by Christian Leo Mameli <llajta2012@gmail.com>
 // letter groups
 // A  any vowel
 // C  any consonant
@@ -28,7 +28,7 @@
 	au	a|%U
 	@C) a (_S1q	a/  // lookup it_list without suffix
 	@i) a (_S1q	a  // lookup it_list without suffix
-	C) a (cY_	'a
+//	C) a (cY_	'a
 	@) a (co_	=a
 	@) a (ca_	=a
 	@) a (che_	=a/
@@ -37,16 +37,19 @@
 	@) a (bile_	'a
 	@) a (ggine_	'a
 	_) ae (r	aE
-	avano (_	'avano
+	avano (_	'avano   // verbs
 	a (tterA_	'a
 	_) all' (P4t	all
 	_) anch' (P5t	ank
 	@) amo (L04_	'amo  // Pron.s verbs
 	Ci) amo (L04_	'amo
 	@) ander (L04_	'andE@-*
-		ate (L04_+	'ate
+	ate (L04_+	'ate
+	abb) assa (L07_	'assa
 	_L04Z) auguri (_	'awguRI
 	astano (_	'astano   // verbs
+	ass) aggia (L07_	'adZ:a/
+	acchi) appa (L07_	'ap:a
 
 .group à
 	à	''a
@@ -75,6 +78,7 @@
 	ch (a	tS
 	ch (o	tS
 	ch (u	tS
+	ch (_	tS
 	ci (A	tS
 	cci (A	tS:
 	@) co (lA_	=ko
@@ -102,6 +106,7 @@
 	chiedi (L04_	kj'EdI
 	chiudi (L04_	kj'udI
 	canta (L07_	k'anta
+	cerca (L07_	tS'e@-*ka
 	conta (L07_	k'onta
 	ra) cconta (L07_	k:'Onta
 
@@ -120,6 +125,7 @@
 	@) dinano (_	=dina/no   // verbs
 	i) dano (_	=dano  // verbs
 	i) dino (_	=dino
+	_) data (L07_	d'ata
 	due (_	d'ue   // numbers
 	dieci (_	dj'EtSi
 	day (_	d'eI   // foreign
@@ -173,8 +179,8 @@
 	e (ssa_	e
 	e (tr	E
 	e (ti	E
-	e (vi_	E
-	e (vo_	E
+	e (vA_	E
+	av) ev (A_+	ev
 	@) e (volA_	'e
 	e (zA	E
 	CC) eggia (no_	'EdZ:a
@@ -204,12 +210,15 @@
 .group f
 	f	f
 	ff	f:
-	@A)	f (ilo_  =f
+	@A) fi (lo_	=fi
+	filia (_	fil'ia
 	i)	f (erA_	=f
 	fobi (A_	fob'i;
 	fob (A_	=fob
 	farma (ci_	f'a@-*ma
 	ferma (L07_	f'e@-*ma/
+	_) fatt (AL04_	f'at:
+	_ri) fatt (AL04_	f'at:
 
 .group g
 	g	g
@@ -235,6 +244,7 @@
 	gl (ì	l^
 	gli (A	l^
 	_) gl	gl
+
 	gli (cA	gli
 	gli (chA	gli
 	gn	n^
@@ -248,6 +258,7 @@
 	godi (L04_	g'Odi
 	@) glier (L04_	=l^E@-*
 	@) guer (L04_	=gUe@-*
+	grida (L07_	g@-*'ida
 	guono (_	=gw2ono   // verbs
 	o) gnano (_	=n^ano
 	A) gnano (_	n^'ano   // exceptions
@@ -271,7 +282,7 @@
 	l) i (A	%i
 	r)	i (A	%i
 	_C) ie (_	'ie
-	i (o	i
+	C) i (o_	i
 	@) ia (_	=i%a
 	@) ià (_	j'a
 	X) ia (_	'ia
@@ -287,7 +298,7 @@
 	metr) ie (_	'ie
 	t) ia (_	'ia
 	t) ie (_	'ie
-        @)      io (_S1q   =i%o // ?
+	@) io (_S1q	=i%o // ?
 	a) i (+	j
 	à) i (+	j
 	o)	i (+	j
@@ -335,6 +346,7 @@
 	imer (L04_	'Ime@-*
 	ass) ister (L04_	'iste@-*
 	r) ider (L04_	'ide@-*
+	cons) idera (L07_	'ide@-*a
 	ivano (_	'ivano   // verbs
 	i (ficano_	'i
 	ifichino (_	'ifikino
@@ -347,6 +359,7 @@
 	j            dZ
 	@) j (_	j
 	A) j (A	j
+	_) ju (ve	ju // latin
 
 .group k
 	k	k
@@ -359,6 +372,7 @@
 	@A) lo (gA_	=lo
 	@A) lo (ghY_	=lo
 	_) l' (P2t	l
+	scu) laccia (L07_	l'atS:a/
 	lasciati (_	l,a/S'atI
 		lascia (L07_	l'aSa
 	_) lecca (L07_	l'ek:a
@@ -374,6 +388,7 @@
 	_) m' (P2t	m
 	_) mezz' (P5t	mEdz:
 	metter (L04_	m'ette@-* // Pron.s Verbs
+	metti (L04_	m'e:t:i
 	mmetter (L04_	m:'et:e@-*
 	manda (L05_	m'anda
 	mostra (L07_	m'Ost@-*a
@@ -475,6 +490,7 @@
 		over (L04_	'ovE@-*
 	d) over (L04_	Ov'E@-*
 	m) order (L04_	'O:@-*de@-*
+	s) ogna (L07_	'on^a
 	ovano (_ 'ovano   // verbs
 	osano (_	'ozano
 	o (CCano_	'O
@@ -496,9 +512,14 @@
 	a) pprova (L07_	p:@-*'Ova
 	_) posa (L07_	p'oza
 	pro) posto (L07_	p'osto
+	passa (L07_	p'a:ss,a
 	pie (galA_	pI'e
 	tera) pi (A_	p'i
 	tro) pi (A_	p'i
+	pensa (L07_	p'Ensa
+	premer (L04_	p@-*'Eme@-*
+	pervader (L07_	pe@-*v'ade@-*
+	picchia (L07	p'ik:i,a
 
 .group q
 	q	k
@@ -525,11 +546,13 @@
 	_) ripeter (L04_	@-*ip'E:te@-*
 	_) romper (L04_	@-*'ompe@-*
 	ca) re (zzaL07_	R'e
+	_) regala (tAL04_	@-*egal'a
 	C) rai (_	@-*'a:I
 	A) rai (_	R'a:I
 	rrai (_	R*'a:I
 	@) rvano (_	=@-*v,ano
 	CA) rcano (_	=@-*k,ano   // verbs
+	riserva (taL07_	@-*iz,e@-*v'a
 
 .group s
 	s	s
@@ -542,6 +565,8 @@
 	scii	Sij
 	sci (ì	S%i
 	sch (Y	sk
+	A) sio (_	zi/o
+	A) sio	zio
 	sh	S   // foreign words
 	@A)	sia (_	z'ia
 	@A) sie (_	z'ie
@@ -566,6 +591,9 @@
 	_) segna (L05_	s'en^a
 	in) segna (L07_ 	s'En^a
 	_)segnala (L07_	sen^'ala
+	specifica (L07_	spetS'ifika
+	stringi (L04_	st@-*'indZi/
+	stra (ppaL07_	st@-*'a:
 	A) scano (_	=skano  // verbs
 	sciano (_	=Sano
 	A) schiano (_	=skiano
@@ -599,6 +627,8 @@
 	au) tentica (L07_	t'ENtIka/
 	a) ttiva (L07_	t:'iva
 	taglia (L07_	t'al^a
+	tira (L07_	t'iRa
+	telefona (L07_	tel'Ef,ona
 	L02) tre (_	t@-*'e
 	_) tutt' (P5t	tut:
 
@@ -622,6 +652,7 @@
 	ustano (_	'u:stano
 	C) uo (tano_	U'O
 	uomini (_	w2'Omini
+	fanc) u (lA_	'u:
 
 .group v
 	v	v
@@ -639,6 +670,7 @@
 	_) vota (L07_	v'Ota
 	s) veglia (L07_	v'el^a
 	volta (L07_	v'Olta
+	venut (AL04_	ven'ut
 	_) v' (P2t	v
 
 .group w
@@ -700,11 +732,21 @@
 	man) zie (_	ts'i;e
 	me) zz	dz:
 	amma) zziamo (L04_	_tsi'a:mo
+	sbara) zz (arL04_	ts:
+
+.group ç
+
+	ç	s
+	A) ç (A	T
+	C) ç(A	s
 
 .group
 
 	ñ	n^
 	ć (_	tS
+	ș	S
+	ş	S
+
 	_L16_)	: (_L17D_	_%%E_	// Say time
 
 	á	''a
@@ -724,4 +766,5 @@
         A_)  - (_D        _
 	C_)  - (_D        _
 	's (_S2t	s
+
 

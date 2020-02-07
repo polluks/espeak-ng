@@ -1,31 +1,79 @@
-// Emoji and Other Symbol pronunciations for Chinese
+// Emoji and Other Symbol pronunciations for None
 //
 // Entries with `text|emoji` in the comments have text and emoji forms. They
 // can be followed by [FE0E] to select the text style, and [FE0F] to select
 // the emoji style.
+//
+// Entries with 'other' in the comments are not defined as emoji, but are other
+// Unicode characters.
 //
 // NOTE: See `src/ucd-tools/data/espeak-ng/emoji-data.txt` for additional data
 // in interpreting ZWJ emoji sequences.
 
 $textmode
 
+// 0000..007F : C0 Controls and Basic Latin
+
+//+	plus								// [002B] other (no translation)
+
 // 0080..00FF : C1 Controls and Latin-1 Supplement
 
+//¢	cents								// [00A2] other (no translation)
+//£	pound								// [00A3] other (no translation)
+//¤	currency sign							// [00A4] other (no translation)
+//¥	yen								// [00A5] other (no translation)
+//§	section								// [00A7] other (no translation)
+//¨	double dot							// [00A8] other (no translation)
 ©	版权								// [00A9] text|emoji
+//¬	not sign							// [00AC] other (no translation)
 ®	注册								// [00AE] text|emoji
+//°	degrees								// [00B0] other (no translation)
+//±	plus or minus							// [00B1] other (no translation)
+//µ	micro								// [00B5] other (no translation)
+//¶	paragraph							// [00B6] other (no translation)
+//¼	a quarter							// [00BC] other (no translation)
+//½	a half								// [00BD] other (no translation)
+//¾	three quarters							// [00BE] other (no translation)
+//×	times								// [00D7] other (no translation)
+//÷	divided by							// [00F7] other (no translation)
+
+// 02B0..02FF : Spacing Modifier Letters
+
+//˙	dot								// [02D9] other (no translation)
+
+// 0900..097F : Devanagari
+
+//।	danda								// [0964] other (no translation)
 
 // 2000..203C : General Punctuation
 
 ‼	双叹号								// [203C] text|emoji
 ⁉	叹号加问号								// [2049] text|emoji
 
+// 20A0..20CF : Currency Symbols
+
+//₨	rupee								// [20A8] other (no translation)
+//€	euros								// [20AC] other (no translation)
+//₹	rupee								// [20B9] other (no translation)
+
 // 2100..214F : Letterlike Symbols
 
+//№	numero								// [2116] other (no translation)
+//℞	prescription							// [211E] other (no translation)
 ™	商标								// [2122] text|emoji
 ℹ	信息中心								// [2139] text|emoji
 
+// 2150..218F : Number Forms
+
+//⅓	one third							// [2153] other (no translation)
+//⅔	two thirds							// [2154] other (no translation)
+
 // 2190..21FF : Arrows
 
+//←	left arrow							// [2190] other (no translation)
+//↑	up arrow							// [2191] other (no translation)
+//→	right arrow							// [2192] other (no translation)
+//↓	down arrow							// [2193] other (no translation)
 ↔	左右箭头								// [2194] text|emoji
 ↕	上下箭头								// [2195] text|emoji
 ↖	左上箭头								// [2196] text|emoji
@@ -34,6 +82,26 @@ $textmode
 ↙	左下箭头								// [2199] text|emoji
 ↩	右转弯箭头								// [21A9] text|emoji
 ↪	左转弯箭头								// [21AA] text|emoji
+
+// 2200..22FF : Mathematical Operators
+
+//∂	delta								// [2202] other (no translation)
+//∑	sum sign							// [2211] other (no translation)
+//−	minus								// [2212] other (no translation)
+//∗	asterisk							// [2217] other (no translation)
+//√	square root							// [221A] other (no translation)
+//∛	cube root							// [221B] other (no translation)
+//∝	proportional to							// [221D] other (no translation)
+//∞	infinity							// [221E] other (no translation)
+//∫	integral							// [222B] other (no translation)
+//∬	double integral							// [222C] other (no translation)
+//∴	therefore							// [2234] other (no translation)
+//∵	because								// [2235] other (no translation)
+//≈	approximately							// [2248] other (no translation)
+//≠	not equal to							// [2260] other (no translation)
+//≡	identical to							// [2261] other (no translation)
+//≤	less or equal to						// [2264] other (no translation)
+//≥	greater or equal to						// [2265] other (no translation)
 
 // 2300..23FF : Miscellaneous Technical
 
@@ -62,10 +130,12 @@ $textmode
 
 // 25A0..25FF : Geometric Shapes
 
+//■	black square							// [25A0] other (no translation)
 ▪	黑色小方块								// [25AA] text|emoji
 ▫	白色小方块								// [25AB] text|emoji
 ▶	播放								// [25B6] text|emoji
 ◀	后退								// [25C0] text|emoji
+//●	black circle							// [25CF] other (no translation)
 ◻	白色中方块								// [25FB] text|emoji
 ◼	黑色中方块								// [25FC] text|emoji
 ◽	白色中小方块								// [25FD]
@@ -92,7 +162,7 @@ $textmode
 ☮	和平								// [262E] text|emoji
 ☯	太极								// [262F] text|emoji
 ☸	法轮								// [2638] text|emoji
-☹	委屈								// [2639] text|emoji
+☹	不满								// [2639] text|emoji
 ☺	微笑								// [263A] text|emoji
 ♀	女								// [2640] text|emoji
 ♂	男								// [2642] text|emoji
@@ -108,12 +178,16 @@ $textmode
 ♑	摩羯座								// [2651]
 ♒	水瓶座								// [2652]
 ♓	双鱼座								// [2653]
-♠	扑克黑桃								// [2660] text|emoji
-♣	扑克梅花								// [2663] text|emoji
-♥	扑克红心								// [2665] text|emoji
-♦	扑克方片								// [2666] text|emoji
+♟	兵								// [265F] text|emoji
+♠	黑桃								// [2660] text|emoji
+♣	梅花								// [2663] text|emoji
+♥	红桃								// [2665] text|emoji
+♦	方片								// [2666] text|emoji
 ♨	温泉								// [2668] text|emoji
+//♭	flat								// [266D] other (no translation)
+//♯	sharp								// [266F] other (no translation)
 ♻	回收								// [267B] text|emoji
+♾	无限								// [267E] text|emoji
 ♿	轮椅								// [267F]
 ⚒	锤子与镐								// [2692] text|emoji
 ⚓	锚								// [2693]
@@ -160,8 +234,8 @@ $textmode
 ✅	空心对勾								// [2705]
 ✈	飞机								// [2708] text|emoji
 ✉	信封								// [2709] text|emoji
-✊	拳头								// [270A]
-✋	举起的手								// [270B]
+✊	举起拳头								// [270A]
+✋	举起手								// [270B]
 ✌	胜利手势								// [270C] text|emoji
 ✍	写字								// [270D] text|emoji
 ✏	铅笔								// [270F] text|emoji
@@ -217,11 +291,11 @@ $textmode
 
 // 1F100..1F1FF : Enclosed Alphanumeric Supplement
 
-🅰	字母a								// [1F170] text|emoji
-🅱	字母b								// [1F171] text|emoji
-🅾	字母o								// [1F17E] text|emoji
+🅰	A 型血								// [1F170] text|emoji
+🅱	B 型血								// [1F171] text|emoji
+🅾	O 型血								// [1F17E] text|emoji
 🅿	停车								// [1F17F] text|emoji
-🆎	字母ab								// [1F18E]
+🆎	AB 型血								// [1F18E]
 🆑	字母cl								// [1F191]
 🆒	酷								// [1F192]
 🆓	免费								// [1F193]
@@ -235,8 +309,8 @@ $textmode
 
 // 1F200..1F2FF : Enclosed Ideographic Supplement
 
-🈁	日文koko								// [1F201]
-🈂	日文sa								// [1F202] text|emoji
+🈁	日文的这里”按钮							// [1F201]
+🈂	日文的服务费”按钮							// [1F202] text|emoji
 🈚	无								// [1F21A]
 🈯	指								// [1F22F]
 🈲	禁								// [1F232]
@@ -253,11 +327,11 @@ $textmode
 
 // 1F000..1F02F : Mahjong Tiles
 
-🀄	麻将红中								// [1F004]
+🀄	红中								// [1F004]
 
 // 1F0A0..1F0FF : Playing Cards
 
-🃏	扑克小丑								// [1F0CF]
+🃏	大小王								// [1F0CF]
 
 // 1F300..1F5FF : Miscellaneous Symbols and Pictographs
 
@@ -502,11 +576,11 @@ $textmode
 🏸	羽毛球								// [1F3F8]
 🏹	弓箭								// [1F3F9]
 🏺	双耳瓶								// [1F3FA]
-🏻	种类-1-2								// [1F3FB]
-🏼	种类-3								// [1F3FC]
-🏽	种类-4								// [1F3FD]
-🏾	种类-5								// [1F3FE]
-🏿	种类-6								// [1F3FF]
+🏻	较浅肤色								// [1F3FB]
+🏼	中等-浅肤色								// [1F3FC]
+🏽	中等肤色								// [1F3FD]
+🏾	中等-深肤色								// [1F3FE]
+🏿	较深肤色								// [1F3FF]
 🐀	耗子								// [1F400]
 🐁	老鼠								// [1F401]
 🐂	公牛								// [1F402]
@@ -583,11 +657,11 @@ $textmode
 👉	反手食指向右指								// [1F449]
 👊	出拳								// [1F44A]
 👋	挥手								// [1F44B]
-👌	OK 手势								// [1F44C]
+👌	OK								// [1F44C]
 👍	拇指向上								// [1F44D]
 👎	拇指向下								// [1F44E]
 👏	鼓掌								// [1F44F]
-👐	双手								// [1F450]
+👐	张开双手								// [1F450]
 👑	皇冠								// [1F451]
 👒	女帽								// [1F452]
 👓	眼镜								// [1F453]
@@ -597,15 +671,15 @@ $textmode
 👗	连衣裙								// [1F457]
 👘	和服								// [1F458]
 👙	比基尼								// [1F459]
-👚	女生衣服								// [1F45A]
+👚	女装								// [1F45A]
 👛	钱包								// [1F45B]
-👜	包包								// [1F45C]
-👝	化妆包								// [1F45D]
-👞	皮鞋								// [1F45E]
+👜	手提包								// [1F45C]
+👝	手袋								// [1F45D]
+👞	男鞋								// [1F45E]
 👟	跑鞋								// [1F45F]
 👠	高跟鞋								// [1F460]
 👡	女式凉鞋								// [1F461]
-👢	女式靴子								// [1F462]
+👢	女靴								// [1F462]
 👣	脚印								// [1F463]
 👤	人像								// [1F464]
 👥	双人像								// [1F465]
@@ -639,7 +713,7 @@ $textmode
 💁	前台								// [1F481]
 💂	卫兵								// [1F482]
 💃	舞者								// [1F483]
-💄	口红								// [1F484]
+💄	唇膏								// [1F484]
 💅	涂指甲油								// [1F485]
 💆	按摩								// [1F486]
 💇	理发								// [1F487]
@@ -659,7 +733,7 @@ $textmode
 💕	两颗心								// [1F495]
 💖	闪亮的心								// [1F496]
 💗	搏动的心								// [1F497]
-💘	一箭穿心								// [1F498]
+💘	心中箭了								// [1F498]
 💙	蓝心								// [1F499]
 💚	绿心								// [1F49A]
 💛	黄心								// [1F49B]
@@ -667,7 +741,7 @@ $textmode
 💝	系有缎带的心								// [1F49D]
 💞	舞动的心								// [1F49E]
 💟	心型装饰								// [1F49F]
-💠	梅花								// [1F4A0]
+💠	梅花形								// [1F4A0]
 💡	灯泡								// [1F4A1]
 💢	怒								// [1F4A2]
 💣	炸弹								// [1F4A3]
@@ -678,7 +752,7 @@ $textmode
 💨	尾气								// [1F4A8]
 💩	大便								// [1F4A9]
 💪	肌肉								// [1F4AA]
-💫	飞旋的星星								// [1F4AB]
+💫	头晕								// [1F4AB]
 💬	话语气泡								// [1F4AC]
 💭	内心活动气泡								// [1F4AD]
 💮	白花								// [1F4AE]
@@ -793,7 +867,7 @@ $textmode
 🔜	马上								// [1F51C]
 🔝	置顶								// [1F51D]
 🔞	18禁								// [1F51E]
-🔟	键帽 10								// [1F51F]
+🔟	按键: 10								// [1F51F]
 🔠	大写字母键								// [1F520]
 🔡	小写字母键								// [1F521]
 🔢	输入数字								// [1F522]
@@ -872,7 +946,7 @@ $textmode
 🖐	手掌								// [1F590] text|emoji
 🖕	竖中指								// [1F595]
 🖖	瓦肯举手礼								// [1F596]
-🖤	黑色的心								// [1F5A4]
+🖤	黑心								// [1F5A4]
 🖥	台式电脑								// [1F5A5] text|emoji
 🖨	打印机								// [1F5A8] text|emoji
 🖱	鼠标								// [1F5B1] text|emoji
@@ -903,20 +977,20 @@ $textmode
 
 😀	嘿嘿								// [1F600]
 😁	嘻嘻								// [1F601]
-😂	喜极而泣								// [1F602]
+😂	笑哭了								// [1F602]
 😃	哈哈								// [1F603]
 😄	大笑								// [1F604]
 😅	苦笑								// [1F605]
-😆	眯眼大笑								// [1F606]
+😆	斜眼笑								// [1F606]
 😇	微笑天使								// [1F607]
 😈	恶魔微笑								// [1F608]
 😉	眨眼								// [1F609]
 😊	羞涩微笑								// [1F60A]
-😋	口水								// [1F60B]
+😋	好吃								// [1F60B]
 😌	松了口气								// [1F60C]
 😍	花痴								// [1F60D]
 😎	墨镜笑脸								// [1F60E]
-😏	得意的笑								// [1F60F]
+😏	得意								// [1F60F]
 😐	冷漠								// [1F610]
 😑	无语								// [1F611]
 😒	不高兴								// [1F612]
@@ -940,7 +1014,7 @@ $textmode
 😤	傲慢								// [1F624]
 😥	失望但如释重负								// [1F625]
 😦	啊								// [1F626]
-😧	痛啊								// [1F627]
+😧	极度痛苦								// [1F627]
 😨	害怕								// [1F628]
 😩	累死了								// [1F629]
 😪	困								// [1F62A]
@@ -948,7 +1022,7 @@ $textmode
 😬	龇牙咧嘴								// [1F62C]
 😭	放声大哭								// [1F62D]
 😮	吃惊								// [1F62E]
-😯	哦								// [1F62F]
+😯	缄默								// [1F62F]
 😰	冷汗								// [1F630]
 😱	吓死了								// [1F631]
 😲	震惊								// [1F632]
@@ -956,7 +1030,7 @@ $textmode
 😴	睡着了								// [1F634]
 😵	晕头转向								// [1F635]
 😶	沉默								// [1F636]
-😷	口罩								// [1F637]
+😷	感冒								// [1F637]
 😸	微笑的猫脸								// [1F638]
 😹	笑出眼泪的猫脸								// [1F639]
 😺	大笑的猫脸								// [1F63A]
@@ -966,7 +1040,7 @@ $textmode
 😾	生气的猫脸								// [1F63E]
 😿	哭泣的猫脸								// [1F63F]
 🙀	疲倦的猫脸								// [1F640]
-🙁	小委屈								// [1F641]
+🙁	微微不满								// [1F641]
 🙂	呵呵								// [1F642]
 🙃	倒脸								// [1F643]
 🙄	翻白眼								// [1F644]
@@ -977,7 +1051,7 @@ $textmode
 🙉	非礼勿听								// [1F649]
 🙊	非礼勿言								// [1F64A]
 🙋	举手								// [1F64B]
-🙌	击掌								// [1F64C]
+🙌	举双手								// [1F64C]
 🙍	皱眉								// [1F64D]
 🙎	撅嘴								// [1F64E]
 🙏	双手合十								// [1F64F]
@@ -1076,46 +1150,47 @@ $textmode
 🛴	滑板车								// [1F6F4]
 🛵	电动车								// [1F6F5]
 🛶	独木舟								// [1F6F6]
-🛷	sled								// [1F6F7] (no translation)
-🛸	flying saucer							// [1F6F8] (no translation)
+🛷	雪橇								// [1F6F7]
+🛸	飞碟								// [1F6F8]
+🛹	滑板								// [1F6F9]
 
 // 1F900..1F9FF : Supplemental Symbols and Pictographs
 
 🤐	闭嘴								// [1F910]
 🤑	发财								// [1F911]
 🤒	发烧								// [1F912]
-🤓	眼镜笑脸								// [1F913]
+🤓	书呆子脸								// [1F913]
 🤔	想一想								// [1F914]
 🤕	受伤								// [1F915]
 🤖	机器人								// [1F916]
 🤗	抱抱								// [1F917]
 🤘	摇滚								// [1F918]
-🤙	给我打电话的手势							// [1F919]
+🤙	给我打电话								// [1F919]
 🤚	立起的手背								// [1F91A]
 🤛	朝左的拳头								// [1F91B]
 🤜	朝右的拳头								// [1F91C]
 🤝	握手								// [1F91D]
 🤞	交叉的手指								// [1F91E]
-🤟	love you gesture						// [1F91F] (no translation)
+🤟	爱你的姿态								// [1F91F]
 🤠	牛仔帽脸								// [1F920]
 🤡	小丑脸								// [1F921]
-🤢	恶心作呕的脸								// [1F922]
-🤣	满地打滚的笑								// [1F923]
-🤤	流口水的脸								// [1F924]
-🤥	长鼻子脸								// [1F925]
+🤢	恶心								// [1F922]
+🤣	笑得满地打滚								// [1F923]
+🤤	流口水								// [1F924]
+🤥	说谎								// [1F925]
 🤦	捂脸								// [1F926]
-🤧	打喷嚏的脸								// [1F927]
-🤨	face with raised eyebrow					// [1F928] (no translation)
-🤩	star struck							// [1F929] (no translation)
-🤪	crazy face							// [1F92A] (no translation)
-🤫	shushing face							// [1F92B] (no translation)
-🤬	face with symbols over mouth					// [1F92C] (no translation)
-🤭	face with hand over mouth					// [1F92D] (no translation)
-🤮	face vomiting							// [1F92E] (no translation)
-🤯	exploding head							// [1F92F] (no translation)
-🤰	怀孕的女人								// [1F930]
-🤱	breast feeding							// [1F931] (no translation)
-🤲	palms up together						// [1F932] (no translation)
+🤧	打喷嚏								// [1F927]
+🤨	扬眉吐气								// [1F928]
+🤩	好崇拜哦								// [1F929]
+🤪	疯狂的脸								// [1F92A]
+🤫	安静的脸								// [1F92B]
+🤬	嘴上有符号的脸								// [1F92C]
+🤭	不说								// [1F92D]
+🤮	呕吐								// [1F92E]
+🤯	爆炸头								// [1F92F]
+🤰	孕妇								// [1F930]
+🤱	母乳喂养								// [1F931]
+🤲	掌心向上托起								// [1F932]
 🤳	自拍								// [1F933]
 🤴	王子								// [1F934]
 🤵	穿燕尾服的男人								// [1F935]
@@ -1133,12 +1208,14 @@ $textmode
 🥃	塔博杯								// [1F943]
 🥄	匙子								// [1F944]
 🥅	球门								// [1F945]
-🥇	第一名奖牌								// [1F947]
-🥈	第二名奖牌								// [1F948]
-🥉	第三名奖牌								// [1F949]
+🥇	金牌								// [1F947]
+🥈	银牌								// [1F948]
+🥉	铜牌								// [1F949]
 🥊	拳击手套								// [1F94A]
 🥋	练武服								// [1F94B]
-🥌	curling stone							// [1F94C] (no translation)
+🥌	冰壶								// [1F94C]
+🥎	垒球								// [1F94E]
+🥏	飞盘								// [1F94F]
 🥐	羊角面包								// [1F950]
 🥑	鳄梨								// [1F951]
 🥒	黄瓜								// [1F952]
@@ -1154,19 +1231,33 @@ $textmode
 🥜	花生								// [1F95C]
 🥝	猕猴桃								// [1F95D]
 🥞	烙饼								// [1F95E]
-🥟	dumpling							// [1F95F] (no translation)
-🥠	fortune cookie							// [1F960] (no translation)
-🥡	takeout box							// [1F961] (no translation)
-🥢	chopsticks							// [1F962] (no translation)
-🥣	bowl with spoon							// [1F963] (no translation)
-🥤	cup with straw							// [1F964] (no translation)
-🥥	coconut								// [1F965] (no translation)
-🥦	broccoli							// [1F966] (no translation)
-🥧	pie								// [1F967] (no translation)
-🥨	pretzel								// [1F968] (no translation)
-🥩	cut of meat							// [1F969] (no translation)
-🥪	sandwich							// [1F96A] (no translation)
-🥫	canned food							// [1F96B] (no translation)
+🥟	饺子								// [1F95F]
+🥠	幸运饼干								// [1F960]
+🥡	外卖盒								// [1F961]
+🥢	筷子								// [1F962]
+🥣	碗勺								// [1F963]
+🥤	带吸管杯								// [1F964]
+🥥	椰子								// [1F965]
+🥦	西兰花								// [1F966]
+🥧	派								// [1F967]
+🥨	椒盐卷饼								// [1F968]
+🥩	切肉								// [1F969]
+🥪	三明治								// [1F96A]
+🥫	罐头食品								// [1F96B]
+🥬	绿叶蔬菜								// [1F96C]
+🥭	芒果								// [1F96D]
+🥮	月饼								// [1F96E]
+🥯	面包圈								// [1F96F]
+🥰	喜笑颜开								// [1F970]
+🥳	聚会笑脸								// [1F973]
+🥴	头昏眼花								// [1F974]
+🥵	脸发烧								// [1F975]
+🥶	冷脸								// [1F976]
+🥺	恳求的脸								// [1F97A]
+🥼	白大褂								// [1F97C]
+🥽	护目镜								// [1F97D]
+🥾	登山鞋								// [1F97E]
+🥿	平底鞋								// [1F97F]
 🦀	蟹								// [1F980]
 🦁	狮子								// [1F981]
 🦂	蝎子								// [1F982]
@@ -1185,303 +1276,350 @@ $textmode
 🦏	犀牛								// [1F98F]
 🦐	虾								// [1F990]
 🦑	乌贼								// [1F991]
-🦒	giraffe								// [1F992] (no translation)
-🦓	zebra								// [1F993] (no translation)
-🦔	hedgehog							// [1F994] (no translation)
-🦕	sauropod							// [1F995] (no translation)
-🦖	t rex								// [1F996] (no translation)
-🦗	cricket								// [1F997] (no translation)
+🦒	长颈鹿								// [1F992]
+🦓	斑马								// [1F993]
+🦔	刺猬								// [1F994]
+🦕	蜥蜴类								// [1F995]
+🦖	霸王龙								// [1F996]
+🦗	蟋蟀								// [1F997]
+🦘	袋鼠								// [1F998]
+🦙	美洲鸵								// [1F999]
+🦚	孔雀								// [1F99A]
+🦛	河马								// [1F99B]
+🦜	鹦鹉								// [1F99C]
+🦝	浣熊								// [1F99D]
+🦞	龙虾								// [1F99E]
+🦟	蚊子								// [1F99F]
+🦠	细菌								// [1F9A0]
+🦡	獾								// [1F9A1]
+🦢	天鹅								// [1F9A2]
+🦰	红发								// [1F9B0]
+🦱	卷发								// [1F9B1]
+🦲	秃顶								// [1F9B2]
+🦳	白发								// [1F9B3]
+🦴	骨头								// [1F9B4]
+🦵	腿								// [1F9B5]
+🦶	脚								// [1F9B6]
+🦷	牙齿								// [1F9B7]
+🦸	超级英雄								// [1F9B8]
+🦹	超级大坏蛋								// [1F9B9]
 🧀	芝士								// [1F9C0]
-🧐	face with monocle						// [1F9D0] (no translation)
-🧑	adult								// [1F9D1] (no translation)
-🧒	child								// [1F9D2] (no translation)
-🧓	older adult							// [1F9D3] (no translation)
-🧔	bearded person							// [1F9D4] (no translation)
-🧕	woman with headscarf						// [1F9D5] (no translation)
-🧖	person in steamy room						// [1F9D6] (no translation)
-🧗	person climbing							// [1F9D7] (no translation)
-🧘	person in lotus position					// [1F9D8] (no translation)
-🧙	mage								// [1F9D9] (no translation)
-🧚	fairy								// [1F9DA] (no translation)
-🧛	vampire								// [1F9DB] (no translation)
-🧜	merperson							// [1F9DC] (no translation)
-🧝	elf								// [1F9DD] (no translation)
-🧞	genie								// [1F9DE] (no translation)
-🧟	zombie								// [1F9DF] (no translation)
-🧠	brain								// [1F9E0] (no translation)
-🧡	orange heart							// [1F9E1] (no translation)
-🧢	billed cap							// [1F9E2] (no translation)
-🧣	scarf								// [1F9E3] (no translation)
-🧤	gloves								// [1F9E4] (no translation)
-🧥	coat								// [1F9E5] (no translation)
-🧦	socks								// [1F9E6] (no translation)
+🧁	纸杯蛋糕								// [1F9C1]
+🧂	盐								// [1F9C2]
+🧐	带单片眼镜的脸								// [1F9D0]
+🧑	成人								// [1F9D1]
+🧒	儿童								// [1F9D2]
+🧓	老年人								// [1F9D3]
+🧔	有胡子的人								// [1F9D4]
+🧕	带头饰的女人								// [1F9D5]
+🧖	蒸房里的人								// [1F9D6]
+🧗	攀爬的人								// [1F9D7]
+🧘	盘腿的人								// [1F9D8]
+🧙	法师								// [1F9D9]
+🧚	精灵								// [1F9DA]
+🧛	吸血鬼								// [1F9DB]
+🧜	人鱼								// [1F9DC]
+🧝	小精灵								// [1F9DD]
+🧞	妖怪								// [1F9DE]
+🧟	僵尸								// [1F9DF]
+🧠	脑								// [1F9E0]
+🧡	橙心								// [1F9E1]
+🧢	鸭舌帽								// [1F9E2]
+🧣	围巾								// [1F9E3]
+🧤	手套								// [1F9E4]
+🧥	外套								// [1F9E5]
+🧦	袜子								// [1F9E6]
+🧧	红包								// [1F9E7]
+🧨	爆竹								// [1F9E8]
+🧩	拼图								// [1F9E9]
+🧪	试管								// [1F9EA]
+🧫	培养皿								// [1F9EB]
+🧬	DNA								// [1F9EC]
+🧭	指南针								// [1F9ED]
+🧮	算盘								// [1F9EE]
+🧰	工具箱								// [1F9F0]
+🧱	砖								// [1F9F1]
+🧲	磁铁								// [1F9F2]
+🧳	行李箱								// [1F9F3]
+🧴	乳液瓶								// [1F9F4]
+🧵	线								// [1F9F5]
+🧶	毛线								// [1F9F6]
+🧷	安全别针								// [1F9F7]
+🧸	泰迪熊								// [1F9F8]
+🧹	扫帚								// [1F9F9]
+🧺	筐								// [1F9FA]
+🧻	卷纸								// [1F9FB]
+🧼	皂								// [1F9FC]
+🧽	海绵								// [1F9FD]
+🧾	收据								// [1F9FE]
+🧿	纳扎尔护身符								// [1F9FF]
 
 // Country Flags (Regional Indicator Symbols) -- ISO 3166-1 Country Codes
 
-🇦🇨	阿森松岛								// [1F1E6 1F1E8] AC
-🇦🇩	安道尔								// [1F1E6 1F1E9] AD
-🇦🇪	阿拉伯联合酋长国							// [1F1E6 1F1EA] AE
-🇦🇫	阿富汗								// [1F1E6 1F1EB] AF
-🇦🇬	安提瓜和巴布达								// [1F1E6 1F1EC] AG
-🇦🇮	安圭拉								// [1F1E6 1F1EE] AI
-🇦🇱	阿尔巴尼亚								// [1F1E6 1F1F1] AL
-🇦🇲	亚美尼亚								// [1F1E6 1F1F2] AM
-🇦🇴	安哥拉								// [1F1E6 1F1F4] AO
-🇦🇶	南极洲								// [1F1E6 1F1F6] AQ
-🇦🇷	阿根廷								// [1F1E6 1F1F7] AR
-🇦🇸	美属萨摩亚								// [1F1E6 1F1F8] AS
-🇦🇹	奥地利								// [1F1E6 1F1F9] AT
-🇦🇺	澳大利亚								// [1F1E6 1F1FA] AU
-🇦🇼	阿鲁巴								// [1F1E6 1F1FC] AW
-🇦🇽	奥兰群岛								// [1F1E6 1F1FD] AX
-🇦🇿	阿塞拜疆								// [1F1E6 1F1FF] AZ
-🇧🇦	波斯尼亚和黑塞哥维那							// [1F1E7 1F1E6] BA
-🇧🇧	巴巴多斯								// [1F1E7 1F1E7] BB
-🇧🇩	孟加拉国								// [1F1E7 1F1E9] BD
-🇧🇪	比利时								// [1F1E7 1F1EA] BE
-🇧🇫	布基纳法索								// [1F1E7 1F1EB] BF
-🇧🇬	保加利亚								// [1F1E7 1F1EC] BG
-🇧🇭	巴林								// [1F1E7 1F1ED] BH
-🇧🇮	布隆迪								// [1F1E7 1F1EE] BI
-🇧🇯	贝宁								// [1F1E7 1F1EF] BJ
-🇧🇱	圣巴泰勒米								// [1F1E7 1F1F1] BL
-🇧🇲	百慕大								// [1F1E7 1F1F2] BM
-🇧🇳	文莱								// [1F1E7 1F1F3] BN
-🇧🇴	玻利维亚								// [1F1E7 1F1F4] BO
-🇧🇶	荷属加勒比区								// [1F1E7 1F1F6] BQ
-🇧🇷	巴西								// [1F1E7 1F1F7] BR
-🇧🇸	巴哈马								// [1F1E7 1F1F8] BS
-🇧🇹	不丹								// [1F1E7 1F1F9] BT
-🇧🇻	布韦岛								// [1F1E7 1F1FB] BV
-🇧🇼	博茨瓦纳								// [1F1E7 1F1FC] BW
-🇧🇾	白俄罗斯								// [1F1E7 1F1FE] BY
-🇧🇿	伯利兹								// [1F1E7 1F1FF] BZ
-🇨🇦	加拿大								// [1F1E8 1F1E6] CA
-🇨🇨	科科斯（基林）群岛							// [1F1E8 1F1E8] CC
-🇨🇩	刚果（金）								// [1F1E8 1F1E9] CD
-🇨🇫	中非共和国								// [1F1E8 1F1EB] CF
-🇨🇬	刚果（布）								// [1F1E8 1F1EC] CG
-🇨🇭	瑞士								// [1F1E8 1F1ED] CH
-🇨🇮	科特迪瓦								// [1F1E8 1F1EE] CI
-🇨🇰	库克群岛								// [1F1E8 1F1F0] CK
-🇨🇱	智利								// [1F1E8 1F1F1] CL
-🇨🇲	喀麦隆								// [1F1E8 1F1F2] CM
-🇨🇳	中国								// [1F1E8 1F1F3] CN
-🇨🇴	哥伦比亚								// [1F1E8 1F1F4] CO
-🇨🇵	克利珀顿岛								// [1F1E8 1F1F5] CP
-🇨🇷	哥斯达黎加								// [1F1E8 1F1F7] CR
-🇨🇺	古巴								// [1F1E8 1F1FA] CU
-🇨🇻	佛得角								// [1F1E8 1F1FB] CV
-🇨🇼	库拉索								// [1F1E8 1F1FC] CW
-🇨🇽	圣诞岛								// [1F1E8 1F1FD] CX
-🇨🇾	塞浦路斯								// [1F1E8 1F1FE] CY
-🇨🇿	捷克								// [1F1E8 1F1FF] CZ
-🇩🇪	德国								// [1F1E9 1F1EA] DE
-🇩🇬	迪戈加西亚岛								// [1F1E9 1F1EC] DG
-🇩🇯	吉布提								// [1F1E9 1F1EF] DJ
-🇩🇰	丹麦								// [1F1E9 1F1F0] DK
-🇩🇲	多米尼克								// [1F1E9 1F1F2] DM
-🇩🇴	多米尼加共和国								// [1F1E9 1F1F4] DO
-🇩🇿	阿尔及利亚								// [1F1E9 1F1FF] DZ
-🇪🇦	休达及梅利利亚								// [1F1EA 1F1E6] EA
-🇪🇨	厄瓜多尔								// [1F1EA 1F1E8] EC
-🇪🇪	爱沙尼亚								// [1F1EA 1F1EA] EE
-🇪🇬	埃及								// [1F1EA 1F1EC] EG
-🇪🇭	西撒哈拉								// [1F1EA 1F1ED] EH
-🇪🇷	厄立特里亚								// [1F1EA 1F1F7] ER
-🇪🇸	西班牙								// [1F1EA 1F1F8] ES
-🇪🇹	埃塞俄比亚								// [1F1EA 1F1F9] ET
-🇪🇺	欧盟								// [1F1EA 1F1FA] EU
-🇫🇮	芬兰								// [1F1EB 1F1EE] FI
-🇫🇯	斐济								// [1F1EB 1F1EF] FJ
-🇫🇰	福克兰群岛								// [1F1EB 1F1F0] FI
-🇫🇲	密克罗尼西亚								// [1F1EB 1F1F2] FM
-🇫🇴	法罗群岛								// [1F1EB 1F1F4] FO
-🇫🇷	法国								// [1F1EB 1F1F7] FR
-🇬🇦	加蓬								// [1F1EC 1F1E6] GA
-🇬🇧	英国								// [1F1EC 1F1E7] GB
-🇬🇩	格林纳达								// [1F1EC 1F1E9] GD
-🇬🇪	格鲁吉亚								// [1F1EC 1F1EA] GE
-🇬🇫	法属圭亚那								// [1F1EC 1F1EB] GF
-🇬🇬	格恩西岛								// [1F1EC 1F1EC] GG
-🇬🇭	加纳								// [1F1EC 1F1ED] GH
-🇬🇮	直布罗陀								// [1F1EC 1F1EE] GI
-🇬🇱	格陵兰								// [1F1EC 1F1F1] GL
-🇬🇲	冈比亚								// [1F1EC 1F1F2] GM
-🇬🇳	几内亚								// [1F1EC 1F1F3] GN
-🇬🇵	瓜德罗普								// [1F1EC 1F1F5] GP
-🇬🇶	赤道几内亚								// [1F1EC 1F1F6] GQ
-🇬🇷	希腊								// [1F1EC 1F1F7] GR
-🇬🇸	南乔治亚和南桑威奇群岛							// [1F1EC 1F1F8] GS
-🇬🇹	危地马拉								// [1F1EC 1F1F9] GT
-🇬🇺	关岛								// [1F1EC 1F1FA] GU
-🇬🇼	几内亚比绍								// [1F1EC 1F1FC] GW
-🇬🇾	圭亚那								// [1F1EC 1F1FE] GY
-🇭🇰	中国香港特别行政区							// [1F1ED 1F1F0] HK
-🇭🇲	赫德岛和麦克唐纳群岛							// [1F1ED 1F1F2] HM
-🇭🇳	洪都拉斯								// [1F1ED 1F1F3] HN
-🇭🇷	克罗地亚								// [1F1ED 1F1F7] HR
-🇭🇹	海地								// [1F1ED 1F1F9] HT
-🇭🇺	匈牙利								// [1F1ED 1F1FA] HU
-🇮🇨	加纳利群岛								// [1F1EE 1F1E8] IC
-🇮🇩	印度尼西亚								// [1F1EE 1F1E9] ID
-🇮🇪	爱尔兰								// [1F1EE 1F1EA] IE
-🇮🇱	以色列								// [1F1EE 1F1F1] IL
-🇮🇲	马恩岛								// [1F1EE 1F1F2] IM
-🇮🇳	印度								// [1F1EE 1F1F3] IN
-🇮🇴	英属印度洋领地								// [1F1EE 1F1F4] IO
-🇮🇶	伊拉克								// [1F1EE 1F1F6] IQ
-🇮🇷	伊朗								// [1F1EE 1F1F7] IR
-🇮🇸	冰岛								// [1F1EE 1F1F8] IS
-🇮🇹	意大利								// [1F1EE 1F1F9] IT
-🇯🇪	泽西岛								// [1F1EF 1F1EA] JE
-🇯🇲	牙买加								// [1F1EF 1F1F2] JM
-🇯🇴	约旦								// [1F1EF 1F1F4] JO
-🇯🇵	日本								// [1F1EF 1F1F5] JP
-🇰🇪	肯尼亚								// [1F1F0 1F1EA] KE
-🇰🇬	吉尔吉斯斯坦								// [1F1F0 1F1EC] KG
-🇰🇭	柬埔寨								// [1F1F0 1F1ED] KH
-🇰🇮	基里巴斯								// [1F1F0 1F1EE] KI
-🇰🇲	科摩罗								// [1F1F0 1F1F2] KM
-🇰🇳	圣基茨和尼维斯								// [1F1F0 1F1F3] KN
-🇰🇵	朝鲜								// [1F1F0 1F1F5] KP
-🇰🇷	韩国								// [1F1F0 1F1F7] KR
-🇰🇼	科威特								// [1F1F0 1F1FC] KW
-🇰🇾	开曼群岛								// [1F1F0 1F1FE] KY
-🇰🇿	哈萨克斯坦								// [1F1F0 1F1FF] KZ
-🇱🇦	老挝								// [1F1F1 1F1E6] LA
-🇱🇧	黎巴嫩								// [1F1F1 1F1E7] LB
-🇱🇨	圣卢西亚								// [1F1F1 1F1E8] LC
-🇱🇮	列支敦士登								// [1F1F1 1F1EE] LI
-🇱🇰	斯里兰卡								// [1F1F1 1F1F0] LK
-🇱🇷	利比里亚								// [1F1F1 1F1F7] LR
-🇱🇸	莱索托								// [1F1F1 1F1F8] LS
-🇱🇹	立陶宛								// [1F1F1 1F1F9] LT
-🇱🇺	卢森堡								// [1F1F1 1F1FA] LU
-🇱🇻	拉脱维亚								// [1F1F1 1F1FB] LV
-🇱🇾	利比亚								// [1F1F1 1F1FE] LY
-🇲🇦	摩洛哥								// [1F1F2 1F1E6] MA
-🇲🇨	摩纳哥								// [1F1F2 1F1E8] MC
-🇲🇩	摩尔多瓦								// [1F1F2 1F1E9] MD
-🇲🇪	黑山								// [1F1F2 1F1EA] ME
-🇲🇫	圣马丁岛								// [1F1F2 1F1EB] MF
-🇲🇬	马达加斯加								// [1F1F2 1F1EC] MG
-🇲🇭	马绍尔群岛								// [1F1F2 1F1ED] MH
-🇲🇰	马其顿								// [1F1F2 1F1F0] MK
-🇲🇱	马里								// [1F1F2 1F1F1] ML
-🇲🇲	缅甸								// [1F1F2 1F1F2] MM
-🇲🇳	蒙古								// [1F1F2 1F1F3] MN
-🇲🇴	中国澳门特别行政区							// [1F1F2 1F1F4] MO
-🇲🇵	北马里亚纳群岛								// [1F1F2 1F1F5] MP
-🇲🇶	马提尼克								// [1F1F2 1F1F6] MQ
-🇲🇷	毛里塔尼亚								// [1F1F2 1F1F7] MR
-🇲🇸	蒙特塞拉特								// [1F1F2 1F1F8] MS
-🇲🇹	马耳他								// [1F1F2 1F1F9] MT
-🇲🇺	毛里求斯								// [1F1F2 1F1FA] MU
-🇲🇻	马尔代夫								// [1F1F2 1F1FB] MV
-🇲🇼	马拉维								// [1F1F2 1F1FC] MW
-🇲🇽	墨西哥								// [1F1F2 1F1FD] MX
-🇲🇾	马来西亚								// [1F1F2 1F1FE] MY
-🇲🇿	莫桑比克								// [1F1F2 1F1FF] MZ
-🇳🇦	纳米比亚								// [1F1F3 1F1E6] NA
-🇳🇨	新喀里多尼亚								// [1F1F3 1F1E8] NC
-🇳🇪	尼日尔								// [1F1F3 1F1EA] NE
-🇳🇫	诺福克岛								// [1F1F3 1F1EB] NF
-🇳🇬	尼日利亚								// [1F1F3 1F1EC] NG
-🇳🇮	尼加拉瓜								// [1F1F3 1F1EE] NI
-🇳🇱	荷兰								// [1F1F3 1F1F1] NL
-🇳🇴	挪威								// [1F1F3 1F1F4] NO
-🇳🇵	尼泊尔								// [1F1F3 1F1F5] NP
-🇳🇷	瑙鲁								// [1F1F3 1F1F7] NR
-🇳🇺	纽埃								// [1F1F3 1F1FA] NU
-🇳🇿	新西兰								// [1F1F3 1F1FF] NZ
-🇴🇲	阿曼								// [1F1F4 1F1F2] OM
-🇵🇦	巴拿马								// [1F1F5 1F1E6] PA
-🇵🇪	秘鲁								// [1F1F5 1F1EA] PE
-🇵🇫	法属波利尼西亚								// [1F1F5 1F1EB] PF
-🇵🇬	巴布亚新几内亚								// [1F1F5 1F1EC] PG
-🇵🇭	菲律宾								// [1F1F5 1F1ED] PH
-🇵🇰	巴基斯坦								// [1F1F5 1F1F0] PK
-🇵🇱	波兰								// [1F1F5 1F1F1] PL
-🇵🇲	圣皮埃尔和密克隆群岛							// [1F1F5 1F1F2] PM
-🇵🇳	皮特凯恩群岛								// [1F1F5 1F1F3] PN
-🇵🇷	波多黎各								// [1F1F5 1F1F7] PR
-🇵🇸	巴勒斯坦领土								// [1F1F5 1F1F8] PS
-🇵🇹	葡萄牙								// [1F1F5 1F1F9] PT
-🇵🇼	帕劳								// [1F1F5 1F1FC] PW
-🇵🇾	巴拉圭								// [1F1F5 1F1FE] PY
-🇶🇦	卡塔尔								// [1F1F6 1F1E6] QA
-🇷🇪	留尼汪								// [1F1F7 1F1EA] RE
-🇷🇴	罗马尼亚								// [1F1F7 1F1F4] RO
-🇷🇸	塞尔维亚								// [1F1F7 1F1F8] RS
-🇷🇺	俄罗斯								// [1F1F7 1F1FA] RU
-🇷🇼	卢旺达								// [1F1F7 1F1FC] RW
-🇸🇦	沙特阿拉伯								// [1F1F8 1F1E6] SA
-🇸🇧	所罗门群岛								// [1F1F8 1F1E7] SB
-🇸🇨	塞舌尔								// [1F1F8 1F1E8] SC
-🇸🇩	苏丹								// [1F1F8 1F1E9] SD
-🇸🇪	瑞典								// [1F1F8 1F1EA] SE
-🇸🇬	新加坡								// [1F1F8 1F1EC] SG
-🇸🇭	圣赫勒拿								// [1F1F8 1F1ED] SH
-🇸🇮	斯洛文尼亚								// [1F1F8 1F1EE] SI
-🇸🇯	斯瓦尔巴和扬马延							// [1F1F8 1F1EF] SJ
-🇸🇰	斯洛伐克								// [1F1F8 1F1F0] SK
-🇸🇱	塞拉利昂								// [1F1F8 1F1F1] SL
-🇸🇲	圣马力诺								// [1F1F8 1F1F2] SM
-🇸🇳	塞内加尔								// [1F1F8 1F1F3] SN
-🇸🇴	索马里								// [1F1F8 1F1F4] SO
-🇸🇷	苏里南								// [1F1F8 1F1F7] SR
-🇸🇸	南苏丹								// [1F1F8 1F1F8] SS
-🇸🇹	圣多美和普林西比							// [1F1F8 1F1F9] ST
-🇸🇻	萨尔瓦多								// [1F1F8 1F1FB] SV
-🇸🇽	荷属圣马丁								// [1F1F8 1F1FD] SX
-🇸🇾	叙利亚								// [1F1F8 1F1FE] SY
-🇸🇿	斯威士兰								// [1F1F8 1F1FF] SZ
-🇹🇦	特里斯坦-达库尼亚群岛							// [1F1F9 1F1E6] TA
-🇹🇨	特克斯和凯科斯群岛							// [1F1F9 1F1E8] TC
-🇹🇩	乍得								// [1F1F9 1F1E9] TD
-🇹🇫	法属南部领地								// [1F1F9 1F1EB] TF
-🇹🇬	多哥								// [1F1F9 1F1EC] TG
-🇹🇭	泰国								// [1F1F9 1F1ED] TH
-🇹🇯	塔吉克斯坦								// [1F1F9 1F1EF] TJ
-🇹🇰	托克劳								// [1F1F9 1F1F0] TK
-🇹🇱	东帝汶								// [1F1F9 1F1F1] TL
-🇹🇲	土库曼斯坦								// [1F1F9 1F1F2] TM
-🇹🇳	突尼斯								// [1F1F9 1F1F3] TN
-🇹🇴	汤加								// [1F1F9 1F1F4] TO
-🇹🇷	土耳其								// [1F1F9 1F1F7] TR
-🇹🇹	特立尼达和多巴哥							// [1F1F9 1F1F9] TT
-🇹🇻	图瓦卢								// [1F1F9 1F1FB] TV
-🇹🇼	台湾								// [1F1F9 1F1FC] TW
-🇹🇿	坦桑尼亚								// [1F1F9 1F1FF] TZ
-🇺🇦	乌克兰								// [1F1FA 1F1E6] UA
-🇺🇬	乌干达								// [1F1FA 1F1EC] UG
-🇺🇲	美国本土外小岛屿							// [1F1FA 1F1F2] UM
-🇺🇳	联合国								// [1F1FA 1F1F3] UN
-🇺🇸	美国								// [1F1FA 1F1F8] US
-🇺🇾	乌拉圭								// [1F1FA 1F1FE] UY
-🇺🇿	乌兹别克斯坦								// [1F1FA 1F1FF] UZ
-🇻🇦	梵蒂冈								// [1F1FB 1F1E6] VA
-🇻🇨	圣文森特和格林纳丁斯							// [1F1FB 1F1E8] VC
-🇻🇪	委内瑞拉								// [1F1FB 1F1EA] VE
-🇻🇬	英属维尔京群岛								// [1F1FB 1F1EC] VG
-🇻🇮	美属维尔京群岛								// [1F1FB 1F1EE] VI
-🇻🇳	越南								// [1F1FB 1F1F3] VN
-🇻🇺	瓦努阿图								// [1F1FB 1F1FA] VU
-🇼🇫	瓦利斯和富图纳								// [1F1FC 1F1EB] WF
-🇼🇸	萨摩亚								// [1F1FC 1F1F8] WS
-🇽🇰	科索沃								// [1F1FD 1F1F0] XK
-🇾🇪	也门								// [1F1FE 1F1EA] YE
-🇾🇹	马约特								// [1F1FE 1F1F9] YT
-🇿🇦	南非								// [1F1FF 1F1E6] ZA
-🇿🇲	赞比亚								// [1F1FF 1F1F2] ZM
-🇿🇼	津巴布韦								// [1F1FF 1F1FC] ZW
+🇦🇨	旗: 阿森松岛								// [1F1E6 1F1E8] AC
+🇦🇩	旗: 安道尔								// [1F1E6 1F1E9] AD
+🇦🇪	旗: 阿拉伯联合酋长国							// [1F1E6 1F1EA] AE
+🇦🇫	旗: 阿富汗								// [1F1E6 1F1EB] AF
+🇦🇬	旗: 安提瓜和巴布达							// [1F1E6 1F1EC] AG
+🇦🇮	旗: 安圭拉								// [1F1E6 1F1EE] AI
+🇦🇱	旗: 阿尔巴尼亚							// [1F1E6 1F1F1] AL
+🇦🇲	旗: 亚美尼亚								// [1F1E6 1F1F2] AM
+🇦🇴	旗: 安哥拉								// [1F1E6 1F1F4] AO
+🇦🇶	旗: 南极洲								// [1F1E6 1F1F6] AQ
+🇦🇷	旗: 阿根廷								// [1F1E6 1F1F7] AR
+🇦🇸	旗: 美属萨摩亚							// [1F1E6 1F1F8] AS
+🇦🇹	旗: 奥地利								// [1F1E6 1F1F9] AT
+🇦🇺	旗: 澳大利亚								// [1F1E6 1F1FA] AU
+🇦🇼	旗: 阿鲁巴								// [1F1E6 1F1FC] AW
+🇦🇽	旗: 奥兰群岛								// [1F1E6 1F1FD] AX
+🇦🇿	旗: 阿塞拜疆								// [1F1E6 1F1FF] AZ
+🇧🇦	旗: 波斯尼亚和黑塞哥维那							// [1F1E7 1F1E6] BA
+🇧🇧	旗: 巴巴多斯								// [1F1E7 1F1E7] BB
+🇧🇩	旗: 孟加拉国								// [1F1E7 1F1E9] BD
+🇧🇪	旗: 比利时								// [1F1E7 1F1EA] BE
+🇧🇫	旗: 布基纳法索							// [1F1E7 1F1EB] BF
+🇧🇬	旗: 保加利亚								// [1F1E7 1F1EC] BG
+🇧🇭	旗: 巴林								// [1F1E7 1F1ED] BH
+🇧🇮	旗: 布隆迪								// [1F1E7 1F1EE] BI
+🇧🇯	旗: 贝宁								// [1F1E7 1F1EF] BJ
+🇧🇱	旗: 圣巴泰勒米							// [1F1E7 1F1F1] BL
+🇧🇲	旗: 百慕大								// [1F1E7 1F1F2] BM
+🇧🇳	旗: 文莱								// [1F1E7 1F1F3] BN
+🇧🇴	旗: 玻利维亚								// [1F1E7 1F1F4] BO
+🇧🇶	旗: 荷属加勒比区							// [1F1E7 1F1F6] BQ
+🇧🇷	旗: 巴西								// [1F1E7 1F1F7] BR
+🇧🇸	旗: 巴哈马								// [1F1E7 1F1F8] BS
+🇧🇹	旗: 不丹								// [1F1E7 1F1F9] BT
+🇧🇻	旗: 布韦岛								// [1F1E7 1F1FB] BV
+🇧🇼	旗: 博茨瓦纳								// [1F1E7 1F1FC] BW
+🇧🇾	旗: 白俄罗斯								// [1F1E7 1F1FE] BY
+🇧🇿	旗: 伯利兹								// [1F1E7 1F1FF] BZ
+🇨🇦	旗: 加拿大								// [1F1E8 1F1E6] CA
+🇨🇨	旗: 科科斯（基林）群岛							// [1F1E8 1F1E8] CC
+🇨🇩	旗: 刚果（金）							// [1F1E8 1F1E9] CD
+🇨🇫	旗: 中非共和国							// [1F1E8 1F1EB] CF
+🇨🇬	旗: 刚果（布）							// [1F1E8 1F1EC] CG
+🇨🇭	旗: 瑞士								// [1F1E8 1F1ED] CH
+🇨🇮	旗: 科特迪瓦								// [1F1E8 1F1EE] CI
+🇨🇰	旗: 库克群岛								// [1F1E8 1F1F0] CK
+🇨🇱	旗: 智利								// [1F1E8 1F1F1] CL
+🇨🇲	旗: 喀麦隆								// [1F1E8 1F1F2] CM
+🇨🇳	旗: 中国								// [1F1E8 1F1F3] CN
+🇨🇴	旗: 哥伦比亚								// [1F1E8 1F1F4] CO
+🇨🇵	旗: 克利珀顿岛							// [1F1E8 1F1F5] CP
+🇨🇷	旗: 哥斯达黎加							// [1F1E8 1F1F7] CR
+🇨🇺	旗: 古巴								// [1F1E8 1F1FA] CU
+🇨🇻	旗: 佛得角								// [1F1E8 1F1FB] CV
+🇨🇼	旗: 库拉索								// [1F1E8 1F1FC] CW
+🇨🇽	旗: 圣诞岛								// [1F1E8 1F1FD] CX
+🇨🇾	旗: 塞浦路斯								// [1F1E8 1F1FE] CY
+🇨🇿	旗: 捷克								// [1F1E8 1F1FF] CZ
+🇩🇪	旗: 德国								// [1F1E9 1F1EA] DE
+🇩🇬	旗: 迪戈加西亚岛							// [1F1E9 1F1EC] DG
+🇩🇯	旗: 吉布提								// [1F1E9 1F1EF] DJ
+🇩🇰	旗: 丹麦								// [1F1E9 1F1F0] DK
+🇩🇲	旗: 多米尼克								// [1F1E9 1F1F2] DM
+🇩🇴	旗: 多米尼加共和国							// [1F1E9 1F1F4] DO
+🇩🇿	旗: 阿尔及利亚							// [1F1E9 1F1FF] DZ
+🇪🇦	旗: 休达及梅利利亚							// [1F1EA 1F1E6] EA
+🇪🇨	旗: 厄瓜多尔								// [1F1EA 1F1E8] EC
+🇪🇪	旗: 爱沙尼亚								// [1F1EA 1F1EA] EE
+🇪🇬	旗: 埃及								// [1F1EA 1F1EC] EG
+🇪🇭	旗: 西撒哈拉								// [1F1EA 1F1ED] EH
+🇪🇷	旗: 厄立特里亚							// [1F1EA 1F1F7] ER
+🇪🇸	旗: 西班牙								// [1F1EA 1F1F8] ES
+🇪🇹	旗: 埃塞俄比亚							// [1F1EA 1F1F9] ET
+🇪🇺	旗: 欧盟								// [1F1EA 1F1FA] EU
+🇫🇮	旗: 芬兰								// [1F1EB 1F1EE] FI
+🇫🇯	旗: 斐济								// [1F1EB 1F1EF] FJ
+🇫🇰	旗: 福克兰群岛							// [1F1EB 1F1F0] FI
+🇫🇲	旗: 密克罗尼西亚							// [1F1EB 1F1F2] FM
+🇫🇴	旗: 法罗群岛								// [1F1EB 1F1F4] FO
+🇫🇷	旗: 法国								// [1F1EB 1F1F7] FR
+🇬🇦	旗: 加蓬								// [1F1EC 1F1E6] GA
+🇬🇧	旗: 英国								// [1F1EC 1F1E7] GB
+🇬🇩	旗: 格林纳达								// [1F1EC 1F1E9] GD
+🇬🇪	旗: 格鲁吉亚								// [1F1EC 1F1EA] GE
+🇬🇫	旗: 法属圭亚那							// [1F1EC 1F1EB] GF
+🇬🇬	旗: 根西岛								// [1F1EC 1F1EC] GG
+🇬🇭	旗: 加纳								// [1F1EC 1F1ED] GH
+🇬🇮	旗: 直布罗陀								// [1F1EC 1F1EE] GI
+🇬🇱	旗: 格陵兰								// [1F1EC 1F1F1] GL
+🇬🇲	旗: 冈比亚								// [1F1EC 1F1F2] GM
+🇬🇳	旗: 几内亚								// [1F1EC 1F1F3] GN
+🇬🇵	旗: 瓜德罗普								// [1F1EC 1F1F5] GP
+🇬🇶	旗: 赤道几内亚							// [1F1EC 1F1F6] GQ
+🇬🇷	旗: 希腊								// [1F1EC 1F1F7] GR
+🇬🇸	旗: 南乔治亚和南桑威奇群岛							// [1F1EC 1F1F8] GS
+🇬🇹	旗: 危地马拉								// [1F1EC 1F1F9] GT
+🇬🇺	旗: 关岛								// [1F1EC 1F1FA] GU
+🇬🇼	旗: 几内亚比绍							// [1F1EC 1F1FC] GW
+🇬🇾	旗: 圭亚那								// [1F1EC 1F1FE] GY
+🇭🇰	旗: 中国香港特别行政区							// [1F1ED 1F1F0] HK
+🇭🇲	旗: 赫德岛和麦克唐纳群岛							// [1F1ED 1F1F2] HM
+🇭🇳	旗: 洪都拉斯								// [1F1ED 1F1F3] HN
+🇭🇷	旗: 克罗地亚								// [1F1ED 1F1F7] HR
+🇭🇹	旗: 海地								// [1F1ED 1F1F9] HT
+🇭🇺	旗: 匈牙利								// [1F1ED 1F1FA] HU
+🇮🇨	旗: 加纳利群岛							// [1F1EE 1F1E8] IC
+🇮🇩	旗: 印度尼西亚							// [1F1EE 1F1E9] ID
+🇮🇪	旗: 爱尔兰								// [1F1EE 1F1EA] IE
+🇮🇱	旗: 以色列								// [1F1EE 1F1F1] IL
+🇮🇲	旗: 马恩岛								// [1F1EE 1F1F2] IM
+🇮🇳	旗: 印度								// [1F1EE 1F1F3] IN
+🇮🇴	旗: 英属印度洋领地							// [1F1EE 1F1F4] IO
+🇮🇶	旗: 伊拉克								// [1F1EE 1F1F6] IQ
+🇮🇷	旗: 伊朗								// [1F1EE 1F1F7] IR
+🇮🇸	旗: 冰岛								// [1F1EE 1F1F8] IS
+🇮🇹	旗: 意大利								// [1F1EE 1F1F9] IT
+🇯🇪	旗: 泽西岛								// [1F1EF 1F1EA] JE
+🇯🇲	旗: 牙买加								// [1F1EF 1F1F2] JM
+🇯🇴	旗: 约旦								// [1F1EF 1F1F4] JO
+🇯🇵	旗: 日本								// [1F1EF 1F1F5] JP
+🇰🇪	旗: 肯尼亚								// [1F1F0 1F1EA] KE
+🇰🇬	旗: 吉尔吉斯斯坦							// [1F1F0 1F1EC] KG
+🇰🇭	旗: 柬埔寨								// [1F1F0 1F1ED] KH
+🇰🇮	旗: 基里巴斯								// [1F1F0 1F1EE] KI
+🇰🇲	旗: 科摩罗								// [1F1F0 1F1F2] KM
+🇰🇳	旗: 圣基茨和尼维斯							// [1F1F0 1F1F3] KN
+🇰🇵	旗: 朝鲜								// [1F1F0 1F1F5] KP
+🇰🇷	旗: 韩国								// [1F1F0 1F1F7] KR
+🇰🇼	旗: 科威特								// [1F1F0 1F1FC] KW
+🇰🇾	旗: 开曼群岛								// [1F1F0 1F1FE] KY
+🇰🇿	旗: 哈萨克斯坦							// [1F1F0 1F1FF] KZ
+🇱🇦	旗: 老挝								// [1F1F1 1F1E6] LA
+🇱🇧	旗: 黎巴嫩								// [1F1F1 1F1E7] LB
+🇱🇨	旗: 圣卢西亚								// [1F1F1 1F1E8] LC
+🇱🇮	旗: 列支敦士登							// [1F1F1 1F1EE] LI
+🇱🇰	旗: 斯里兰卡								// [1F1F1 1F1F0] LK
+🇱🇷	旗: 利比里亚								// [1F1F1 1F1F7] LR
+🇱🇸	旗: 莱索托								// [1F1F1 1F1F8] LS
+🇱🇹	旗: 立陶宛								// [1F1F1 1F1F9] LT
+🇱🇺	旗: 卢森堡								// [1F1F1 1F1FA] LU
+🇱🇻	旗: 拉脱维亚								// [1F1F1 1F1FB] LV
+🇱🇾	旗: 利比亚								// [1F1F1 1F1FE] LY
+🇲🇦	旗: 摩洛哥								// [1F1F2 1F1E6] MA
+🇲🇨	旗: 摩纳哥								// [1F1F2 1F1E8] MC
+🇲🇩	旗: 摩尔多瓦								// [1F1F2 1F1E9] MD
+🇲🇪	旗: 黑山								// [1F1F2 1F1EA] ME
+🇲🇫	旗: 法属圣马丁							// [1F1F2 1F1EB] MF
+🇲🇬	旗: 马达加斯加							// [1F1F2 1F1EC] MG
+🇲🇭	旗: 马绍尔群岛							// [1F1F2 1F1ED] MH
+🇲🇰	旗: 马其顿								// [1F1F2 1F1F0] MK
+🇲🇱	旗: 马里								// [1F1F2 1F1F1] ML
+🇲🇲	旗: 缅甸								// [1F1F2 1F1F2] MM
+🇲🇳	旗: 蒙古								// [1F1F2 1F1F3] MN
+🇲🇴	旗: 中国澳门特别行政区							// [1F1F2 1F1F4] MO
+🇲🇵	旗: 北马里亚纳群岛							// [1F1F2 1F1F5] MP
+🇲🇶	旗: 马提尼克								// [1F1F2 1F1F6] MQ
+🇲🇷	旗: 毛里塔尼亚							// [1F1F2 1F1F7] MR
+🇲🇸	旗: 蒙特塞拉特							// [1F1F2 1F1F8] MS
+🇲🇹	旗: 马耳他								// [1F1F2 1F1F9] MT
+🇲🇺	旗: 毛里求斯								// [1F1F2 1F1FA] MU
+🇲🇻	旗: 马尔代夫								// [1F1F2 1F1FB] MV
+🇲🇼	旗: 马拉维								// [1F1F2 1F1FC] MW
+🇲🇽	旗: 墨西哥								// [1F1F2 1F1FD] MX
+🇲🇾	旗: 马来西亚								// [1F1F2 1F1FE] MY
+🇲🇿	旗: 莫桑比克								// [1F1F2 1F1FF] MZ
+🇳🇦	旗: 纳米比亚								// [1F1F3 1F1E6] NA
+🇳🇨	旗: 新喀里多尼亚							// [1F1F3 1F1E8] NC
+🇳🇪	旗: 尼日尔								// [1F1F3 1F1EA] NE
+🇳🇫	旗: 诺福克岛								// [1F1F3 1F1EB] NF
+🇳🇬	旗: 尼日利亚								// [1F1F3 1F1EC] NG
+🇳🇮	旗: 尼加拉瓜								// [1F1F3 1F1EE] NI
+🇳🇱	旗: 荷兰								// [1F1F3 1F1F1] NL
+🇳🇴	旗: 挪威								// [1F1F3 1F1F4] NO
+🇳🇵	旗: 尼泊尔								// [1F1F3 1F1F5] NP
+🇳🇷	旗: 瑙鲁								// [1F1F3 1F1F7] NR
+🇳🇺	旗: 纽埃								// [1F1F3 1F1FA] NU
+🇳🇿	旗: 新西兰								// [1F1F3 1F1FF] NZ
+🇴🇲	旗: 阿曼								// [1F1F4 1F1F2] OM
+🇵🇦	旗: 巴拿马								// [1F1F5 1F1E6] PA
+🇵🇪	旗: 秘鲁								// [1F1F5 1F1EA] PE
+🇵🇫	旗: 法属波利尼西亚							// [1F1F5 1F1EB] PF
+🇵🇬	旗: 巴布亚新几内亚							// [1F1F5 1F1EC] PG
+🇵🇭	旗: 菲律宾								// [1F1F5 1F1ED] PH
+🇵🇰	旗: 巴基斯坦								// [1F1F5 1F1F0] PK
+🇵🇱	旗: 波兰								// [1F1F5 1F1F1] PL
+🇵🇲	旗: 圣皮埃尔和密克隆群岛							// [1F1F5 1F1F2] PM
+🇵🇳	旗: 皮特凯恩群岛							// [1F1F5 1F1F3] PN
+🇵🇷	旗: 波多黎各								// [1F1F5 1F1F7] PR
+🇵🇸	旗: 巴勒斯坦领土							// [1F1F5 1F1F8] PS
+🇵🇹	旗: 葡萄牙								// [1F1F5 1F1F9] PT
+🇵🇼	旗: 帕劳								// [1F1F5 1F1FC] PW
+🇵🇾	旗: 巴拉圭								// [1F1F5 1F1FE] PY
+🇶🇦	旗: 卡塔尔								// [1F1F6 1F1E6] QA
+🇷🇪	旗: 留尼汪								// [1F1F7 1F1EA] RE
+🇷🇴	旗: 罗马尼亚								// [1F1F7 1F1F4] RO
+🇷🇸	旗: 塞尔维亚								// [1F1F7 1F1F8] RS
+🇷🇺	旗: 俄罗斯								// [1F1F7 1F1FA] RU
+🇷🇼	旗: 卢旺达								// [1F1F7 1F1FC] RW
+🇸🇦	旗: 沙特阿拉伯							// [1F1F8 1F1E6] SA
+🇸🇧	旗: 所罗门群岛							// [1F1F8 1F1E7] SB
+🇸🇨	旗: 塞舌尔								// [1F1F8 1F1E8] SC
+🇸🇩	旗: 苏丹								// [1F1F8 1F1E9] SD
+🇸🇪	旗: 瑞典								// [1F1F8 1F1EA] SE
+🇸🇬	旗: 新加坡								// [1F1F8 1F1EC] SG
+🇸🇭	旗: 圣赫勒拿								// [1F1F8 1F1ED] SH
+🇸🇮	旗: 斯洛文尼亚							// [1F1F8 1F1EE] SI
+🇸🇯	旗: 斯瓦尔巴和扬马延							// [1F1F8 1F1EF] SJ
+🇸🇰	旗: 斯洛伐克								// [1F1F8 1F1F0] SK
+🇸🇱	旗: 塞拉利昂								// [1F1F8 1F1F1] SL
+🇸🇲	旗: 圣马力诺								// [1F1F8 1F1F2] SM
+🇸🇳	旗: 塞内加尔								// [1F1F8 1F1F3] SN
+🇸🇴	旗: 索马里								// [1F1F8 1F1F4] SO
+🇸🇷	旗: 苏里南								// [1F1F8 1F1F7] SR
+🇸🇸	旗: 南苏丹								// [1F1F8 1F1F8] SS
+🇸🇹	旗: 圣多美和普林西比							// [1F1F8 1F1F9] ST
+🇸🇻	旗: 萨尔瓦多								// [1F1F8 1F1FB] SV
+🇸🇽	旗: 荷属圣马丁							// [1F1F8 1F1FD] SX
+🇸🇾	旗: 叙利亚								// [1F1F8 1F1FE] SY
+🇸🇿	旗: 斯威士兰								// [1F1F8 1F1FF] SZ
+🇹🇦	旗: 特里斯坦-达库尼亚群岛							// [1F1F9 1F1E6] TA
+🇹🇨	旗: 特克斯和凯科斯群岛							// [1F1F9 1F1E8] TC
+🇹🇩	旗: 乍得								// [1F1F9 1F1E9] TD
+🇹🇫	旗: 法属南部领地							// [1F1F9 1F1EB] TF
+🇹🇬	旗: 多哥								// [1F1F9 1F1EC] TG
+🇹🇭	旗: 泰国								// [1F1F9 1F1ED] TH
+🇹🇯	旗: 塔吉克斯坦							// [1F1F9 1F1EF] TJ
+🇹🇰	旗: 托克劳								// [1F1F9 1F1F0] TK
+🇹🇱	旗: 东帝汶								// [1F1F9 1F1F1] TL
+🇹🇲	旗: 土库曼斯坦							// [1F1F9 1F1F2] TM
+🇹🇳	旗: 突尼斯								// [1F1F9 1F1F3] TN
+🇹🇴	旗: 汤加								// [1F1F9 1F1F4] TO
+🇹🇷	旗: 土耳其								// [1F1F9 1F1F7] TR
+🇹🇹	旗: 特立尼达和多巴哥							// [1F1F9 1F1F9] TT
+🇹🇻	旗: 图瓦卢								// [1F1F9 1F1FB] TV
+🇹🇼	旗: 台湾								// [1F1F9 1F1FC] TW
+🇹🇿	旗: 坦桑尼亚								// [1F1F9 1F1FF] TZ
+🇺🇦	旗: 乌克兰								// [1F1FA 1F1E6] UA
+🇺🇬	旗: 乌干达								// [1F1FA 1F1EC] UG
+🇺🇲	旗: 美国本土外小岛屿							// [1F1FA 1F1F2] UM
+🇺🇳	旗: 联合国								// [1F1FA 1F1F3] UN
+🇺🇸	旗: 美国								// [1F1FA 1F1F8] US
+🇺🇾	旗: 乌拉圭								// [1F1FA 1F1FE] UY
+🇺🇿	旗: 乌兹别克斯坦							// [1F1FA 1F1FF] UZ
+🇻🇦	旗: 梵蒂冈								// [1F1FB 1F1E6] VA
+🇻🇨	旗: 圣文森特和格林纳丁斯							// [1F1FB 1F1E8] VC
+🇻🇪	旗: 委内瑞拉								// [1F1FB 1F1EA] VE
+🇻🇬	旗: 英属维尔京群岛							// [1F1FB 1F1EC] VG
+🇻🇮	旗: 美属维尔京群岛							// [1F1FB 1F1EE] VI
+🇻🇳	旗: 越南								// [1F1FB 1F1F3] VN
+🇻🇺	旗: 瓦努阿图								// [1F1FB 1F1FA] VU
+🇼🇫	旗: 瓦利斯和富图纳							// [1F1FC 1F1EB] WF
+🇼🇸	旗: 萨摩亚								// [1F1FC 1F1F8] WS
+🇽🇰	旗: 科索沃								// [1F1FD 1F1F0] XK
+🇾🇪	旗: 也门								// [1F1FE 1F1EA] YE
+🇾🇹	旗: 马约特								// [1F1FE 1F1F9] YT
+🇿🇦	旗: 南非								// [1F1FF 1F1E6] ZA
+🇿🇲	旗: 赞比亚								// [1F1FF 1F1F2] ZM
+🇿🇼	旗: 津巴布韦								// [1F1FF 1F1FC] ZW
 
 // Subdivision Flags -- ISO 3166-2 Subdivision Codes
 
-🏴󠁧󠁢󠁥󠁮󠁧󠁿	英格兰							// [1F3F4 E0067 E0062 E0065 E006E E0067 E007F]
-🏴󠁧󠁢󠁳󠁣󠁴󠁿	苏格兰							// [1F3F4 E0067 E0062 E0073 E0063 E0074 E007F]
-🏴󠁧󠁢󠁷󠁬󠁳󠁿	威尔士							// [1F3F4 E0067 E0062 E0077 E006C E0073 E007F]
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	旗: 英格兰							// [1F3F4 E0067 E0062 E0065 E006E E0067 E007F]
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	旗: 苏格兰							// [1F3F4 E0067 E0062 E0073 E0063 E0074 E007F]
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	旗: 威尔士							// [1F3F4 E0067 E0062 E0077 E006C E0073 E007F]
 
 // Keycaps (NOTE: keycap 10 is a single Unicode codepoint)
 
@@ -1500,37 +1638,37 @@ $textmode
 
 // Emoji ZWJ Sequence: Family
 
-👩‍❤‍💋‍👨	男女亲吻					// [1F469 200D 2764 200D 1F48B 200D 1F468]
-👨‍❤‍💋‍👨	男男亲吻					// [1F468 200D 2764 200D 1F48B 200D 1F468]
-👩‍❤‍💋‍👩	女女亲吻					// [1F469 200D 2764 200D 1F48B 200D 1F469]
-👩‍❤‍👨	男女情侣						// [1F469 200D 2764 200D 1F468]
-👨‍❤‍👨	男男情侣						// [1F468 200D 2764 200D 1F468]
-👩‍❤‍👩	女女情侣						// [1F469 200D 2764 200D 1F469]
-👨‍👩‍👦	父母和儿子						// [1F468 200D 1F469 200D 1F466]
-👨‍👩‍👧	父母和女儿						// [1F468 200D 1F469 200D 1F467]
-👨‍👩‍👧‍👦	父母和儿女					// [1F468 200D 1F469 200D 1F467 200D 1F466]
-👨‍👩‍👦‍👦	父母和两兄弟					// [1F468 200D 1F469 200D 1F466 200D 1F466]
-👨‍👩‍👧‍👧	父母和两姐妹					// [1F468 200D 1F469 200D 1F467 200D 1F467]
-👨‍👨‍👦	两个爸爸和儿子						// [1F468 200D 1F468 200D 1F466]
-👨‍👨‍👧	两个爸爸和女儿						// [1F468 200D 1F468 200D 1F467]
-👨‍👨‍👧‍👦	两个爸爸和儿女					// [1F468 200D 1F468 200D 1F467 200D 1F466]
-👨‍👨‍👦‍👦	两个爸爸和两兄弟				// [1F468 200D 1F468 200D 1F466 200D 1F466]
-👨‍👨‍👧‍👧	两个爸爸和两姐妹				// [1F468 200D 1F468 200D 1F467 200D 1F467]
-👩‍👩‍👦	两个妈妈和儿子						// [1F469 200D 1F469 200D 1F466]
-👩‍👩‍👧	两个妈妈和女儿						// [1F469 200D 1F469 200D 1F467]
-👩‍👩‍👧‍👦	两个妈妈和儿女					// [1F469 200D 1F469 200D 1F467 200D 1F466]
-👩‍👩‍👦‍👦	两个妈妈和两兄弟				// [1F469 200D 1F469 200D 1F466 200D 1F466]
-👩‍👩‍👧‍👧	两个妈妈和两姐妹				// [1F469 200D 1F469 200D 1F467 200D 1F467]
-👨‍👦	父子							// [1F468 200D 1F466]
-👨‍👦‍👦	爸爸和两兄弟						// [1F468 200D 1F466 200D 1F466]
-👨‍👧	父女							// [1F468 200D 1F467]
-👨‍👧‍👦	爸爸和儿女						// [1F468 200D 1F467 200D 1F466]
-👨‍👧‍👧	爸爸和两姐妹						// [1F468 200D 1F467 200D 1F467]
-👩‍👦	母子							// [1F469 200D 1F466]
-👩‍👦‍👦	妈妈和两兄弟						// [1F469 200D 1F466 200D 1F466]
-👩‍👧	母女							// [1F469 200D 1F467]
-👩‍👧‍👦	妈妈和儿女						// [1F469 200D 1F467 200D 1F466]
-👩‍👧‍👧	妈妈和两姐妹						// [1F469 200D 1F467 200D 1F467]
+👩‍❤‍💋‍👨	亲吻: 女人男人				// [1F469 200D 2764 200D 1F48B 200D 1F468]
+👨‍❤‍💋‍👨	亲吻: 男人男人				// [1F468 200D 2764 200D 1F48B 200D 1F468]
+👩‍❤‍💋‍👩	亲吻: 女人女人				// [1F469 200D 2764 200D 1F48B 200D 1F469]
+👩‍❤‍👨	情侣: 女人男人					// [1F469 200D 2764 200D 1F468]
+👨‍❤‍👨	情侣: 男人男人					// [1F468 200D 2764 200D 1F468]
+👩‍❤‍👩	情侣: 女人女人					// [1F469 200D 2764 200D 1F469]
+👨‍👩‍👦	家庭: 男人女人男孩					// [1F468 200D 1F469 200D 1F466]
+👨‍👩‍👧	家庭: 男人女人女孩					// [1F468 200D 1F469 200D 1F467]
+👨‍👩‍👧‍👦	家庭: 男人女人女孩男孩				// [1F468 200D 1F469 200D 1F467 200D 1F466]
+👨‍👩‍👦‍👦	家庭: 男人女人男孩男孩				// [1F468 200D 1F469 200D 1F466 200D 1F466]
+👨‍👩‍👧‍👧	家庭: 男人女人女孩女孩				// [1F468 200D 1F469 200D 1F467 200D 1F467]
+👨‍👨‍👦	家庭: 男人男人男孩					// [1F468 200D 1F468 200D 1F466]
+👨‍👨‍👧	家庭: 男人男人女孩					// [1F468 200D 1F468 200D 1F467]
+👨‍👨‍👧‍👦	家庭: 男人男人女孩男孩				// [1F468 200D 1F468 200D 1F467 200D 1F466]
+👨‍👨‍👦‍👦	家庭: 男人男人男孩男孩				// [1F468 200D 1F468 200D 1F466 200D 1F466]
+👨‍👨‍👧‍👧	家庭: 男人男人女孩女孩				// [1F468 200D 1F468 200D 1F467 200D 1F467]
+👩‍👩‍👦	家庭: 女人女人男孩					// [1F469 200D 1F469 200D 1F466]
+👩‍👩‍👧	家庭: 女人女人女孩					// [1F469 200D 1F469 200D 1F467]
+👩‍👩‍👧‍👦	家庭: 女人女人女孩男孩				// [1F469 200D 1F469 200D 1F467 200D 1F466]
+👩‍👩‍👦‍👦	家庭: 女人女人男孩男孩				// [1F469 200D 1F469 200D 1F466 200D 1F466]
+👩‍👩‍👧‍👧	家庭: 女人女人女孩女孩				// [1F469 200D 1F469 200D 1F467 200D 1F467]
+👨‍👦	家庭: 男人男孩						// [1F468 200D 1F466]
+👨‍👦‍👦	家庭: 男人男孩男孩					// [1F468 200D 1F466 200D 1F466]
+👨‍👧	家庭: 男人女孩						// [1F468 200D 1F467]
+👨‍👧‍👦	家庭: 男人女孩男孩					// [1F468 200D 1F467 200D 1F466]
+👨‍👧‍👧	家庭: 男人女孩女孩					// [1F468 200D 1F467 200D 1F467]
+👩‍👦	家庭: 女人男孩						// [1F469 200D 1F466]
+👩‍👦‍👦	家庭: 女人男孩男孩					// [1F469 200D 1F466 200D 1F466]
+👩‍👧	家庭: 女人女孩						// [1F469 200D 1F467]
+👩‍👧‍👦	家庭: 女人女孩男孩					// [1F469 200D 1F467 200D 1F466]
+👩‍👧‍👧	家庭: 女人女孩女孩					// [1F469 200D 1F467 200D 1F467]
 
 // Emoji ZWJ Sequence: Gendered Role, with object
 
@@ -1581,20 +1719,24 @@ $textmode
 💂‍♂	男卫兵							// [1F482 200D 2642]
 🕵️‍♀	女侦探							// [1F575 200D 2640]
 🕵️‍♂	男侦探							// [1F575 200D 2642]
-🧙‍♀	woman mage						// [1F9D9 200D 2640] (no translation)
-🧙‍♂	man mage						// [1F9D9 200D 2642] (no translation)
-🧚‍♀	woman fairy						// [1F9DA 200D 2640] (no translation)
-🧚‍♂	man fairy						// [1F9DA 200D 2642] (no translation)
-🧛‍♀	woman vampire						// [1F9DB 200D 2640] (no translation)
-🧛‍♂	man vampire						// [1F9DB 200D 2642] (no translation)
-🧜‍♀	mermaid							// [1F9DC 200D 2640] (no translation)
-🧜‍♂	merman							// [1F9DC 200D 2642] (no translation)
-🧝‍♀	woman elf						// [1F9DD 200D 2640] (no translation)
-🧝‍♂	man elf							// [1F9DD 200D 2642] (no translation)
-🧞‍♀	woman genie						// [1F9DE 200D 2640] (no translation)
-🧞‍♂	man genie						// [1F9DE 200D 2642] (no translation)
-🧟‍♀	woman zombie						// [1F9DF 200D 2640] (no translation)
-🧟‍♂	man zombie						// [1F9DF 200D 2642] (no translation)
+🦸‍♀	女超级英雄							// [1F9B8 200D 2640]
+🦸‍♂	男超级英雄							// [1F9B8 200D 2642]
+🦹‍♀	女超级大坏蛋							// [1F9B9 200D 2640]
+🦹‍♂	男超级大坏蛋							// [1F9B9 200D 2642]
+🧙‍♀	女法师							// [1F9D9 200D 2640]
+🧙‍♂	男法师							// [1F9D9 200D 2642]
+🧚‍♀	仙女							// [1F9DA 200D 2640]
+🧚‍♂	仙人							// [1F9DA 200D 2642]
+🧛‍♀	女吸血鬼							// [1F9DB 200D 2640]
+🧛‍♂	男吸血鬼							// [1F9DB 200D 2642]
+🧜‍♀	美人鱼							// [1F9DC 200D 2640]
+🧜‍♂	男人鱼							// [1F9DC 200D 2642]
+🧝‍♀	女小精灵							// [1F9DD 200D 2640]
+🧝‍♂	男小精灵							// [1F9DD 200D 2642]
+🧞‍♀	女妖怪							// [1F9DE 200D 2640]
+🧞‍♂	男妖怪							// [1F9DE 200D 2642]
+🧟‍♀	女僵尸							// [1F9DF 200D 2640]
+🧟‍♂	男僵尸							// [1F9DF 200D 2642]
 
 // Emoji ZWJ Sequence: Gendered Activity
 
@@ -1634,12 +1776,12 @@ $textmode
 🤽‍♂	男生玩水球							// [1F93D 200D 2642]
 🤾‍♀	女生玩手球							// [1F93E 200D 2640]
 🤾‍♂	男生玩手球							// [1F93E 200D 2642]
-🧖‍♀	woman in steamy room					// [1F9D6 200D 2640] (no translation)
-🧖‍♂	man in steamy room					// [1F9D6 200D 2642] (no translation)
-🧗‍♀	woman climbing						// [1F9D7 200D 2640] (no translation)
-🧗‍♂	man climbing						// [1F9D7 200D 2642] (no translation)
-🧘‍♀	woman in lotus position					// [1F9D8 200D 2640] (no translation)
-🧘‍♂	man in lotus position					// [1F9D8 200D 2642] (no translation)
+🧖‍♀	蒸房里的女人							// [1F9D6 200D 2640]
+🧖‍♂	蒸房里的男人							// [1F9D6 200D 2642]
+🧗‍♀	攀爬的女人							// [1F9D7 200D 2640]
+🧗‍♂	攀爬的男人							// [1F9D7 200D 2642]
+🧘‍♀	盘腿的女人							// [1F9D8 200D 2640]
+🧘‍♂	盘腿的男人							// [1F9D8 200D 2642]
 
 // Emoji ZWJ Sequence: Gendered Gestures
 
@@ -1665,12 +1807,13 @@ $textmode
 // Emoji ZWJ Sequence: Other
 
 🏳‍🌈	彩虹旗							// [1F3F3 200D 1F308]
+🏴‍☠	海盗旗							// [1F3F4 200D 2620]
 👁‍🗨	眼睛对话框							// [1F441 200D 1F5E8]
 
 // References:
-//   [UCD]	Unicode Character Database 9.0.0 [http://www.unicode.org/Public/9.0.0/ucd/]
-//   [Emoji]	Unicode Emoji 5.0 [http://www.unicode.org/Public/emoji/5.0/]
-//   [CLDR]	Unicode Common Locale Data Repository 31.0.1 [http://cldr.unicode.org/index/downloads/cldr-31]
+//   [UCD]	Unicode Character Database 11.0.0 [http://www.unicode.org/Public/11.0.0/ucd/]
+//   [Emoji]	Unicode Emoji 11.0 [http://www.unicode.org/Public/emoji/11.0/]
+//   [CLDR]	Unicode Common Locale Data Repository 33.1 [http://cldr.unicode.org/index/downloads/cldr-33.1]
 //
 // Sources:
 //   1.  emoji-test.txt (Emoji)

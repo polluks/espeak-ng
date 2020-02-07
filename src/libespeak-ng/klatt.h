@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2008 by Jonathan Duddington
  * email: jonsd@users.sourceforge.net
- * Copyright (C) 2015 Reece H. Dunn
+ * Copyright (C) 2015-2017 Reece H. Dunn
  *
  * Based on a re-implementation by:
  * (c) 1993,94 Jon Iles and Nick Ing-Simmons
@@ -20,6 +20,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see: <http://www.gnu.org/licenses/>.
  */
+
+#ifndef ESPEAK_NG_KLATT_H
+#define ESPEAK_NG_KLATT_H
+
+#include "speech.h"
+#include "synthesize.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -161,17 +167,23 @@ typedef struct {
 	int bw;   // klatt bandwidth
 	int ap;   // parallel amplitude
 	int bp;   // parallel bandwidth
-	DOUBLEX freq1; // floating point versions of the above
-	DOUBLEX bw1;
-	DOUBLEX ap1;
-	DOUBLEX bp1;
-	DOUBLEX freq_inc;    // increment by this every 64 samples
-	DOUBLEX bw_inc;
-	DOUBLEX ap_inc;
-	DOUBLEX bp_inc;
+	double freq1; // floating point versions of the above
+	double bw1;
+	double ap1;
+	double bp1;
+	double freq_inc;    // increment by this every 64 samples
+	double bw_inc;
+	double ap_inc;
+	double bp_inc;
 }  klatt_peaks_t;
+
+void KlattInit(void);
+void KlattReset(int control);
+int Wavegen_Klatt2(int length, int resume, frame_t *fr1, frame_t *fr2);
 
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif

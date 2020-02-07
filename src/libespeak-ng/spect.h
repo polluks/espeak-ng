@@ -17,10 +17,22 @@
  * along with this program; if not, see: <http://www.gnu.org/licenses/>.
  */
 
+#ifndef ESPEAK_NG_SPECT_H
+#define ESPEAK_NG_SPECT_H
+
+#include <espeak-ng/espeak_ng.h>
+
+#include "wavegen.h"
+
+#include "synthesize.h"
+#include "speech.h"
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
+
+float polint(float xa[], float ya[], int n, float x);
 
 #define FRAME_WIDTH  1000  // max width for 8000kHz frame
 #define MAX_DISPLAY_FREQ 9500
@@ -96,7 +108,7 @@ typedef struct {
 	unsigned short nx;
 	short markers;
 	int max_y;
-	USHORT *spect; // sqrt of harmonic amplitudes,  1-nx at 'pitch'
+	unsigned short *spect; // sqrt of harmonic amplitudes,  1-nx at 'pitch'
 
 	short klatt_param[N_KLATTP2];
 
@@ -124,10 +136,12 @@ typedef struct {
 	int file_format;
 } SpectSeq;
 
-SpectSeq *SpectSeqCreate();
+SpectSeq *SpectSeqCreate(void);
 void SpectSeqDestroy(SpectSeq *spect);
 espeak_ng_STATUS LoadSpectSeq(SpectSeq *spect, const char *filename);
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif

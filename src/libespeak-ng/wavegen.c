@@ -23,6 +23,7 @@
 #include "config.h"
 
 #include <math.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,10 +32,16 @@
 #include <espeak-ng/espeak_ng.h>
 #include <espeak-ng/speak_lib.h>
 
+#include "wavegen.h"
+
+#include "synthesize.h"
 #include "speech.h"
 #include "phoneme.h"
-#include "synthesize.h"
 #include "voice.h"
+
+#ifdef INCLUDE_KLATT
+#include "klatt.h"
+#endif
 
 #if HAVE_SONIC_H
 #include "sonic.h"
@@ -75,6 +82,7 @@ static RESONATOR rbreath[N_PEAKS];
 static int harm_sqrt_n = 0;
 
 #define N_LOWHARM  30
+#define MAX_HARMONIC 400 // 400 * 50Hz = 20 kHz, more than enough
 static int harm_inc[N_LOWHARM]; // only for these harmonics do we interpolate amplitude between steps
 static int *harmspect;
 static int hswitch = 0;
@@ -114,12 +122,10 @@ int wcmdq_head = 0;
 int wcmdq_tail = 0;
 
 // pitch,speed,
-int embedded_default[N_EMBEDDED_VALUES]    = { 0,     50, 175, 100, 50,  0,  0, 0, 175, 0, 0, 0, 0, 0, 0 };
+int embedded_default[N_EMBEDDED_VALUES]    = { 0,     50, espeakRATE_NORMAL, 100, 50,  0,  0, 0, espeakRATE_NORMAL, 0, 0, 0, 0, 0, 0 };
 static int embedded_max[N_EMBEDDED_VALUES] = { 0, 0x7fff, 750, 300, 99, 99, 99, 0, 750, 0, 0, 0, 0, 4, 0 };
 
 int current_source_index = 0;
-
-extern FILE *f_wave;
 
 #if HAVE_SONIC_H
 static sonicStream sonicSpeedupStream = NULL;
@@ -665,7 +671,7 @@ static int ApplyBreath(void)
 	return value;
 }
 
-int Wavegen()
+static int Wavegen()
 {
 	if (wvoice == NULL)
 		return 0;
@@ -883,12 +889,12 @@ int Wavegen()
 		if (echo_head >= N_ECHO_BUF)
 			echo_head = 0;
 
-		if (out_ptr >= out_end)
+		if (out_ptr + 2 > out_end)
 			return 1;
 	}
 }
 
-static int PlaySilence(int length, int resume)
+static int PlaySilence(int length, bool resume)
 {
 	static int n_samples;
 	int value = 0;
@@ -900,7 +906,7 @@ static int PlaySilence(int length, int resume)
 	if (length == 0)
 		return 0;
 
-	if (resume == 0)
+	if (resume == false)
 		n_samples = length;
 
 	while (n_samples-- > 0) {
@@ -916,20 +922,20 @@ static int PlaySilence(int length, int resume)
 		if (echo_head >= N_ECHO_BUF)
 			echo_head = 0;
 
-		if (out_ptr >= out_end)
+		if (out_ptr + 2 > out_end)
 			return 1;
 	}
 	return 0;
 }
 
-static int PlayWave(int length, int resume, unsigned char *data, int scale, int amp)
+static int PlayWave(int length, bool resume, unsigned char *data, int scale, int amp)
 {
 	static int n_samples;
 	static int ix = 0;
 	int value;
 	signed char c;
 
-	if (resume == 0) {
+	if (resume == false) {
 		n_samples = length;
 		ix = 0;
 	}
@@ -969,7 +975,7 @@ static int PlayWave(int length, int resume, unsigned char *data, int scale, int 
 		if (echo_head >= N_ECHO_BUF)
 			echo_head = 0;
 
-		if (out_ptr >= out_end)
+		if (out_ptr + 2 > out_end)
 			return 1;
 	}
 	return 0;
@@ -1117,7 +1123,7 @@ void SetPitch2(voice_t *voice, int pitch1, int pitch2, int *pitch_base, int *pit
 	*pitch_range = base + (pitch2 * range)/2 - *pitch_base;
 }
 
-void SetPitch(int length, unsigned char *env, int pitch1, int pitch2)
+static void SetPitch(int length, unsigned char *env, int pitch1, int pitch2)
 {
 	if (wvoice == NULL)
 		return;
@@ -1140,13 +1146,13 @@ void SetPitch(int length, unsigned char *env, int pitch1, int pitch2)
 	flutter_amp = wvoice->flutter;
 }
 
-void SetSynth(int length, int modn, frame_t *fr1, frame_t *fr2, voice_t *v)
+static void SetSynth(int length, int modn, frame_t *fr1, frame_t *fr2, voice_t *v)
 {
 	if (wvoice == NULL || v == NULL)
 		return;
 
 	int ix;
-	DOUBLEX next;
+	double next;
 	int length2;
 	int length4;
 	int qix;
@@ -1227,9 +1233,9 @@ void SetSynth(int length, int modn, frame_t *fr1, frame_t *fr2, voice_t *v)
 	}
 }
 
-static int Wavegen2(int length, int modulation, int resume, frame_t *fr1, frame_t *fr2)
+static int Wavegen2(int length, int modulation, bool resume, frame_t *fr1, frame_t *fr2)
 {
-	if (resume == 0)
+	if (resume == false)
 		SetSynth(length, modulation, fr1, fr2, wvoice);
 
 	return Wavegen();
@@ -1246,7 +1252,7 @@ void Write4Bytes(FILE *f, int value)
 	}
 }
 
-int WavegenFill2()
+static int WavegenFill2()
 {
 	// Pick up next wavegen commands from the queue
 	// return: 0  output buffer has been filled
@@ -1255,7 +1261,7 @@ int WavegenFill2()
 	int length;
 	int result;
 	int marker_type;
-	static int resume = 0;
+	static bool resume = false;
 	static int echo_complete = 0;
 
 	while (out_ptr < out_end) {
@@ -1263,7 +1269,7 @@ int WavegenFill2()
 			if (echo_complete > 0) {
 				// continue to play silence until echo is completed
 				resume = PlaySilence(echo_complete, resume);
-				if (resume == 1)
+				if (resume == true)
 					return 0; // not yet finished
 			}
 			return 1; // queue empty, close sound channel
@@ -1279,7 +1285,7 @@ int WavegenFill2()
 			SetPitch(length, (unsigned char *)q[2], q[3] >> 16, q[3] & 0xffff);
 			break;
 		case WCMD_PAUSE:
-			if (resume == 0)
+			if (resume == false)
 				echo_complete -= length;
 			wdata.n_mix_wavefile = 0;
 			wdata.amplitude_fmt = 100;
@@ -1357,9 +1363,9 @@ int WavegenFill2()
 
 		if (result == 0) {
 			WcmdqIncHead();
-			resume = 0;
+			resume = false;
 		} else
-			resume = 1;
+			resume = true;
 	}
 
 	return 0;
@@ -1388,7 +1394,7 @@ static int SpeedUp(short *outbuf, int length_in, int length_out, int end_of_text
 #endif
 
 // Call WavegenFill2, and then speed up the output samples.
-int WavegenFill()
+int WavegenFill(void)
 {
 	int finished;
 	unsigned char *p_start;

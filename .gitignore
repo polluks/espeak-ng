@@ -66,10 +66,12 @@ depcomp
 install-sh
 libtool
 ltmain.sh
-m4/
 missing
 stamp-h1
 .dirstamp
+
+m4/*
+!m4/ax_check_compile_flag.m4
 
 # libraries
 
@@ -83,6 +85,10 @@ libespeak-ng-test.a
 libespeak-ng-test.la
 libespeak-ng-test.so*
 
+tests/libfuzzrunner.a
+tests/libfuzzrunner.la
+tests/libfuzzrunner.so*
+
 # build output
 
 *.html
@@ -95,7 +101,16 @@ src/espeakedit
 src/speak-ng
 
 tests/*.test
-!tests/languages.test
+tests/*.check
+!tests/language-phonemes.test
+!tests/language-pronunciation.test
+!tests/language-numbers-cardinal.test
+!tests/language-numbers-ordinal.test
+!tests/language-replace.test
+!tests/ssml.test
+!tests/translate.test
+!tests/non-executable-files-with-executable-bit.test
+!tests/bom.test
 
 espeak-ng.pc
 
@@ -121,6 +136,7 @@ src/pcaudiolib/
 *.ipdb
 *.log
 *.pdb
+*.tlog
 *.tlog/
 
 .vs/
@@ -135,6 +151,10 @@ src/pcaudiolib/
 *.cab
 
 *.tmp
+
+*.nativecodeanalysis.xml
+*.nativecodeanalysis.all.xml
+*.lastcodeanalysissucceeded
 
 !src/ucd-tools/data/*/*.txt
 
@@ -167,7 +187,7 @@ dictsource/dict_log
 dictsource/dict_phonemes
 dictsource/ru_listx
 dictsource/zh_listx
-dictsource/zhy_list
+dictsource/zhy_listx
 
 phsource/compile_prog_log
 phsource/compile_report

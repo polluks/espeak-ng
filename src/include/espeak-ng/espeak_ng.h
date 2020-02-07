@@ -36,6 +36,8 @@ extern "C"
 #define ESPEAK_NG_API
 #endif
 
+#define ESPEAKNG_DEFAULT_VOICE "en"
+
 typedef enum {
 	ENS_GROUP_MASK               = 0x70000000,
 	ENS_GROUP_ERRNO              = 0x00000000, /* Values 0-255 map to errno error codes. */
@@ -116,6 +118,9 @@ espeak_ng_SetPunctuationList(const wchar_t *punctlist);
 
 ESPEAK_NG_API espeak_ng_STATUS
 espeak_ng_SetVoiceByName(const char *name);
+
+ESPEAK_NG_API espeak_ng_STATUS
+espeak_ng_SetVoiceByFile(const char *filename);
 
 ESPEAK_NG_API espeak_ng_STATUS
 espeak_ng_SetVoiceByProperties(espeak_VOICE *voice_selector);

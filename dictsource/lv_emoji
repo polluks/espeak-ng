@@ -4,28 +4,76 @@
 // can be followed by [FE0E] to select the text style, and [FE0F] to select
 // the emoji style.
 //
+// Entries with 'other' in the comments are not defined as emoji, but are other
+// Unicode characters.
+//
 // NOTE: See `src/ucd-tools/data/espeak-ng/emoji-data.txt` for additional data
 // in interpreting ZWJ emoji sequences.
 
 $textmode
 
+// 0000..007F : C0 Controls and Basic Latin
+
+//+	plus								// [002B] other (no translation)
+
 // 0080..00FF : C1 Controls and Latin-1 Supplement
 
+//¢	cents								// [00A2] other (no translation)
+//£	pound								// [00A3] other (no translation)
+//¤	currency sign							// [00A4] other (no translation)
+//¥	yen								// [00A5] other (no translation)
+//§	section								// [00A7] other (no translation)
+//¨	double dot							// [00A8] other (no translation)
 ©	autortiesības							// [00A9] text|emoji
+//¬	not sign							// [00AC] other (no translation)
 ®	reģistrēta preču zīme						// [00AE] text|emoji
+//°	degrees								// [00B0] other (no translation)
+//±	plus or minus							// [00B1] other (no translation)
+//µ	micro								// [00B5] other (no translation)
+//¶	paragraph							// [00B6] other (no translation)
+//¼	a quarter							// [00BC] other (no translation)
+//½	a half								// [00BD] other (no translation)
+//¾	three quarters							// [00BE] other (no translation)
+//×	times								// [00D7] other (no translation)
+//÷	divided by							// [00F7] other (no translation)
+
+// 02B0..02FF : Spacing Modifier Letters
+
+//˙	dot								// [02D9] other (no translation)
+
+// 0900..097F : Devanagari
+
+//।	danda								// [0964] other (no translation)
 
 // 2000..203C : General Punctuation
 
 ‼	divas izsaukuma zīmes						// [203C] text|emoji
 ⁉	izsaukuma un jautājuma zīme					// [2049] text|emoji
 
+// 20A0..20CF : Currency Symbols
+
+//₨	rupee								// [20A8] other (no translation)
+//€	euros								// [20AC] other (no translation)
+//₹	rupee								// [20B9] other (no translation)
+
 // 2100..214F : Letterlike Symbols
 
+//№	numero								// [2116] other (no translation)
+//℞	prescription							// [211E] other (no translation)
 ™	preču zīme							// [2122] text|emoji
 ℹ	informācijas simbols						// [2139] text|emoji
 
+// 2150..218F : Number Forms
+
+//⅓	one third							// [2153] other (no translation)
+//⅔	two thirds							// [2154] other (no translation)
+
 // 2190..21FF : Arrows
 
+//←	left arrow							// [2190] other (no translation)
+//↑	up arrow							// [2191] other (no translation)
+//→	right arrow							// [2192] other (no translation)
+//↓	down arrow							// [2193] other (no translation)
 ↔	pa kreisi un pa labi vērsta bultiņa				// [2194] text|emoji
 ↕	augšup un lejup vērsta bultiņa					// [2195] text|emoji
 ↖	uz augšējo kreiso stūri vērsta bultiņa				// [2196] text|emoji
@@ -34,6 +82,26 @@ $textmode
 ↙	uz apakšējo kreiso stūri vērsta bultiņa				// [2199] text|emoji
 ↩	pa kreisi vērsta izliekta bultiņa				// [21A9] text|emoji
 ↪	pa labi vērsta izliekta bultiņa					// [21AA] text|emoji
+
+// 2200..22FF : Mathematical Operators
+
+//∂	delta								// [2202] other (no translation)
+//∑	sum sign							// [2211] other (no translation)
+//−	minus								// [2212] other (no translation)
+//∗	asterisk							// [2217] other (no translation)
+//√	square root							// [221A] other (no translation)
+//∛	cube root							// [221B] other (no translation)
+//∝	proportional to							// [221D] other (no translation)
+//∞	infinity							// [221E] other (no translation)
+//∫	integral							// [222B] other (no translation)
+//∬	double integral							// [222C] other (no translation)
+//∴	therefore							// [2234] other (no translation)
+//∵	because								// [2235] other (no translation)
+//≈	approximately							// [2248] other (no translation)
+//≠	not equal to							// [2260] other (no translation)
+//≡	identical to							// [2261] other (no translation)
+//≤	less or equal to						// [2264] other (no translation)
+//≥	greater or equal to						// [2265] other (no translation)
 
 // 2300..23FF : Miscellaneous Technical
 
@@ -62,10 +130,12 @@ $textmode
 
 // 25A0..25FF : Geometric Shapes
 
+//■	black square							// [25A0] other (no translation)
 ▪	mazs melns kvadrāts						// [25AA] text|emoji
 ▫	mazs balts kvadrāts						// [25AB] text|emoji
 ▶	poga Atskaņot							// [25B6] text|emoji
 ◀	poga Atpakaļ							// [25C0] text|emoji
+//●	black circle							// [25CF] other (no translation)
 ◻	vidējs balts kvadrāts						// [25FB] text|emoji
 ◼	vidējs melns kvadrāts						// [25FC] text|emoji
 ◽	vidēji mazs balts kvadrāts					// [25FD]
@@ -84,7 +154,7 @@ $textmode
 ☕	karsts dzēriens							// [2615]
 ☘	āboliņa lapa							// [2618] text|emoji
 ☝	augšup vērsts rādītājpirksts					// [261D] text|emoji
-☠	galvaskauss ar sakrustotiem kauliem				// [2620] text|emoji
+☠	miroņgalva							// [2620] text|emoji
 ☢	radioaktīvs							// [2622] text|emoji
 ☣	bioloģiskais apdraudējums					// [2623] text|emoji
 ☦	pareizticīgo krusts						// [2626] text|emoji
@@ -108,20 +178,24 @@ $textmode
 ♑	zodiaka zīme Mežāzis						// [2651]
 ♒	zodiaka zīme Ūdensvīrs						// [2652]
 ♓	zodiaka zīme Zivis						// [2653]
+♟	bandinieks							// [265F] text|emoji
 ♠	pīķis								// [2660] text|emoji
 ♣	kreicis								// [2663] text|emoji
 ♥	ercens								// [2665] text|emoji
 ♦	kāravs								// [2666] text|emoji
 ♨	karstie avoti							// [2668] text|emoji
+//♭	flat								// [266D] other (no translation)
+//♯	sharp								// [266F] other (no translation)
 ♻	atkritumu pārstrādes simbols					// [267B] text|emoji
+♾	bezgalība							// [267E] text|emoji
 ♿	ratiņkrēsls							// [267F]
 ⚒	āmurs un cirtnis						// [2692] text|emoji
 ⚓	enkurs								// [2693]
 ⚔	sakrustoti zobeni						// [2694] text|emoji
 ⚕	medicīnas simbols						// [2695] text|emoji
 ⚖	svari								// [2696] text|emoji
-⚗	mēģene								// [2697] text|emoji
-⚙	ierīce								// [2699] text|emoji
+⚗	destilēšanas aparāts						// [2697] text|emoji
+⚙	zobrats								// [2699] text|emoji
 ⚛	atoma simbols							// [269B] text|emoji
 ⚜	lilijas simbols							// [269C] text|emoji
 ⚠	brīdinājums							// [26A0] text|emoji
@@ -137,7 +211,7 @@ $textmode
 ⛈	mākonis ar zibeni un lietu					// [26C8] text|emoji
 ⛎	zodiaka zīme Čūsknesis						// [26CE]
 ⛏	cirtnis								// [26CF] text|emoji
-⛑	ķivere ar baltu krustu						// [26D1] text|emoji
+⛑	glābēja ķivere							// [26D1] text|emoji
 ⛓	ķēdes								// [26D3] text|emoji
 ⛔	iebraukt aizliegts						// [26D4]
 ⛩	sintoistu svētnīca						// [26E9] text|emoji
@@ -150,7 +224,7 @@ $textmode
 ⛵	buru laiva							// [26F5]
 ⛷	slēpotājs							// [26F7] text|emoji
 ⛸	slida								// [26F8] text|emoji
-⛹	cilvēks ar bumbu						// [26F9] text|emoji
+⛹	cilvēks driblē bumbu						// [26F9] text|emoji
 ⛺	telts								// [26FA]
 ⛽	degvielas sūknis						// [26FD]
 
@@ -273,9 +347,9 @@ $textmode
 🌉	tilts naktī							// [1F309]
 🌊	vilnis								// [1F30A]
 🌋	vulkāns								// [1F30B]
-🌌	piena ceļš							// [1F30C]
+🌌	Piena ceļš							// [1F30C]
 🌍	globuss ar Eiropu un Āfriku					// [1F30D]
-🌎	globuss ar Ziemeļameriku un Dienvidameriku			// [1F30E]
+🌎	globuss ar Ameriku						// [1F30E]
 🌏	globuss ar Āziju un Austrāliju					// [1F30F]
 🌐	globuss ar meridiāniem						// [1F310]
 🌑	jauns mēness							// [1F311]
@@ -391,8 +465,8 @@ $textmode
 🎁	iesaiņota dāvana						// [1F381]
 🎂	dzimšanas dienas kūka						// [1F382]
 🎃	izgrebts ķirbis							// [1F383]
-🎄	ziemassvētku eglīte						// [1F384]
-🎅	ziemassvētku vecītis						// [1F385]
+🎄	Ziemassvētku eglīte						// [1F384]
+🎅	Ziemassvētku vecītis						// [1F385]
 🎆	salūts								// [1F386]
 🎇	brīnumsvecīte							// [1F387]
 🎈	balons								// [1F388]
@@ -427,7 +501,7 @@ $textmode
 🎪	cirka telts							// [1F3AA]
 🎫	biļete								// [1F3AB]
 🎬	klapīte								// [1F3AC]
-🎭	izpildītājmākslas						// [1F3AD]
+🎭	skatuves māksla							// [1F3AD]
 🎮	videospēle							// [1F3AE]
 🎯	šautriņa mērķī							// [1F3AF]
 🎰	spēļu automāts							// [1F3B0]
@@ -457,14 +531,14 @@ $textmode
 🏈	amerikāņu futbola bumba						// [1F3C8]
 🏉	regbija bumba							// [1F3C9]
 🏊	peldētājs							// [1F3CA]
-🏋	svarcēlājs							// [1F3CB] text|emoji
+🏋	cilvēks ar svaru stieni						// [1F3CB] text|emoji
 🏌	golfa spēlētājs							// [1F3CC] text|emoji
 🏍	motocikls							// [1F3CD] text|emoji
 🏎	sacīkšu automašīna						// [1F3CE] text|emoji
 🏏	krikets								// [1F3CF]
 🏐	volejbola bumba							// [1F3D0]
 🏑	lauka hokejs							// [1F3D1]
-🏒	hokeja ripa un nūja						// [1F3D2]
+🏒	hokejs uz ledus							// [1F3D2]
 🏓	galda teniss							// [1F3D3]
 🏔	sniegoti kalni							// [1F3D4] text|emoji
 🏕	kempings							// [1F3D5] text|emoji
@@ -479,7 +553,7 @@ $textmode
 🏞	nacionālais parks						// [1F3DE] text|emoji
 🏟	stadions							// [1F3DF] text|emoji
 🏠	ēka								// [1F3E0]
-🏡	ēka ar dārzu							// [1F3E1]
+🏡	māja ar dārzu							// [1F3E1]
 🏢	biroju ēka							// [1F3E2]
 🏣	japāņu pasta nodaļa						// [1F3E3]
 🏤	pasta nodaļa							// [1F3E4]
@@ -495,18 +569,18 @@ $textmode
 🏮	sarkana papīra laterna						// [1F3EE]
 🏯	japāņu pils							// [1F3EF]
 🏰	pils								// [1F3F0]
-🏳	plīvojošs balts karogs						// [1F3F3] text|emoji
-🏴	plīvojošs melns karogs						// [1F3F4]
+🏳	balts karogs							// [1F3F3] text|emoji
+🏴	melns karogs							// [1F3F4]
 🏵	rozete								// [1F3F5] text|emoji
 🏷	atzīme								// [1F3F7] text|emoji
 🏸	badmintons							// [1F3F8]
 🏹	loks un bulta							// [1F3F9]
 🏺	amfora								// [1F3FA]
-🏻	ādas tips 1–2							// [1F3FB]
-🏼	ādas tips 3							// [1F3FC]
-🏽	ādas tips 4							// [1F3FD]
-🏾	ādas tips 5							// [1F3FE]
-🏿	ādas tips 6							// [1F3FF]
+🏻	gaišs ādas tonis						// [1F3FB]
+🏼	vidēji gaišs ādas tonis						// [1F3FC]
+🏽	vidējs ādas tonis						// [1F3FD]
+🏾	vidēji tumšs ādas tonis						// [1F3FE]
+🏿	tumšs ādas tonis						// [1F3FF]
 🐀	žurka								// [1F400]
 🐁	pele								// [1F401]
 🐂	vērsis								// [1F402]
@@ -555,7 +629,7 @@ $textmode
 🐭	peles galva							// [1F42D]
 🐮	govs galva							// [1F42E]
 🐯	tīģera galva							// [1F42F]
-🐰	truša seja							// [1F430]
+🐰	truša galva							// [1F430]
 🐱	kaķa galva							// [1F431]
 🐲	pūķa galva							// [1F432]
 🐳	valis šļāc ūdeni						// [1F433]
@@ -564,7 +638,7 @@ $textmode
 🐶	suņa galva							// [1F436]
 🐷	cūkas galva							// [1F437]
 🐸	vardes galva							// [1F438]
-🐹	kāmja seja							// [1F439]
+🐹	kāmja galva							// [1F439]
 🐺	vilka galva							// [1F43A]
 🐻	lāča galva							// [1F43B]
 🐼	pandas galva							// [1F43C]
@@ -584,8 +658,8 @@ $textmode
 👊	pretim vērsta dūre						// [1F44A]
 👋	mājoša roka							// [1F44B]
 👌	simbols OK							// [1F44C]
-👍	augšup vērsts īkšķis						// [1F44D]
-👎	lejup vērsts īkšķis						// [1F44E]
+👍	augšupvērsts īkšķis						// [1F44D]
+👎	lejupvērsts īkšķis						// [1F44E]
 👏	aplausi								// [1F44F]
 👐	atvērtas rokas							// [1F450]
 👑	kronis								// [1F451]
@@ -618,17 +692,17 @@ $textmode
 👬	divi vīrieši sadevušies rokās					// [1F46C]
 👭	divas sievietes sadevušās rokās					// [1F46D]
 👮	policists							// [1F46E]
-👯	sievietes izklaidējas						// [1F46F]
+👯	dejotāju šovs							// [1F46F]
 👰	līgava ar plīvuru						// [1F470]
 👱	blonds cilvēks							// [1F471]
 👲	vīrietis ar ķīniešu cepuri					// [1F472]
-👳	vīrietis ar turbānu						// [1F473]
+👳	persona ar turbānu						// [1F473]
 👴	vecs vīrietis							// [1F474]
 👵	veca sieviete							// [1F475]
 👶	zīdainis							// [1F476]
 👷	celtnieks							// [1F477]
 👸	princese							// [1F478]
-👹	briesmonis							// [1F479]
+👹	cilvēkēdājs							// [1F479]
 👺	goblins								// [1F47A]
 👻	spoks								// [1F47B]
 👼	mazs eņģelītis							// [1F47C]
@@ -705,7 +779,7 @@ $textmode
 📃	lapa ar atliektu malu						// [1F4C3]
 📄	papīra lapa							// [1F4C4]
 📅	kalendārs							// [1F4C5]
-📆	noplēšams kalendārs						// [1F4C6]
+📆	noplēšamais kalendārs						// [1F4C6]
 📇	kartīšu rādītājs						// [1F4C7]
 📈	augšupejoša diagrammas līkne					// [1F4C8]
 📉	lejupejoša diagrammas līkne					// [1F4C9]
@@ -786,14 +860,14 @@ $textmode
 🔕	pārsvītrots zvaniņš						// [1F515]
 🔖	grāmatzīme							// [1F516]
 🔗	ķēdes posms							// [1F517]
-🔘	opciju poga							// [1F518]
+🔘	radiopoga							// [1F518]
 🔙	bultiņa ar uzrakstu Back					// [1F519]
 🔚	bultiņa ar uzrakstu End						// [1F51A]
 🔛	bultiņa ar uzrakstu On!						// [1F51B]
 🔜	bultiņa ar uzrakstu Soon					// [1F51C]
 🔝	bultiņa ar uzrakstu Top						// [1F51D]
 🔞	tikai no 18 gadu vecuma						// [1F51E]
-🔟	desmit								// [1F51F]
+🔟	taustiņš: 10							// [1F51F]
 🔠	lielie latīņu burti						// [1F520]
 🔡	mazie latīņu burti						// [1F521]
 🔢	cipari								// [1F522]
@@ -863,7 +937,7 @@ $textmode
 🕷	zirneklis							// [1F577] text|emoji
 🕸	zirnekļa tīkls							// [1F578] text|emoji
 🕹	kursorsvira							// [1F579] text|emoji
-🕺	dejojošs vīrietis						// [1F57A]
+🕺	vīrietis dejo							// [1F57A]
 🖇	savienotas saspraudes						// [1F587] text|emoji
 🖊	pildspalva							// [1F58A] text|emoji
 🖋	tušas pildspalva						// [1F58B] text|emoji
@@ -902,11 +976,11 @@ $textmode
 // 1F600..1F64F : Emoticons
 
 😀	smiekli								// [1F600]
-😁	sakosti zobi un smaidošas acis					// [1F601]
+😁	plats smaids un smaidošas acis					// [1F601]
 😂	seja ar prieka asarām						// [1F602]
-😃	smaidoša seja ar atvērtu muti					// [1F603]
+😃	plats smaids un lielas acis					// [1F603]
 😄	smaidoša seja ar atvērtu muti un smaidošām acīm			// [1F604]
-😅	smaidoša seja ar atvērtu muti un aukstu sviedru lāsi		// [1F605]
+😅	plats smaids ar sviedru lāsi					// [1F605]
 😆	smaidoša seja ar atvērtu muti un aizmiegtām acīm		// [1F606]
 😇	smaidoša seja ar nimbu						// [1F607]
 😈	smaidoša seja ar ragiem						// [1F608]
@@ -923,7 +997,7 @@ $textmode
 😓	seja ar aukstu sviedru lāsi					// [1F613]
 😔	domās iegrimusi seja						// [1F614]
 😕	apjukusi seja							// [1F615]
-😖	apmulsināta seja						// [1F616]
+😖	apmulsusi seja							// [1F616]
 😗	seja sniedz skūpstu						// [1F617]
 😘	skūpstoša seja							// [1F618]
 😙	seja ar smaidošām acīm sniedz skūpstu				// [1F619]
@@ -970,15 +1044,15 @@ $textmode
 🙂	seja ar vieglu smaidu						// [1F642]
 🙃	apgriezta seja							// [1F643]
 🙄	seja ar pārgrieztām acīm					// [1F644]
-🙅	noraidījums							// [1F645]
-🙆	apstiprinājums							// [1F646]
+🙅	cilvēks ar aizlieguma žestu					// [1F645]
+🙆	cilvēks ar apstiprinājuma žestu					// [1F646]
 🙇	cilvēks paklanās						// [1F647]
 🙈	neko neredzu							// [1F648]
 🙉	neko nedzirdu							// [1F649]
 🙊	neko nesaku							// [1F64A]
-🙋	laimīgs cilvēks ar paceltu roku					// [1F64B]
+🙋	cilvēks ar paceltu roku						// [1F64B]
 🙌	paceltas rokas							// [1F64C]
-🙍	bēdīgs cilvēks							// [1F64D]
+🙍	norūpējies cilvēks						// [1F64D]
 🙎	sabozies cilvēks						// [1F64E]
 🙏	lūgšanā saliktas rokas						// [1F64F]
 
@@ -993,22 +1067,22 @@ $textmode
 🚆	vilciens							// [1F686]
 🚇	metro								// [1F687]
 🚈	piepilsētas vilciens						// [1F688]
-🚉	dzelzceļa stacija						// [1F689]
+🚉	stacija								// [1F689]
 🚊	tramvajs							// [1F68A]
 🚋	tramvaja vagons							// [1F68B]
 🚌	autobuss							// [1F68C]
-🚍	šurp braucošs autobuss						// [1F68D]
+🚍	pretī braucošs autobuss						// [1F68D]
 🚎	trolejbuss							// [1F68E]
 🚏	autobusa pietura						// [1F68F]
 🚐	mikroautobuss							// [1F690]
 🚑	ātrās palīdzības mašīna						// [1F691]
 🚒	ugunsdzēsēju mašīna						// [1F692]
 🚓	policijas mašīna						// [1F693]
-🚔	šurp braucoša policijas mašīna					// [1F694]
+🚔	pretī braucoša policijas mašīna					// [1F694]
 🚕	taksometrs							// [1F695]
-🚖	šurp braucošs taksometrs					// [1F696]
+🚖	pretī braucošs taksometrs					// [1F696]
 🚗	automašīna							// [1F697]
-🚘	šurp braucoša automašīna					// [1F698]
+🚘	pretī braucoša automašīna					// [1F698]
 🚙	kemperis							// [1F699]
 🚚	kravas automašīna						// [1F69A]
 🚛	smagā automašīna						// [1F69B]
@@ -1019,7 +1093,7 @@ $textmode
 🚠	kalnu trošu vilciens						// [1F6A0]
 🚡	gaisa tramvajs							// [1F6A1]
 🚢	kuģis								// [1F6A2]
-🚣	airu laiva							// [1F6A3]
+🚣	cilvēks airē							// [1F6A3]
 🚤	ātrlaiva							// [1F6A4]
 🚥	horizontāls luksofors						// [1F6A5]
 🚦	vertikāls luksofors						// [1F6A6]
@@ -1053,7 +1127,7 @@ $textmode
 🛂	pasu kontrole							// [1F6C2]
 🛃	muitas								// [1F6C3]
 🛄	bagāžas saņemšana						// [1F6C4]
-🛅	bagāžas glabātuve						// [1F6C5]
+🛅	bagāžas glabātava						// [1F6C5]
 🛋	dīvāns un lampa							// [1F6CB] text|emoji
 🛌	cilvēks gultā							// [1F6CC]
 🛍	iepirkumu somas							// [1F6CD] text|emoji
@@ -1076,15 +1150,16 @@ $textmode
 🛴	skuteris							// [1F6F4]
 🛵	motorollers							// [1F6F5]
 🛶	kanoe								// [1F6F6]
-🛷	sled								// [1F6F7] (no translation)
-🛸	flying saucer							// [1F6F8] (no translation)
+🛷	kamaniņas							// [1F6F7]
+🛸	lidojošais šķīvītis						// [1F6F8]
+🛹	skrituļdēlis							// [1F6F9]
 
 // 1F900..1F9FF : Supplemental Symbols and Pictographs
 
 🤐	seja ar rāvējslēdzēju mutes vietā				// [1F910]
 🤑	seja ar naudu mutē						// [1F911]
 🤒	seja ar termometru						// [1F912]
-🤓	nūģa seja							// [1F913]
+🤓	gudrītis							// [1F913]
 🤔	domīga seja							// [1F914]
 🤕	seja ar galvas apsēju						// [1F915]
 🤖	robota galva							// [1F916]
@@ -1096,26 +1171,26 @@ $textmode
 🤜	dūre pa labi							// [1F91C]
 🤝	rokasspiediens							// [1F91D]
 🤞	sakrustoti pirksti						// [1F91E]
-🤟	love you gesture						// [1F91F] (no translation)
+🤟	žests mīlu							// [1F91F]
 🤠	seja kovboja cepurē						// [1F920]
 🤡	klauna seja							// [1F921]
 🤢	nelabums							// [1F922]
 🤣	vārtās smieklos pa grīdu					// [1F923]
-🤤	laiž siekalas							// [1F924]
+🤤	siekalojas							// [1F924]
 🤥	melojoša seja							// [1F925]
-🤦	trūkst vārdu							// [1F926]
+🤦	cilvēks ar saķertu galvu					// [1F926]
 🤧	šķauda								// [1F927]
-🤨	face with raised eyebrow					// [1F928] (no translation)
-🤩	star struck							// [1F929] (no translation)
-🤪	crazy face							// [1F92A] (no translation)
-🤫	shushing face							// [1F92B] (no translation)
-🤬	face with symbols over mouth					// [1F92C] (no translation)
-🤭	face with hand over mouth					// [1F92D] (no translation)
-🤮	face vomiting							// [1F92E] (no translation)
-🤯	exploding head							// [1F92F] (no translation)
+🤨	seja ar paceltām uzacīm						// [1F928]
+🤩	zvaigžņu pārņemts						// [1F929]
+🤪	traka seja							// [1F92A]
+🤫	šušinoša seja							// [1F92B]
+🤬	seja ar simboliem uz mutes					// [1F92C]
+🤭	seja ar roku pār muti						// [1F92D]
+🤮	vemjoša seja							// [1F92E]
+🤯	eksplodējoša galva						// [1F92F]
 🤰	sieviete stāvoklī						// [1F930]
-🤱	breast feeding							// [1F931] (no translation)
-🤲	palms up together						// [1F932] (no translation)
+🤱	barošana ar krūti						// [1F931]
+🤲	plaukstas kopā							// [1F932]
 🤳	pašfoto								// [1F933]
 🤴	princis								// [1F934]
 🤵	vīrietis smokingā						// [1F935]
@@ -1125,7 +1200,7 @@ $textmode
 🤹	žonglēšana							// [1F939]
 🤺	paukotājs							// [1F93A]
 🤼	cīkstoņi							// [1F93C]
-🤽	ūdens polo							// [1F93D]
+🤽	ūdenspolo sportists						// [1F93D]
 🤾	rokasbumba							// [1F93E]
 🥀	novītusi puķe							// [1F940]
 🥁	bungas								// [1F941]
@@ -1138,7 +1213,9 @@ $textmode
 🥉	medaļa par 3. vietu						// [1F949]
 🥊	boksa cimds							// [1F94A]
 🥋	cīņu sporta tērps						// [1F94B]
-🥌	curling stone							// [1F94C] (no translation)
+🥌	kērlinga akmens							// [1F94C]
+🥎	softbols							// [1F94E]
+🥏	lidojošais šķīvis						// [1F94F]
 🥐	kruasāns							// [1F950]
 🥑	avokado								// [1F951]
 🥒	gurķis								// [1F952]
@@ -1154,19 +1231,33 @@ $textmode
 🥜	zemesrieksti							// [1F95C]
 🥝	kivi auglis							// [1F95D]
 🥞	pankūkas							// [1F95E]
-🥟	dumpling							// [1F95F] (no translation)
-🥠	fortune cookie							// [1F960] (no translation)
-🥡	takeout box							// [1F961] (no translation)
-🥢	chopsticks							// [1F962] (no translation)
-🥣	bowl with spoon							// [1F963] (no translation)
-🥤	cup with straw							// [1F964] (no translation)
-🥥	coconut								// [1F965] (no translation)
-🥦	broccoli							// [1F966] (no translation)
-🥧	pie								// [1F967] (no translation)
-🥨	pretzel								// [1F968] (no translation)
-🥩	cut of meat							// [1F969] (no translation)
-🥪	sandwich							// [1F96A] (no translation)
-🥫	canned food							// [1F96B] (no translation)
+🥟	pelmeņi								// [1F95F]
+🥠	laimes cepumiņš							// [1F960]
+🥡	kastīte līdzņemšanai						// [1F961]
+🥢	irbulīši							// [1F962]
+🥣	bļoda ar karoti							// [1F963]
+🥤	dzēriens ar salmiņu						// [1F964]
+🥥	kokosrieksts							// [1F965]
+🥦	brokoļi								// [1F966]
+🥧	pīrāgs								// [1F967]
+🥨	kliņģeris							// [1F968]
+🥩	gaļas gabals							// [1F969]
+🥪	sendvičs							// [1F96A]
+🥫	konservi							// [1F96B]
+🥬	lapu dārzenis							// [1F96C]
+🥭	mango								// [1F96D]
+🥮	Mēness kūka							// [1F96E]
+🥯	beigelis							// [1F96F]
+🥰	smaidoša seja ar trijām sirsniņām				// [1F970]
+🥳	ballīšu seja							// [1F973]
+🥴	noreibusi seja							// [1F974]
+🥵	piesārtusi seja							// [1F975]
+🥶	auksta seja							// [1F976]
+🥺	lūdzoša seja							// [1F97A]
+🥼	laboratorijas halāts						// [1F97C]
+🥽	aizsargbrilles							// [1F97D]
+🥾	pārgājienu zābaks						// [1F97E]
+🥿	baleta kurpe							// [1F97F]
 🦀	krabis								// [1F980]
 🦁	lauvas galva							// [1F981]
 🦂	skorpions							// [1F982]
@@ -1177,7 +1268,7 @@ $textmode
 🦇	sikspārnis							// [1F987]
 🦈	haizivs								// [1F988]
 🦉	pūce								// [1F989]
-🦊	lapsa								// [1F98A]
+🦊	lapsas galva							// [1F98A]
 🦋	taurenis							// [1F98B]
 🦌	briedis								// [1F98C]
 🦍	gorilla								// [1F98D]
@@ -1185,318 +1276,365 @@ $textmode
 🦏	degunradzis							// [1F98F]
 🦐	garnele								// [1F990]
 🦑	kalmārs								// [1F991]
-🦒	giraffe								// [1F992] (no translation)
-🦓	zebra								// [1F993] (no translation)
-🦔	hedgehog							// [1F994] (no translation)
-🦕	sauropod							// [1F995] (no translation)
-🦖	t rex								// [1F996] (no translation)
-🦗	cricket								// [1F997] (no translation)
+🦒	žirafe								// [1F992]
+🦓	zebra								// [1F993]
+🦔	ezis								// [1F994]
+🦕	zauropods							// [1F995]
+🦖	tiranozaurs							// [1F996]
+🦗	circenis							// [1F997]
+🦘	ķengurs								// [1F998]
+🦙	lama								// [1F999]
+🦚	pāvs								// [1F99A]
+🦛	nīlzirgs							// [1F99B]
+🦜	papagailis							// [1F99C]
+🦝	jenots								// [1F99D]
+🦞	omārs								// [1F99E]
+🦟	ods								// [1F99F]
+🦠	mikrobs								// [1F9A0]
+🦡	āpsis								// [1F9A1]
+🦢	gulbis								// [1F9A2]
+🦰	sarkani mati							// [1F9B0]
+🦱	sprogaini mati							// [1F9B1]
+🦲	bez matiem							// [1F9B2]
+🦳	sirmi mati							// [1F9B3]
+🦴	kauls								// [1F9B4]
+🦵	kāja								// [1F9B5]
+🦶	pēda								// [1F9B6]
+🦷	zobs								// [1F9B7]
+🦸	supervaronis							// [1F9B8]
+🦹	superļaunais							// [1F9B9]
 🧀	siera šķēle							// [1F9C0]
-🧐	face with monocle						// [1F9D0] (no translation)
-🧑	adult								// [1F9D1] (no translation)
-🧒	child								// [1F9D2] (no translation)
-🧓	older adult							// [1F9D3] (no translation)
-🧔	bearded person							// [1F9D4] (no translation)
-🧕	woman with headscarf						// [1F9D5] (no translation)
-🧖	person in steamy room						// [1F9D6] (no translation)
-🧗	person climbing							// [1F9D7] (no translation)
-🧘	person in lotus position					// [1F9D8] (no translation)
-🧙	mage								// [1F9D9] (no translation)
-🧚	fairy								// [1F9DA] (no translation)
-🧛	vampire								// [1F9DB] (no translation)
-🧜	merperson							// [1F9DC] (no translation)
-🧝	elf								// [1F9DD] (no translation)
-🧞	genie								// [1F9DE] (no translation)
-🧟	zombie								// [1F9DF] (no translation)
-🧠	brain								// [1F9E0] (no translation)
-🧡	orange heart							// [1F9E1] (no translation)
-🧢	billed cap							// [1F9E2] (no translation)
-🧣	scarf								// [1F9E3] (no translation)
-🧤	gloves								// [1F9E4] (no translation)
-🧥	coat								// [1F9E5] (no translation)
-🧦	socks								// [1F9E6] (no translation)
+🧁	kēksiņš								// [1F9C1]
+🧂	sāls								// [1F9C2]
+🧐	seja ar monokli							// [1F9D0]
+🧑	pieaugušais							// [1F9D1]
+🧒	bērns								// [1F9D2]
+🧓	vecāks pieaugušais						// [1F9D3]
+🧔	bārdaina persona						// [1F9D4]
+🧕	sieviete ar lakatu						// [1F9D5]
+🧖	cilvēks tvaika telpā						// [1F9D6]
+🧗	alpīnists							// [1F9D7]
+🧘	cilvēks lotosa pozā						// [1F9D8]
+🧙	mags								// [1F9D9]
+🧚	feja								// [1F9DA]
+🧛	vampīrs								// [1F9DB]
+🧜	nārveidīgs							// [1F9DC]
+🧝	elfs								// [1F9DD]
+🧞	džins								// [1F9DE]
+🧟	zombijs								// [1F9DF]
+🧠	smadzenes							// [1F9E0]
+🧡	oranža sirds							// [1F9E1]
+🧢	cepure ar nagu							// [1F9E2]
+🧣	šalle								// [1F9E3]
+🧤	cimdi								// [1F9E4]
+🧥	mētelis								// [1F9E5]
+🧦	zeķes								// [1F9E6]
+🧧	sarkana aploksne						// [1F9E7]
+🧨	petarde								// [1F9E8]
+🧩	attēlu mīkla							// [1F9E9]
+🧪	mēģene								// [1F9EA]
+🧫	Petri trauks							// [1F9EB]
+🧬	DNS								// [1F9EC]
+🧭	kompass								// [1F9ED]
+🧮	skaitīkļi							// [1F9EE]
+🧰	darbarīku kaste							// [1F9F0]
+🧱	ķieģelis							// [1F9F1]
+🧲	magnēts								// [1F9F2]
+🧳	bagāža								// [1F9F3]
+🧴	losjona pudele							// [1F9F4]
+🧵	pavediens							// [1F9F5]
+🧶	dzija								// [1F9F6]
+🧷	drošības adata							// [1F9F7]
+🧸	lāčuks								// [1F9F8]
+🧹	slota								// [1F9F9]
+🧺	grozs								// [1F9FA]
+🧻	papīra rullis							// [1F9FB]
+🧼	ziepes								// [1F9FC]
+🧽	sūklis								// [1F9FD]
+🧾	kvīts								// [1F9FE]
+🧿	ļaunas acs amulets						// [1F9FF]
 
 // Country Flags (Regional Indicator Symbols) -- ISO 3166-1 Country Codes
 
-🇦🇨	Debesbraukšanas sala						// [1F1E6 1F1E8] AC
-🇦🇩	Andora								// [1F1E6 1F1E9] AD
-🇦🇪	Apvienotie Arābu Emirāti					// [1F1E6 1F1EA] AE
-🇦🇫	Afganistāna							// [1F1E6 1F1EB] AF
-🇦🇬	Antigva un Barbuda						// [1F1E6 1F1EC] AG
-🇦🇮	Angilja								// [1F1E6 1F1EE] AI
-🇦🇱	Albānija							// [1F1E6 1F1F1] AL
-🇦🇲	Armēnija							// [1F1E6 1F1F2] AM
-🇦🇴	Angola								// [1F1E6 1F1F4] AO
-🇦🇶	Antarktika							// [1F1E6 1F1F6] AQ
-🇦🇷	Argentīna							// [1F1E6 1F1F7] AR
-🇦🇸	ASV Samoa							// [1F1E6 1F1F8] AS
-🇦🇹	Austrija							// [1F1E6 1F1F9] AT
-🇦🇺	Austrālija							// [1F1E6 1F1FA] AU
-🇦🇼	Aruba								// [1F1E6 1F1FC] AW
-🇦🇽	Olandes salas							// [1F1E6 1F1FD] AX
-🇦🇿	Azerbaidžāna							// [1F1E6 1F1FF] AZ
-🇧🇦	Bosnija un Hercegovina						// [1F1E7 1F1E6] BA
-🇧🇧	Barbadosa							// [1F1E7 1F1E7] BB
-🇧🇩	Bangladeša							// [1F1E7 1F1E9] BD
-🇧🇪	Beļģija								// [1F1E7 1F1EA] BE
-🇧🇫	Burkinafaso							// [1F1E7 1F1EB] BF
-🇧🇬	Bulgārija							// [1F1E7 1F1EC] BG
-🇧🇭	Bahreina							// [1F1E7 1F1ED] BH
-🇧🇮	Burundija							// [1F1E7 1F1EE] BI
-🇧🇯	Benina								// [1F1E7 1F1EF] BJ
-🇧🇱	Senbartelmī							// [1F1E7 1F1F1] BL
-🇧🇲	Bermudu salas							// [1F1E7 1F1F2] BM
-🇧🇳	Bruneja								// [1F1E7 1F1F3] BN
-🇧🇴	Bolīvija							// [1F1E7 1F1F4] BO
-🇧🇶	Nīderlandes Karību salas					// [1F1E7 1F1F6] BQ
-🇧🇷	Brazīlija							// [1F1E7 1F1F7] BR
-🇧🇸	Bahamu salas							// [1F1E7 1F1F8] BS
-🇧🇹	Butāna								// [1F1E7 1F1F9] BT
-🇧🇻	Buvē sala							// [1F1E7 1F1FB] BV
-🇧🇼	Botsvāna							// [1F1E7 1F1FC] BW
-🇧🇾	Baltkrievija							// [1F1E7 1F1FE] BY
-🇧🇿	Beliza								// [1F1E7 1F1FF] BZ
-🇨🇦	Kanāda								// [1F1E8 1F1E6] CA
-🇨🇨	Kokosu (Kīlinga) salas						// [1F1E8 1F1E8] CC
-🇨🇩	Kongo (Kinšasa)							// [1F1E8 1F1E9] CD
-🇨🇫	Centrālāfrikas Republika					// [1F1E8 1F1EB] CF
-🇨🇬	Kongo (Brazavila)						// [1F1E8 1F1EC] CG
-🇨🇭	Šveice								// [1F1E8 1F1ED] CH
-🇨🇮	Kotdivuāra							// [1F1E8 1F1EE] CI
-🇨🇰	Kuka salas							// [1F1E8 1F1F0] CK
-🇨🇱	Čīle								// [1F1E8 1F1F1] CL
-🇨🇲	Kamerūna							// [1F1E8 1F1F2] CM
-🇨🇳	Ķīna								// [1F1E8 1F1F3] CN
-🇨🇴	Kolumbija							// [1F1E8 1F1F4] CO
-🇨🇵	Klipertona sala							// [1F1E8 1F1F5] CP
-🇨🇷	Kostarika							// [1F1E8 1F1F7] CR
-🇨🇺	Kuba								// [1F1E8 1F1FA] CU
-🇨🇻	Kaboverde							// [1F1E8 1F1FB] CV
-🇨🇼	Kirasao								// [1F1E8 1F1FC] CW
-🇨🇽	Ziemsvētku sala							// [1F1E8 1F1FD] CX
-🇨🇾	Kipra								// [1F1E8 1F1FE] CY
-🇨🇿	Čehija								// [1F1E8 1F1FF] CZ
-🇩🇪	Vācija								// [1F1E9 1F1EA] DE
-🇩🇬	Djego Garsijas atols						// [1F1E9 1F1EC] DG
-🇩🇯	Džibutija							// [1F1E9 1F1EF] DJ
-🇩🇰	Dānija								// [1F1E9 1F1F0] DK
-🇩🇲	Dominika							// [1F1E9 1F1F2] DM
-🇩🇴	Dominikāna							// [1F1E9 1F1F4] DO
-🇩🇿	Alžīrija							// [1F1E9 1F1FF] DZ
-🇪🇦	Seūta un Melilja						// [1F1EA 1F1E6] EA
-🇪🇨	Ekvadora							// [1F1EA 1F1E8] EC
-🇪🇪	Igaunija							// [1F1EA 1F1EA] EE
-🇪🇬	Ēģipte								// [1F1EA 1F1EC] EG
-🇪🇭	Rietumsahāra							// [1F1EA 1F1ED] EH
-🇪🇷	Eritreja							// [1F1EA 1F1F7] ER
-🇪🇸	Spānija								// [1F1EA 1F1F8] ES
-🇪🇹	Etiopija							// [1F1EA 1F1F9] ET
-🇪🇺	Eiropas Savienība						// [1F1EA 1F1FA] EU
-🇫🇮	Somija								// [1F1EB 1F1EE] FI
-🇫🇯	Fidži								// [1F1EB 1F1EF] FJ
-🇫🇰	Folklenda salas							// [1F1EB 1F1F0] FI
-🇫🇲	Mikronēzija							// [1F1EB 1F1F2] FM
-🇫🇴	Fēru salas							// [1F1EB 1F1F4] FO
-🇫🇷	Francija							// [1F1EB 1F1F7] FR
-🇬🇦	Gabona								// [1F1EC 1F1E6] GA
-🇬🇧	Lielbritānija							// [1F1EC 1F1E7] GB
-🇬🇩	Grenāda								// [1F1EC 1F1E9] GD
-🇬🇪	Gruzija								// [1F1EC 1F1EA] GE
-🇬🇫	Francijas Gviāna						// [1F1EC 1F1EB] GF
-🇬🇬	Gērnsija							// [1F1EC 1F1EC] GG
-🇬🇭	Gana								// [1F1EC 1F1ED] GH
-🇬🇮	Gibraltārs							// [1F1EC 1F1EE] GI
-🇬🇱	Grenlande							// [1F1EC 1F1F1] GL
-🇬🇲	Gambija								// [1F1EC 1F1F2] GM
-🇬🇳	Gvineja								// [1F1EC 1F1F3] GN
-🇬🇵	Gvadelupa							// [1F1EC 1F1F5] GP
-🇬🇶	Ekvatoriālā Gvineja						// [1F1EC 1F1F6] GQ
-🇬🇷	Grieķija							// [1F1EC 1F1F7] GR
-🇬🇸	Dienviddžordžija un Dienvidsendviču salas			// [1F1EC 1F1F8] GS
-🇬🇹	Gvatemala							// [1F1EC 1F1F9] GT
-🇬🇺	Guama								// [1F1EC 1F1FA] GU
-🇬🇼	Gvineja-Bisava							// [1F1EC 1F1FC] GW
-🇬🇾	Gajāna								// [1F1EC 1F1FE] GY
-🇭🇰	Ķīnas īpašās pārvaldes apgabals Honkonga			// [1F1ED 1F1F0] HK
-🇭🇲	Hērda sala un Makdonalda salas					// [1F1ED 1F1F2] HM
-🇭🇳	Hondurasa							// [1F1ED 1F1F3] HN
-🇭🇷	Horvātija							// [1F1ED 1F1F7] HR
-🇭🇹	Haiti								// [1F1ED 1F1F9] HT
-🇭🇺	Ungārija							// [1F1ED 1F1FA] HU
-🇮🇨	Kanāriju salas							// [1F1EE 1F1E8] IC
-🇮🇩	Indonēzija							// [1F1EE 1F1E9] ID
-🇮🇪	Īrija								// [1F1EE 1F1EA] IE
-🇮🇱	Izraēla								// [1F1EE 1F1F1] IL
-🇮🇲	Mena								// [1F1EE 1F1F2] IM
-🇮🇳	Indija								// [1F1EE 1F1F3] IN
-🇮🇴	Indijas okeāna Britu teritorija					// [1F1EE 1F1F4] IO
-🇮🇶	Irāka								// [1F1EE 1F1F6] IQ
-🇮🇷	Irāna								// [1F1EE 1F1F7] IR
-🇮🇸	Islande								// [1F1EE 1F1F8] IS
-🇮🇹	Itālija								// [1F1EE 1F1F9] IT
-🇯🇪	Džērsija							// [1F1EF 1F1EA] JE
-🇯🇲	Jamaika								// [1F1EF 1F1F2] JM
-🇯🇴	Jordānija							// [1F1EF 1F1F4] JO
-🇯🇵	Japāna								// [1F1EF 1F1F5] JP
-🇰🇪	Kenija								// [1F1F0 1F1EA] KE
-🇰🇬	Kirgizstāna							// [1F1F0 1F1EC] KG
-🇰🇭	Kambodža							// [1F1F0 1F1ED] KH
-🇰🇮	Kiribati							// [1F1F0 1F1EE] KI
-🇰🇲	Komoru salas							// [1F1F0 1F1F2] KM
-🇰🇳	Sentkitsa un Nevisa						// [1F1F0 1F1F3] KN
-🇰🇵	Ziemeļkoreja							// [1F1F0 1F1F5] KP
-🇰🇷	Dienvidkoreja							// [1F1F0 1F1F7] KR
-🇰🇼	Kuveita								// [1F1F0 1F1FC] KW
-🇰🇾	Kaimanu salas							// [1F1F0 1F1FE] KY
-🇰🇿	Kazahstāna							// [1F1F0 1F1FF] KZ
-🇱🇦	Laosa								// [1F1F1 1F1E6] LA
-🇱🇧	Libāna								// [1F1F1 1F1E7] LB
-🇱🇨	Sentlūsija							// [1F1F1 1F1E8] LC
-🇱🇮	Lihtenšteina							// [1F1F1 1F1EE] LI
-🇱🇰	Šrilanka							// [1F1F1 1F1F0] LK
-🇱🇷	Libērija							// [1F1F1 1F1F7] LR
-🇱🇸	Lesoto								// [1F1F1 1F1F8] LS
-🇱🇹	Lietuva								// [1F1F1 1F1F9] LT
-🇱🇺	Luksemburga							// [1F1F1 1F1FA] LU
-🇱🇻	Latvija								// [1F1F1 1F1FB] LV
-🇱🇾	Lībija								// [1F1F1 1F1FE] LY
-🇲🇦	Maroka								// [1F1F2 1F1E6] MA
-🇲🇨	Monako								// [1F1F2 1F1E8] MC
-🇲🇩	Moldova								// [1F1F2 1F1E9] MD
-🇲🇪	Melnkalne							// [1F1F2 1F1EA] ME
-🇲🇫	Senmartēna							// [1F1F2 1F1EB] MF
-🇲🇬	Madagaskara							// [1F1F2 1F1EC] MG
-🇲🇭	Māršala salas							// [1F1F2 1F1ED] MH
-🇲🇰	Maķedonija							// [1F1F2 1F1F0] MK
-🇲🇱	Mali								// [1F1F2 1F1F1] ML
-🇲🇲	Mjanma (Birma)							// [1F1F2 1F1F2] MM
-🇲🇳	Mongolija							// [1F1F2 1F1F3] MN
-🇲🇴	Ķīnas īpašās pārvaldes apgabals Makao				// [1F1F2 1F1F4] MO
-🇲🇵	Ziemeļu Marianas salas						// [1F1F2 1F1F5] MP
-🇲🇶	Martinika							// [1F1F2 1F1F6] MQ
-🇲🇷	Mauritānija							// [1F1F2 1F1F7] MR
-🇲🇸	Montserrata							// [1F1F2 1F1F8] MS
-🇲🇹	Malta								// [1F1F2 1F1F9] MT
-🇲🇺	Maurīcija							// [1F1F2 1F1FA] MU
-🇲🇻	Maldīvija							// [1F1F2 1F1FB] MV
-🇲🇼	Malāvija							// [1F1F2 1F1FC] MW
-🇲🇽	Meksika								// [1F1F2 1F1FD] MX
-🇲🇾	Malaizija							// [1F1F2 1F1FE] MY
-🇲🇿	Mozambika							// [1F1F2 1F1FF] MZ
-🇳🇦	Namībija							// [1F1F3 1F1E6] NA
-🇳🇨	Jaunkaledonija							// [1F1F3 1F1E8] NC
-🇳🇪	Nigēra								// [1F1F3 1F1EA] NE
-🇳🇫	Norfolkas sala							// [1F1F3 1F1EB] NF
-🇳🇬	Nigērija							// [1F1F3 1F1EC] NG
-🇳🇮	Nikaragva							// [1F1F3 1F1EE] NI
-🇳🇱	Nīderlande							// [1F1F3 1F1F1] NL
-🇳🇴	Norvēģija							// [1F1F3 1F1F4] NO
-🇳🇵	Nepāla								// [1F1F3 1F1F5] NP
-🇳🇷	Nauru								// [1F1F3 1F1F7] NR
-🇳🇺	Niue								// [1F1F3 1F1FA] NU
-🇳🇿	Jaunzēlande							// [1F1F3 1F1FF] NZ
-🇴🇲	Omāna								// [1F1F4 1F1F2] OM
-🇵🇦	Panama								// [1F1F5 1F1E6] PA
-🇵🇪	Peru								// [1F1F5 1F1EA] PE
-🇵🇫	Francijas Polinēzija						// [1F1F5 1F1EB] PF
-🇵🇬	Papua-Jaungvineja						// [1F1F5 1F1EC] PG
-🇵🇭	Filipīnas							// [1F1F5 1F1ED] PH
-🇵🇰	Pakistāna							// [1F1F5 1F1F0] PK
-🇵🇱	Polija								// [1F1F5 1F1F1] PL
-🇵🇲	Senpjēra un Mikelona						// [1F1F5 1F1F2] PM
-🇵🇳	Pitkērnas salas							// [1F1F5 1F1F3] PN
-🇵🇷	Puertoriko							// [1F1F5 1F1F7] PR
-🇵🇸	Palestīna							// [1F1F5 1F1F8] PS
-🇵🇹	Portugāle							// [1F1F5 1F1F9] PT
-🇵🇼	Palau								// [1F1F5 1F1FC] PW
-🇵🇾	Paragvaja							// [1F1F5 1F1FE] PY
-🇶🇦	Katara								// [1F1F6 1F1E6] QA
-🇷🇪	Reinjona							// [1F1F7 1F1EA] RE
-🇷🇴	Rumānija							// [1F1F7 1F1F4] RO
-🇷🇸	Serbija								// [1F1F7 1F1F8] RS
-🇷🇺	Krievija							// [1F1F7 1F1FA] RU
-🇷🇼	Ruanda								// [1F1F7 1F1FC] RW
-🇸🇦	Saūda Arābija							// [1F1F8 1F1E6] SA
-🇸🇧	Zālamana salas							// [1F1F8 1F1E7] SB
-🇸🇨	Seišelu salas							// [1F1F8 1F1E8] SC
-🇸🇩	Sudāna								// [1F1F8 1F1E9] SD
-🇸🇪	Zviedrija							// [1F1F8 1F1EA] SE
-🇸🇬	Singapūra							// [1F1F8 1F1EC] SG
-🇸🇭	Sv.Helēnas sala							// [1F1F8 1F1ED] SH
-🇸🇮	Slovēnija							// [1F1F8 1F1EE] SI
-🇸🇯	Svalbāra un Jana Majena sala					// [1F1F8 1F1EF] SJ
-🇸🇰	Slovākija							// [1F1F8 1F1F0] SK
-🇸🇱	Sjerraleone							// [1F1F8 1F1F1] SL
-🇸🇲	Sanmarīno							// [1F1F8 1F1F2] SM
-🇸🇳	Senegāla							// [1F1F8 1F1F3] SN
-🇸🇴	Somālija							// [1F1F8 1F1F4] SO
-🇸🇷	Surinama							// [1F1F8 1F1F7] SR
-🇸🇸	Dienvidsudāna							// [1F1F8 1F1F8] SS
-🇸🇹	Santome un Prinsipi						// [1F1F8 1F1F9] ST
-🇸🇻	Salvadora							// [1F1F8 1F1FB] SV
-🇸🇽	Sintmārtena							// [1F1F8 1F1FD] SX
-🇸🇾	Sīrija								// [1F1F8 1F1FE] SY
-🇸🇿	Svazilenda							// [1F1F8 1F1FF] SZ
-🇹🇦	Tristana da Kuņas salas						// [1F1F9 1F1E6] TA
-🇹🇨	Tērksas un Kaikosas salas					// [1F1F9 1F1E8] TC
-🇹🇩	Čada								// [1F1F9 1F1E9] TD
-🇹🇫	Francijas Dienvidjūru teritorija				// [1F1F9 1F1EB] TF
-🇹🇬	Togo								// [1F1F9 1F1EC] TG
-🇹🇭	Taizeme								// [1F1F9 1F1ED] TH
-🇹🇯	Tadžikistāna							// [1F1F9 1F1EF] TJ
-🇹🇰	Tokelau								// [1F1F9 1F1F0] TK
-🇹🇱	Austrumtimora							// [1F1F9 1F1F1] TL
-🇹🇲	Turkmenistāna							// [1F1F9 1F1F2] TM
-🇹🇳	Tunisija							// [1F1F9 1F1F3] TN
-🇹🇴	Tonga								// [1F1F9 1F1F4] TO
-🇹🇷	Turcija								// [1F1F9 1F1F7] TR
-🇹🇹	Trinidāda un Tobāgo						// [1F1F9 1F1F9] TT
-🇹🇻	Tuvalu								// [1F1F9 1F1FB] TV
-🇹🇼	Taivāna								// [1F1F9 1F1FC] TW
-🇹🇿	Tanzānija							// [1F1F9 1F1FF] TZ
-🇺🇦	Ukraina								// [1F1FA 1F1E6] UA
-🇺🇬	Uganda								// [1F1FA 1F1EC] UG
-🇺🇲	ASV Mazās Aizjūras salas					// [1F1FA 1F1F2] UM
-🇺🇳	Apvienoto Nāciju Organizācija					// [1F1FA 1F1F3] UN
-🇺🇸	Amerikas Savienotās Valstis					// [1F1FA 1F1F8] US
-🇺🇾	Urugvaja							// [1F1FA 1F1FE] UY
-🇺🇿	Uzbekistāna							// [1F1FA 1F1FF] UZ
-🇻🇦	Vatikāns							// [1F1FB 1F1E6] VA
-🇻🇨	Sentvinsenta un Grenadīnas					// [1F1FB 1F1E8] VC
-🇻🇪	Venecuēla							// [1F1FB 1F1EA] VE
-🇻🇬	Britu Virdžīnas							// [1F1FB 1F1EC] VG
-🇻🇮	ASV Virdžīnas							// [1F1FB 1F1EE] VI
-🇻🇳	Vjetnama							// [1F1FB 1F1F3] VN
-🇻🇺	Vanuatu								// [1F1FB 1F1FA] VU
-🇼🇫	Volisa un Futunas salas						// [1F1FC 1F1EB] WF
-🇼🇸	Samoa								// [1F1FC 1F1F8] WS
-🇽🇰	Kosova								// [1F1FD 1F1F0] XK
-🇾🇪	Jemena								// [1F1FE 1F1EA] YE
-🇾🇹	Majota								// [1F1FE 1F1F9] YT
-🇿🇦	Dienvidāfrikas Republika					// [1F1FF 1F1E6] ZA
-🇿🇲	Zambija								// [1F1FF 1F1F2] ZM
-🇿🇼	Zimbabve							// [1F1FF 1F1FC] ZW
+🇦🇨	karogs: Debesbraukšanas sala					// [1F1E6 1F1E8] AC
+🇦🇩	karogs: Andora							// [1F1E6 1F1E9] AD
+🇦🇪	karogs: Apvienotie Arābu Emirāti				// [1F1E6 1F1EA] AE
+🇦🇫	karogs: Afganistāna						// [1F1E6 1F1EB] AF
+🇦🇬	karogs: Antigva un Barbuda					// [1F1E6 1F1EC] AG
+🇦🇮	karogs: Angilja							// [1F1E6 1F1EE] AI
+🇦🇱	karogs: Albānija						// [1F1E6 1F1F1] AL
+🇦🇲	karogs: Armēnija						// [1F1E6 1F1F2] AM
+🇦🇴	karogs: Angola							// [1F1E6 1F1F4] AO
+🇦🇶	karogs: Antarktika						// [1F1E6 1F1F6] AQ
+🇦🇷	karogs: Argentīna						// [1F1E6 1F1F7] AR
+🇦🇸	karogs: ASV Samoa						// [1F1E6 1F1F8] AS
+🇦🇹	karogs: Austrija						// [1F1E6 1F1F9] AT
+🇦🇺	karogs: Austrālija						// [1F1E6 1F1FA] AU
+🇦🇼	karogs: Aruba							// [1F1E6 1F1FC] AW
+🇦🇽	karogs: Olandes salas						// [1F1E6 1F1FD] AX
+🇦🇿	karogs: Azerbaidžāna						// [1F1E6 1F1FF] AZ
+🇧🇦	karogs: Bosnija un Hercegovina					// [1F1E7 1F1E6] BA
+🇧🇧	karogs: Barbadosa						// [1F1E7 1F1E7] BB
+🇧🇩	karogs: Bangladeša						// [1F1E7 1F1E9] BD
+🇧🇪	karogs: Beļģija							// [1F1E7 1F1EA] BE
+🇧🇫	karogs: Burkinafaso						// [1F1E7 1F1EB] BF
+🇧🇬	karogs: Bulgārija						// [1F1E7 1F1EC] BG
+🇧🇭	karogs: Bahreina						// [1F1E7 1F1ED] BH
+🇧🇮	karogs: Burundija						// [1F1E7 1F1EE] BI
+🇧🇯	karogs: Benina							// [1F1E7 1F1EF] BJ
+🇧🇱	karogs: Senbartelmī						// [1F1E7 1F1F1] BL
+🇧🇲	karogs: Bermudu salas						// [1F1E7 1F1F2] BM
+🇧🇳	karogs: Bruneja							// [1F1E7 1F1F3] BN
+🇧🇴	karogs: Bolīvija						// [1F1E7 1F1F4] BO
+🇧🇶	karogs: Nīderlandes Karību salas				// [1F1E7 1F1F6] BQ
+🇧🇷	karogs: Brazīlija						// [1F1E7 1F1F7] BR
+🇧🇸	karogs: Bahamu salas						// [1F1E7 1F1F8] BS
+🇧🇹	karogs: Butāna							// [1F1E7 1F1F9] BT
+🇧🇻	karogs: Buvē sala						// [1F1E7 1F1FB] BV
+🇧🇼	karogs: Botsvāna						// [1F1E7 1F1FC] BW
+🇧🇾	karogs: Baltkrievija						// [1F1E7 1F1FE] BY
+🇧🇿	karogs: Beliza							// [1F1E7 1F1FF] BZ
+🇨🇦	karogs: Kanāda							// [1F1E8 1F1E6] CA
+🇨🇨	karogs: Kokosu (Kīlinga) salas					// [1F1E8 1F1E8] CC
+🇨🇩	karogs: Kongo (Kinšasa)						// [1F1E8 1F1E9] CD
+🇨🇫	karogs: Centrālāfrikas Republika				// [1F1E8 1F1EB] CF
+🇨🇬	karogs: Kongo (Brazavila)					// [1F1E8 1F1EC] CG
+🇨🇭	karogs: Šveice							// [1F1E8 1F1ED] CH
+🇨🇮	karogs: Kotdivuāra						// [1F1E8 1F1EE] CI
+🇨🇰	karogs: Kuka salas						// [1F1E8 1F1F0] CK
+🇨🇱	karogs: Čīle							// [1F1E8 1F1F1] CL
+🇨🇲	karogs: Kamerūna						// [1F1E8 1F1F2] CM
+🇨🇳	karogs: Ķīna							// [1F1E8 1F1F3] CN
+🇨🇴	karogs: Kolumbija						// [1F1E8 1F1F4] CO
+🇨🇵	karogs: Klipertona sala						// [1F1E8 1F1F5] CP
+🇨🇷	karogs: Kostarika						// [1F1E8 1F1F7] CR
+🇨🇺	karogs: Kuba							// [1F1E8 1F1FA] CU
+🇨🇻	karogs: Kaboverde						// [1F1E8 1F1FB] CV
+🇨🇼	karogs: Kirasao							// [1F1E8 1F1FC] CW
+🇨🇽	karogs: Ziemsvētku sala						// [1F1E8 1F1FD] CX
+🇨🇾	karogs: Kipra							// [1F1E8 1F1FE] CY
+🇨🇿	karogs: Čehija							// [1F1E8 1F1FF] CZ
+🇩🇪	karogs: Vācija							// [1F1E9 1F1EA] DE
+🇩🇬	karogs: Djego Garsijas atols					// [1F1E9 1F1EC] DG
+🇩🇯	karogs: Džibutija						// [1F1E9 1F1EF] DJ
+🇩🇰	karogs: Dānija							// [1F1E9 1F1F0] DK
+🇩🇲	karogs: Dominika						// [1F1E9 1F1F2] DM
+🇩🇴	karogs: Dominikāna						// [1F1E9 1F1F4] DO
+🇩🇿	karogs: Alžīrija						// [1F1E9 1F1FF] DZ
+🇪🇦	karogs: Seūta un Melilja					// [1F1EA 1F1E6] EA
+🇪🇨	karogs: Ekvadora						// [1F1EA 1F1E8] EC
+🇪🇪	karogs: Igaunija						// [1F1EA 1F1EA] EE
+🇪🇬	karogs: Ēģipte							// [1F1EA 1F1EC] EG
+🇪🇭	karogs: Rietumsahāra						// [1F1EA 1F1ED] EH
+🇪🇷	karogs: Eritreja						// [1F1EA 1F1F7] ER
+🇪🇸	karogs: Spānija							// [1F1EA 1F1F8] ES
+🇪🇹	karogs: Etiopija						// [1F1EA 1F1F9] ET
+🇪🇺	karogs: Eiropas Savienība					// [1F1EA 1F1FA] EU
+🇫🇮	karogs: Somija							// [1F1EB 1F1EE] FI
+🇫🇯	karogs: Fidži							// [1F1EB 1F1EF] FJ
+🇫🇰	karogs: Folklenda salas						// [1F1EB 1F1F0] FI
+🇫🇲	karogs: Mikronēzija						// [1F1EB 1F1F2] FM
+🇫🇴	karogs: Fēru salas						// [1F1EB 1F1F4] FO
+🇫🇷	karogs: Francija						// [1F1EB 1F1F7] FR
+🇬🇦	karogs: Gabona							// [1F1EC 1F1E6] GA
+🇬🇧	karogs: Lielbritānija						// [1F1EC 1F1E7] GB
+🇬🇩	karogs: Grenāda							// [1F1EC 1F1E9] GD
+🇬🇪	karogs: Gruzija							// [1F1EC 1F1EA] GE
+🇬🇫	karogs: Francijas Gviāna					// [1F1EC 1F1EB] GF
+🇬🇬	karogs: Gērnsija						// [1F1EC 1F1EC] GG
+🇬🇭	karogs: Gana							// [1F1EC 1F1ED] GH
+🇬🇮	karogs: Gibraltārs						// [1F1EC 1F1EE] GI
+🇬🇱	karogs: Grenlande						// [1F1EC 1F1F1] GL
+🇬🇲	karogs: Gambija							// [1F1EC 1F1F2] GM
+🇬🇳	karogs: Gvineja							// [1F1EC 1F1F3] GN
+🇬🇵	karogs: Gvadelupa						// [1F1EC 1F1F5] GP
+🇬🇶	karogs: Ekvatoriālā Gvineja					// [1F1EC 1F1F6] GQ
+🇬🇷	karogs: Grieķija						// [1F1EC 1F1F7] GR
+🇬🇸	karogs: Dienviddžordžija un Dienvidsendviču salas		// [1F1EC 1F1F8] GS
+🇬🇹	karogs: Gvatemala						// [1F1EC 1F1F9] GT
+🇬🇺	karogs: Guama							// [1F1EC 1F1FA] GU
+🇬🇼	karogs: Gvineja-Bisava						// [1F1EC 1F1FC] GW
+🇬🇾	karogs: Gajāna							// [1F1EC 1F1FE] GY
+🇭🇰	karogs: Ķīnas īpašās pārvaldes apgabals Honkonga		// [1F1ED 1F1F0] HK
+🇭🇲	karogs: Hērda sala un Makdonalda salas				// [1F1ED 1F1F2] HM
+🇭🇳	karogs: Hondurasa						// [1F1ED 1F1F3] HN
+🇭🇷	karogs: Horvātija						// [1F1ED 1F1F7] HR
+🇭🇹	karogs: Haiti							// [1F1ED 1F1F9] HT
+🇭🇺	karogs: Ungārija						// [1F1ED 1F1FA] HU
+🇮🇨	karogs: Kanāriju salas						// [1F1EE 1F1E8] IC
+🇮🇩	karogs: Indonēzija						// [1F1EE 1F1E9] ID
+🇮🇪	karogs: Īrija							// [1F1EE 1F1EA] IE
+🇮🇱	karogs: Izraēla							// [1F1EE 1F1F1] IL
+🇮🇲	karogs: Mena							// [1F1EE 1F1F2] IM
+🇮🇳	karogs: Indija							// [1F1EE 1F1F3] IN
+🇮🇴	karogs: Indijas okeāna Britu teritorija				// [1F1EE 1F1F4] IO
+🇮🇶	karogs: Irāka							// [1F1EE 1F1F6] IQ
+🇮🇷	karogs: Irāna							// [1F1EE 1F1F7] IR
+🇮🇸	karogs: Islande							// [1F1EE 1F1F8] IS
+🇮🇹	karogs: Itālija							// [1F1EE 1F1F9] IT
+🇯🇪	karogs: Džērsija						// [1F1EF 1F1EA] JE
+🇯🇲	karogs: Jamaika							// [1F1EF 1F1F2] JM
+🇯🇴	karogs: Jordānija						// [1F1EF 1F1F4] JO
+🇯🇵	karogs: Japāna							// [1F1EF 1F1F5] JP
+🇰🇪	karogs: Kenija							// [1F1F0 1F1EA] KE
+🇰🇬	karogs: Kirgizstāna						// [1F1F0 1F1EC] KG
+🇰🇭	karogs: Kambodža						// [1F1F0 1F1ED] KH
+🇰🇮	karogs: Kiribati						// [1F1F0 1F1EE] KI
+🇰🇲	karogs: Komoru salas						// [1F1F0 1F1F2] KM
+🇰🇳	karogs: Sentkitsa un Nevisa					// [1F1F0 1F1F3] KN
+🇰🇵	karogs: Ziemeļkoreja						// [1F1F0 1F1F5] KP
+🇰🇷	karogs: Dienvidkoreja						// [1F1F0 1F1F7] KR
+🇰🇼	karogs: Kuveita							// [1F1F0 1F1FC] KW
+🇰🇾	karogs: Kaimanu salas						// [1F1F0 1F1FE] KY
+🇰🇿	karogs: Kazahstāna						// [1F1F0 1F1FF] KZ
+🇱🇦	karogs: Laosa							// [1F1F1 1F1E6] LA
+🇱🇧	karogs: Libāna							// [1F1F1 1F1E7] LB
+🇱🇨	karogs: Sentlūsija						// [1F1F1 1F1E8] LC
+🇱🇮	karogs: Lihtenšteina						// [1F1F1 1F1EE] LI
+🇱🇰	karogs: Šrilanka						// [1F1F1 1F1F0] LK
+🇱🇷	karogs: Libērija						// [1F1F1 1F1F7] LR
+🇱🇸	karogs: Lesoto							// [1F1F1 1F1F8] LS
+🇱🇹	karogs: Lietuva							// [1F1F1 1F1F9] LT
+🇱🇺	karogs: Luksemburga						// [1F1F1 1F1FA] LU
+🇱🇻	karogs: Latvija							// [1F1F1 1F1FB] LV
+🇱🇾	karogs: Lībija							// [1F1F1 1F1FE] LY
+🇲🇦	karogs: Maroka							// [1F1F2 1F1E6] MA
+🇲🇨	karogs: Monako							// [1F1F2 1F1E8] MC
+🇲🇩	karogs: Moldova							// [1F1F2 1F1E9] MD
+🇲🇪	karogs: Melnkalne						// [1F1F2 1F1EA] ME
+🇲🇫	karogs: Senmartēna						// [1F1F2 1F1EB] MF
+🇲🇬	karogs: Madagaskara						// [1F1F2 1F1EC] MG
+🇲🇭	karogs: Māršala salas						// [1F1F2 1F1ED] MH
+🇲🇰	karogs: Maķedonija						// [1F1F2 1F1F0] MK
+🇲🇱	karogs: Mali							// [1F1F2 1F1F1] ML
+🇲🇲	karogs: Mjanma (Birma)						// [1F1F2 1F1F2] MM
+🇲🇳	karogs: Mongolija						// [1F1F2 1F1F3] MN
+🇲🇴	karogs: Ķīnas īpašās pārvaldes apgabals Makao			// [1F1F2 1F1F4] MO
+🇲🇵	karogs: Ziemeļu Marianas salas					// [1F1F2 1F1F5] MP
+🇲🇶	karogs: Martinika						// [1F1F2 1F1F6] MQ
+🇲🇷	karogs: Mauritānija						// [1F1F2 1F1F7] MR
+🇲🇸	karogs: Montserrata						// [1F1F2 1F1F8] MS
+🇲🇹	karogs: Malta							// [1F1F2 1F1F9] MT
+🇲🇺	karogs: Maurīcija						// [1F1F2 1F1FA] MU
+🇲🇻	karogs: Maldīvija						// [1F1F2 1F1FB] MV
+🇲🇼	karogs: Malāvija						// [1F1F2 1F1FC] MW
+🇲🇽	karogs: Meksika							// [1F1F2 1F1FD] MX
+🇲🇾	karogs: Malaizija						// [1F1F2 1F1FE] MY
+🇲🇿	karogs: Mozambika						// [1F1F2 1F1FF] MZ
+🇳🇦	karogs: Namībija						// [1F1F3 1F1E6] NA
+🇳🇨	karogs: Jaunkaledonija						// [1F1F3 1F1E8] NC
+🇳🇪	karogs: Nigēra							// [1F1F3 1F1EA] NE
+🇳🇫	karogs: Norfolkas sala						// [1F1F3 1F1EB] NF
+🇳🇬	karogs: Nigērija						// [1F1F3 1F1EC] NG
+🇳🇮	karogs: Nikaragva						// [1F1F3 1F1EE] NI
+🇳🇱	karogs: Nīderlande						// [1F1F3 1F1F1] NL
+🇳🇴	karogs: Norvēģija						// [1F1F3 1F1F4] NO
+🇳🇵	karogs: Nepāla							// [1F1F3 1F1F5] NP
+🇳🇷	karogs: Nauru							// [1F1F3 1F1F7] NR
+🇳🇺	karogs: Niue							// [1F1F3 1F1FA] NU
+🇳🇿	karogs: Jaunzēlande						// [1F1F3 1F1FF] NZ
+🇴🇲	karogs: Omāna							// [1F1F4 1F1F2] OM
+🇵🇦	karogs: Panama							// [1F1F5 1F1E6] PA
+🇵🇪	karogs: Peru							// [1F1F5 1F1EA] PE
+🇵🇫	karogs: Francijas Polinēzija					// [1F1F5 1F1EB] PF
+🇵🇬	karogs: Papua-Jaungvineja					// [1F1F5 1F1EC] PG
+🇵🇭	karogs: Filipīnas						// [1F1F5 1F1ED] PH
+🇵🇰	karogs: Pakistāna						// [1F1F5 1F1F0] PK
+🇵🇱	karogs: Polija							// [1F1F5 1F1F1] PL
+🇵🇲	karogs: Senpjēra un Mikelona					// [1F1F5 1F1F2] PM
+🇵🇳	karogs: Pitkērnas salas						// [1F1F5 1F1F3] PN
+🇵🇷	karogs: Puertoriko						// [1F1F5 1F1F7] PR
+🇵🇸	karogs: Palestīna						// [1F1F5 1F1F8] PS
+🇵🇹	karogs: Portugāle						// [1F1F5 1F1F9] PT
+🇵🇼	karogs: Palau							// [1F1F5 1F1FC] PW
+🇵🇾	karogs: Paragvaja						// [1F1F5 1F1FE] PY
+🇶🇦	karogs: Katara							// [1F1F6 1F1E6] QA
+🇷🇪	karogs: Reinjona						// [1F1F7 1F1EA] RE
+🇷🇴	karogs: Rumānija						// [1F1F7 1F1F4] RO
+🇷🇸	karogs: Serbija							// [1F1F7 1F1F8] RS
+🇷🇺	karogs: Krievija						// [1F1F7 1F1FA] RU
+🇷🇼	karogs: Ruanda							// [1F1F7 1F1FC] RW
+🇸🇦	karogs: Saūda Arābija						// [1F1F8 1F1E6] SA
+🇸🇧	karogs: Zālamana salas						// [1F1F8 1F1E7] SB
+🇸🇨	karogs: Seišelu salas						// [1F1F8 1F1E8] SC
+🇸🇩	karogs: Sudāna							// [1F1F8 1F1E9] SD
+🇸🇪	karogs: Zviedrija						// [1F1F8 1F1EA] SE
+🇸🇬	karogs: Singapūra						// [1F1F8 1F1EC] SG
+🇸🇭	karogs: Sv.Helēnas sala						// [1F1F8 1F1ED] SH
+🇸🇮	karogs: Slovēnija						// [1F1F8 1F1EE] SI
+🇸🇯	karogs: Svalbāra un Jana Majena sala				// [1F1F8 1F1EF] SJ
+🇸🇰	karogs: Slovākija						// [1F1F8 1F1F0] SK
+🇸🇱	karogs: Sjerraleone						// [1F1F8 1F1F1] SL
+🇸🇲	karogs: Sanmarīno						// [1F1F8 1F1F2] SM
+🇸🇳	karogs: Senegāla						// [1F1F8 1F1F3] SN
+🇸🇴	karogs: Somālija						// [1F1F8 1F1F4] SO
+🇸🇷	karogs: Surinama						// [1F1F8 1F1F7] SR
+🇸🇸	karogs: Dienvidsudāna						// [1F1F8 1F1F8] SS
+🇸🇹	karogs: Santome un Prinsipi					// [1F1F8 1F1F9] ST
+🇸🇻	karogs: Salvadora						// [1F1F8 1F1FB] SV
+🇸🇽	karogs: Sintmārtena						// [1F1F8 1F1FD] SX
+🇸🇾	karogs: Sīrija							// [1F1F8 1F1FE] SY
+🇸🇿	karogs: Svazilenda						// [1F1F8 1F1FF] SZ
+🇹🇦	karogs: Tristana da Kuņas salas					// [1F1F9 1F1E6] TA
+🇹🇨	karogs: Tērksas un Kaikosas salas				// [1F1F9 1F1E8] TC
+🇹🇩	karogs: Čada							// [1F1F9 1F1E9] TD
+🇹🇫	karogs: Francijas Dienvidjūru teritorija			// [1F1F9 1F1EB] TF
+🇹🇬	karogs: Togo							// [1F1F9 1F1EC] TG
+🇹🇭	karogs: Taizeme							// [1F1F9 1F1ED] TH
+🇹🇯	karogs: Tadžikistāna						// [1F1F9 1F1EF] TJ
+🇹🇰	karogs: Tokelau							// [1F1F9 1F1F0] TK
+🇹🇱	karogs: Austrumtimora						// [1F1F9 1F1F1] TL
+🇹🇲	karogs: Turkmenistāna						// [1F1F9 1F1F2] TM
+🇹🇳	karogs: Tunisija						// [1F1F9 1F1F3] TN
+🇹🇴	karogs: Tonga							// [1F1F9 1F1F4] TO
+🇹🇷	karogs: Turcija							// [1F1F9 1F1F7] TR
+🇹🇹	karogs: Trinidāda un Tobāgo					// [1F1F9 1F1F9] TT
+🇹🇻	karogs: Tuvalu							// [1F1F9 1F1FB] TV
+🇹🇼	karogs: Taivāna							// [1F1F9 1F1FC] TW
+🇹🇿	karogs: Tanzānija						// [1F1F9 1F1FF] TZ
+🇺🇦	karogs: Ukraina							// [1F1FA 1F1E6] UA
+🇺🇬	karogs: Uganda							// [1F1FA 1F1EC] UG
+🇺🇲	karogs: ASV Mazās Aizjūras salas				// [1F1FA 1F1F2] UM
+🇺🇳	karogs: Apvienoto Nāciju Organizācija				// [1F1FA 1F1F3] UN
+🇺🇸	karogs: Amerikas Savienotās Valstis				// [1F1FA 1F1F8] US
+🇺🇾	karogs: Urugvaja						// [1F1FA 1F1FE] UY
+🇺🇿	karogs: Uzbekistāna						// [1F1FA 1F1FF] UZ
+🇻🇦	karogs: Vatikāns						// [1F1FB 1F1E6] VA
+🇻🇨	karogs: Sentvinsenta un Grenadīnas				// [1F1FB 1F1E8] VC
+🇻🇪	karogs: Venecuēla						// [1F1FB 1F1EA] VE
+🇻🇬	karogs: Britu Virdžīnas						// [1F1FB 1F1EC] VG
+🇻🇮	karogs: ASV Virdžīnas						// [1F1FB 1F1EE] VI
+🇻🇳	karogs: Vjetnama						// [1F1FB 1F1F3] VN
+🇻🇺	karogs: Vanuatu							// [1F1FB 1F1FA] VU
+🇼🇫	karogs: Volisa un Futunas salas					// [1F1FC 1F1EB] WF
+🇼🇸	karogs: Samoa							// [1F1FC 1F1F8] WS
+🇽🇰	karogs: Kosova							// [1F1FD 1F1F0] XK
+🇾🇪	karogs: Jemena							// [1F1FE 1F1EA] YE
+🇾🇹	karogs: Majota							// [1F1FE 1F1F9] YT
+🇿🇦	karogs: Dienvidāfrikas Republika				// [1F1FF 1F1E6] ZA
+🇿🇲	karogs: Zambija							// [1F1FF 1F1F2] ZM
+🇿🇼	karogs: Zimbabve						// [1F1FF 1F1FC] ZW
 
 // Subdivision Flags -- ISO 3166-2 Subdivision Codes
 
-🏴󠁧󠁢󠁥󠁮󠁧󠁿	Anglija							// [1F3F4 E0067 E0062 E0065 E006E E0067 E007F]
-🏴󠁧󠁢󠁳󠁣󠁴󠁿	Skotija							// [1F3F4 E0067 E0062 E0073 E0063 E0074 E007F]
-🏴󠁧󠁢󠁷󠁬󠁳󠁿	Velsa							// [1F3F4 E0067 E0062 E0077 E006C E0073 E007F]
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	karogs: Anglija						// [1F3F4 E0067 E0062 E0065 E006E E0067 E007F]
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	karogs: Skotija						// [1F3F4 E0067 E0062 E0073 E0063 E0074 E007F]
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	karogs: Velsa						// [1F3F4 E0067 E0062 E0077 E006C E0073 E007F]
 
 // Keycaps (NOTE: keycap 10 is a single Unicode codepoint)
 
-#️⃣	numura zīme							// [0023 FE0F 20E3]
+#️⃣	taustiņš: #							// [0023 FE0F 20E3]
 *️⃣	taustiņš: *							// [002A FE0F 20E3]
-0️⃣	nulle								// [0030 FE0F 20E3]
-1️⃣	viens								// [0031 FE0F 20E3]
-2️⃣	divi								// [0032 FE0F 20E3]
-3️⃣	trīs								// [0033 FE0F 20E3]
-4️⃣	četri								// [0034 FE0F 20E3]
-5️⃣	pieci								// [0035 FE0F 20E3]
-6️⃣	seši								// [0036 FE0F 20E3]
-7️⃣	septiņi								// [0037 FE0F 20E3]
-8️⃣	astoņi								// [0038 FE0F 20E3]
-9️⃣	deviņi								// [0039 FE0F 20E3]
+0️⃣	taustiņš: 0							// [0030 FE0F 20E3]
+1️⃣	taustiņš: 1							// [0031 FE0F 20E3]
+2️⃣	taustiņš: 2							// [0032 FE0F 20E3]
+3️⃣	taustiņš: 3							// [0033 FE0F 20E3]
+4️⃣	taustiņš: 4							// [0034 FE0F 20E3]
+5️⃣	taustiņš: 5							// [0035 FE0F 20E3]
+6️⃣	taustiņš: 6							// [0036 FE0F 20E3]
+7️⃣	taustiņš: 7							// [0037 FE0F 20E3]
+8️⃣	taustiņš: 8							// [0038 FE0F 20E3]
+9️⃣	taustiņš: 9							// [0039 FE0F 20E3]
 
 // Emoji ZWJ Sequence: Family
 
@@ -1506,31 +1644,31 @@ $textmode
 👩‍❤‍👨	pāris ar sirdi: sieviete un vīrietis		// [1F469 200D 2764 200D 1F468]
 👨‍❤‍👨	pāris ar sirdi: vīrietis un vīrietis		// [1F468 200D 2764 200D 1F468]
 👩‍❤‍👩	pāris ar sirdi: sieviete un sieviete		// [1F469 200D 2764 200D 1F469]
-👨‍👩‍👦	ģimene: vīrietis un sieviete un zēns		// [1F468 200D 1F469 200D 1F466]
-👨‍👩‍👧	ģimene: vīrietis un sieviete un meitene		// [1F468 200D 1F469 200D 1F467]
-👨‍👩‍👧‍👦	ģimene: vīrietis un sieviete un meitene un zēns// [1F468 200D 1F469 200D 1F467 200D 1F466]
-👨‍👩‍👦‍👦	ģimene: vīrietis un sieviete un zēns un zēns// [1F468 200D 1F469 200D 1F466 200D 1F466]
-👨‍👩‍👧‍👧	ģimene: vīrietis un sieviete un meitene un meitene// [1F468 200D 1F469 200D 1F467 200D 1F467]
-👨‍👨‍👦	ģimene: vīrietis un vīrietis un zēns		// [1F468 200D 1F468 200D 1F466]
-👨‍👨‍👧	ģimene: vīrietis un vīrietis un meitene		// [1F468 200D 1F468 200D 1F467]
-👨‍👨‍👧‍👦	ģimene: vīrietis un vīrietis un meitene un zēns// [1F468 200D 1F468 200D 1F467 200D 1F466]
-👨‍👨‍👦‍👦	ģimene: vīrietis un vīrietis un zēns un zēns// [1F468 200D 1F468 200D 1F466 200D 1F466]
-👨‍👨‍👧‍👧	ģimene: vīrietis un vīrietis un meitene un meitene// [1F468 200D 1F468 200D 1F467 200D 1F467]
-👩‍👩‍👦	ģimene: sieviete un sieviete un zēns		// [1F469 200D 1F469 200D 1F466]
-👩‍👩‍👧	ģimene: sieviete un sieviete un meitene		// [1F469 200D 1F469 200D 1F467]
-👩‍👩‍👧‍👦	ģimene: sieviete un sieviete un meitene un zēns// [1F469 200D 1F469 200D 1F467 200D 1F466]
-👩‍👩‍👦‍👦	ģimene: sieviete un sieviete un zēns un zēns// [1F469 200D 1F469 200D 1F466 200D 1F466]
-👩‍👩‍👧‍👧	ģimene: sieviete un sieviete un meitene un meitene// [1F469 200D 1F469 200D 1F467 200D 1F467]
+👨‍👩‍👦	ģimene: vīrietis, sieviete un zēns		// [1F468 200D 1F469 200D 1F466]
+👨‍👩‍👧	ģimene: vīrietis, sieviete un meitene		// [1F468 200D 1F469 200D 1F467]
+👨‍👩‍👧‍👦	ģimene: vīrietis, sieviete, meitene un zēns// [1F468 200D 1F469 200D 1F467 200D 1F466]
+👨‍👩‍👦‍👦	ģimene: vīrietis, sieviete, zēns un zēns// [1F468 200D 1F469 200D 1F466 200D 1F466]
+👨‍👩‍👧‍👧	ģimene: vīrietis, sieviete, meitene un meitene// [1F468 200D 1F469 200D 1F467 200D 1F467]
+👨‍👨‍👦	ģimene: vīrietis, vīrietis un zēns		// [1F468 200D 1F468 200D 1F466]
+👨‍👨‍👧	ģimene: vīrietis, vīrietis un meitene		// [1F468 200D 1F468 200D 1F467]
+👨‍👨‍👧‍👦	ģimene: vīrietis, vīrietis, meitene un zēns// [1F468 200D 1F468 200D 1F467 200D 1F466]
+👨‍👨‍👦‍👦	ģimene: vīrietis, vīrietis, zēns un zēns// [1F468 200D 1F468 200D 1F466 200D 1F466]
+👨‍👨‍👧‍👧	ģimene: vīrietis, vīrietis, meitene un meitene// [1F468 200D 1F468 200D 1F467 200D 1F467]
+👩‍👩‍👦	ģimene: sieviete, sieviete un zēns		// [1F469 200D 1F469 200D 1F466]
+👩‍👩‍👧	ģimene: sieviete, sieviete un meitene		// [1F469 200D 1F469 200D 1F467]
+👩‍👩‍👧‍👦	ģimene: sieviete, sieviete, meitene un zēns// [1F469 200D 1F469 200D 1F467 200D 1F466]
+👩‍👩‍👦‍👦	ģimene: sieviete, sieviete, zēns un zēns// [1F469 200D 1F469 200D 1F466 200D 1F466]
+👩‍👩‍👧‍👧	ģimene: sieviete, sieviete, meitene un meitene// [1F469 200D 1F469 200D 1F467 200D 1F467]
 👨‍👦	ģimene: vīrietis un zēns				// [1F468 200D 1F466]
-👨‍👦‍👦	ģimene: vīrietis un zēns un zēns		// [1F468 200D 1F466 200D 1F466]
+👨‍👦‍👦	ģimene: vīrietis, zēns un zēns			// [1F468 200D 1F466 200D 1F466]
 👨‍👧	ģimene: vīrietis un meitene				// [1F468 200D 1F467]
-👨‍👧‍👦	ģimene: vīrietis un meitene un zēns		// [1F468 200D 1F467 200D 1F466]
-👨‍👧‍👧	ģimene: vīrietis un meitene un meitene		// [1F468 200D 1F467 200D 1F467]
+👨‍👧‍👦	ģimene: vīrietis, meitene un zēns		// [1F468 200D 1F467 200D 1F466]
+👨‍👧‍👧	ģimene: vīrietis, meitene un meitene		// [1F468 200D 1F467 200D 1F467]
 👩‍👦	ģimene: sieviete un zēns				// [1F469 200D 1F466]
-👩‍👦‍👦	ģimene: sieviete un zēns un zēns		// [1F469 200D 1F466 200D 1F466]
+👩‍👦‍👦	ģimene: sieviete, zēns un zēns			// [1F469 200D 1F466 200D 1F466]
 👩‍👧	ģimene: sieviete un meitene				// [1F469 200D 1F467]
-👩‍👧‍👦	ģimene: sieviete un meitene un zēns		// [1F469 200D 1F467 200D 1F466]
-👩‍👧‍👧	ģimene: sieviete un meitene un meitene		// [1F469 200D 1F467 200D 1F467]
+👩‍👧‍👦	ģimene: sieviete, meitene un zēns		// [1F469 200D 1F467 200D 1F466]
+👩‍👧‍👧	ģimene: sieviete, meitene un meitene		// [1F469 200D 1F467 200D 1F467]
 
 // Emoji ZWJ Sequence: Gendered Role, with object
 
@@ -1574,27 +1712,31 @@ $textmode
 👱‍♀	blondīne						// [1F471 200D 2640]
 👱‍♂	blondīns						// [1F471 200D 2642]
 👳‍♀	sieviete ar turbānu					// [1F473 200D 2640]
-👳‍♂	persona ar turbānu					// [1F473 200D 2642]
+👳‍♂	vīrietis ar turbānu					// [1F473 200D 2642]
 👷‍♀	inženiere						// [1F477 200D 2640]
 👷‍♂	inženieris						// [1F477 200D 2642]
 💂‍♀	sardze							// [1F482 200D 2640]
 💂‍♂	apsargs							// [1F482 200D 2642]
 🕵️‍♀	detektīve						// [1F575 200D 2640]
 🕵️‍♂	vīrietis izmeklē					// [1F575 200D 2642]
-🧙‍♀	woman mage						// [1F9D9 200D 2640] (no translation)
-🧙‍♂	man mage						// [1F9D9 200D 2642] (no translation)
-🧚‍♀	woman fairy						// [1F9DA 200D 2640] (no translation)
-🧚‍♂	man fairy						// [1F9DA 200D 2642] (no translation)
-🧛‍♀	woman vampire						// [1F9DB 200D 2640] (no translation)
-🧛‍♂	man vampire						// [1F9DB 200D 2642] (no translation)
-🧜‍♀	mermaid							// [1F9DC 200D 2640] (no translation)
-🧜‍♂	merman							// [1F9DC 200D 2642] (no translation)
-🧝‍♀	woman elf						// [1F9DD 200D 2640] (no translation)
-🧝‍♂	man elf							// [1F9DD 200D 2642] (no translation)
-🧞‍♀	woman genie						// [1F9DE 200D 2640] (no translation)
-🧞‍♂	man genie						// [1F9DE 200D 2642] (no translation)
-🧟‍♀	woman zombie						// [1F9DF 200D 2640] (no translation)
-🧟‍♂	man zombie						// [1F9DF 200D 2642] (no translation)
+🦸‍♀	sieviete supervarone					// [1F9B8 200D 2640]
+🦸‍♂	vīrietis supervaronis					// [1F9B8 200D 2642]
+🦹‍♀	superļaunā sieviete					// [1F9B9 200D 2640]
+🦹‍♂	superļaunais vīrietis					// [1F9B9 200D 2642]
+🧙‍♀	zintniece						// [1F9D9 200D 2640]
+🧙‍♂	zintnieks						// [1F9D9 200D 2642]
+🧚‍♀	laumiņa							// [1F9DA 200D 2640]
+🧚‍♂	pasaku burvis						// [1F9DA 200D 2642]
+🧛‍♀	sieviete vampīrs					// [1F9DB 200D 2640]
+🧛‍♂	vīriešu kārtas vampīrs					// [1F9DB 200D 2642]
+🧜‍♀	nāra							// [1F9DC 200D 2640]
+🧜‍♂	vīrietis nāra						// [1F9DC 200D 2642]
+🧝‍♀	elfu sieviete						// [1F9DD 200D 2640]
+🧝‍♂	elfu vīrietis						// [1F9DD 200D 2642]
+🧞‍♀	sieviete džins						// [1F9DE 200D 2640]
+🧞‍♂	vīrietis džins						// [1F9DE 200D 2642]
+🧟‍♀	sieviete zombijs					// [1F9DF 200D 2640]
+🧟‍♂	vīrietis zombijs					// [1F9DF 200D 2642]
 
 // Emoji ZWJ Sequence: Gendered Activity
 
@@ -1607,13 +1749,13 @@ $textmode
 🏊‍♀	peldētāja						// [1F3CA 200D 2640]
 🏊‍♂	vīrietis peld						// [1F3CA 200D 2642]
 🏋️‍♀	svarcēlāja						// [1F3CB 200D 2640]
-🏋️‍♂	vīrietis ceļ svaru					// [1F3CB 200D 2642]
+🏋️‍♂	svarcēlājs						// [1F3CB 200D 2642]
 🏌️‍♀	sieviete spēlē golfu					// [1F3CC 200D 2640]
 🏌️‍♂	vīrietis spēlē golfu					// [1F3CC 200D 2642]
-👯‍♀	sieviete izklaidējas					// [1F46F 200D 2640]
-👯‍♂	vīrietis izklaidējas					// [1F46F 200D 2642]
-💆‍♀	sieviete masē seju					// [1F486 200D 2640]
-💆‍♂	vīrietis masē seju					// [1F486 200D 2642]
+👯‍♀	dejotājas						// [1F46F 200D 2640]
+👯‍♂	dejotāji						// [1F46F 200D 2642]
+💆‍♀	sievietei masē seju					// [1F486 200D 2640]
+💆‍♂	vīrietim masē seju					// [1F486 200D 2642]
 💇‍♀	sieviete pie friziera					// [1F487 200D 2640]
 💇‍♂	vīrietis pie friziera					// [1F487 200D 2642]
 🚣‍♀	airētāja						// [1F6A3 200D 2640]
@@ -1634,43 +1776,44 @@ $textmode
 🤽‍♂	ūdenspolo spēlētājs					// [1F93D 200D 2642]
 🤾‍♀	rokasbumbas spēlētāja					// [1F93E 200D 2640]
 🤾‍♂	rokasbumbas spēlētājs					// [1F93E 200D 2642]
-🧖‍♀	woman in steamy room					// [1F9D6 200D 2640] (no translation)
-🧖‍♂	man in steamy room					// [1F9D6 200D 2642] (no translation)
-🧗‍♀	woman climbing						// [1F9D7 200D 2640] (no translation)
-🧗‍♂	man climbing						// [1F9D7 200D 2642] (no translation)
-🧘‍♀	woman in lotus position					// [1F9D8 200D 2640] (no translation)
-🧘‍♂	man in lotus position					// [1F9D8 200D 2642] (no translation)
+🧖‍♀	sieviete tvaika telpā					// [1F9D6 200D 2640]
+🧖‍♂	vīrietis tvaika telpā					// [1F9D6 200D 2642]
+🧗‍♀	alpīniste						// [1F9D7 200D 2640]
+🧗‍♂	kāpējs							// [1F9D7 200D 2642]
+🧘‍♀	sieviete lotosa pozā					// [1F9D8 200D 2640]
+🧘‍♂	vīrietis lotosa pozā					// [1F9D8 200D 2642]
 
 // Emoji ZWJ Sequence: Gendered Gestures
 
 💁‍♀	sieviete stiepj roku					// [1F481 200D 2640]
 💁‍♂	vīrietis stiepj roku					// [1F481 200D 2642]
-🙅‍♀	sieviete pret						// [1F645 200D 2640]
-🙅‍♂	vīrietis pret						// [1F645 200D 2642]
-🙆‍♀	sieviete par						// [1F646 200D 2640]
-🙆‍♂	vīrietis par						// [1F646 200D 2642]
-🙇‍♀	sieviete klanās						// [1F647 200D 2640]
-🙇‍♂	vīrietis klanās						// [1F647 200D 2642]
+🙅‍♀	sieviete ar aizlieguma žestu				// [1F645 200D 2640]
+🙅‍♂	vīrietis ar aizlieguma žestu				// [1F645 200D 2642]
+🙆‍♀	sieviete ar apstiprinājuma žestu			// [1F646 200D 2640]
+🙆‍♂	vīrietis ar apstiprinājuma žestu			// [1F646 200D 2642]
+🙇‍♀	sieviete paklanās					// [1F647 200D 2640]
+🙇‍♂	vīrietis paklanās					// [1F647 200D 2642]
 🙋‍♀	sieviete ar paceltu roku				// [1F64B 200D 2640]
 🙋‍♂	vīrietis ar paceltu roku				// [1F64B 200D 2642]
-🙍‍♀	dusmīga sieviete					// [1F64D 200D 2640]
-🙍‍♂	dusmīgs vīrietis					// [1F64D 200D 2642]
-🙎‍♀	bēdīga sieviete						// [1F64E 200D 2640]
-🙎‍♂	bēdīgs vīrietis						// [1F64E 200D 2642]
-🤦‍♀	sieviete bez runas spējām				// [1F926 200D 2640]
-🤦‍♂	vīrietis bez runas spējām				// [1F926 200D 2642]
+🙍‍♀	norūpējusies sieviete					// [1F64D 200D 2640]
+🙍‍♂	norūpējies vīrietis					// [1F64D 200D 2642]
+🙎‍♀	sabozusies sieviete					// [1F64E 200D 2640]
+🙎‍♂	sabozies vīrietis					// [1F64E 200D 2642]
+🤦‍♀	sieviete ar saķertu galvu				// [1F926 200D 2640]
+🤦‍♂	vīrietis ar saķertu galvu				// [1F926 200D 2642]
 🤷‍♀	sieviete rausta plecus					// [1F937 200D 2640]
 🤷‍♂	vīrietis rausta plecus					// [1F937 200D 2642]
 
 // Emoji ZWJ Sequence: Other
 
 🏳‍🌈	varavīksnes karogs					// [1F3F3 200D 1F308]
+🏴‍☠	pirātu karogs						// [1F3F4 200D 2620]
 👁‍🗨	liecinieka zīme						// [1F441 200D 1F5E8]
 
 // References:
-//   [UCD]	Unicode Character Database 9.0.0 [http://www.unicode.org/Public/9.0.0/ucd/]
-//   [Emoji]	Unicode Emoji 5.0 [http://www.unicode.org/Public/emoji/5.0/]
-//   [CLDR]	Unicode Common Locale Data Repository 31.0.1 [http://cldr.unicode.org/index/downloads/cldr-31]
+//   [UCD]	Unicode Character Database 11.0.0 [http://www.unicode.org/Public/11.0.0/ucd/]
+//   [Emoji]	Unicode Emoji 11.0 [http://www.unicode.org/Public/emoji/11.0/]
+//   [CLDR]	Unicode Common Locale Data Repository 33.1 [http://cldr.unicode.org/index/downloads/cldr-33.1]
 //
 // Sources:
 //   1.  emoji-test.txt (Emoji)

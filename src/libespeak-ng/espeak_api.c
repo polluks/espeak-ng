@@ -27,8 +27,10 @@
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
 
-#include "speech.h"
+#include "compiledict.h"
+
 #include "phoneme.h"
+#include "voice.h"
 #include "synthesize.h"
 #include "translate.h"
 #include "event.h"
@@ -124,6 +126,11 @@ ESPEAK_API espeak_ERROR espeak_SetPunctuationList(const wchar_t *punctlist)
 ESPEAK_API espeak_ERROR espeak_SetVoiceByName(const char *name)
 {
 	return status_to_espeak_error(espeak_ng_SetVoiceByName(name));
+}
+
+ESPEAK_API espeak_ERROR espeak_SetVoiceByFile(const char *filename)
+{
+	return status_to_espeak_error(espeak_ng_SetVoiceByFile(filename));
 }
 
 ESPEAK_API espeak_ERROR espeak_SetVoiceByProperties(espeak_VOICE *voice_selector)

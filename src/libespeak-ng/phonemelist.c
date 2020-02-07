@@ -19,6 +19,7 @@
 
 #include "config.h"
 
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,8 +29,11 @@
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
 
-#include "speech.h"
+#include "phonemelist.h"
+#include "synthdata.h"
+
 #include "phoneme.h"
+#include "voice.h"
 #include "synthesize.h"
 #include "translate.h"
 
@@ -37,10 +41,7 @@ const unsigned char pause_phonemes[8] = {
 	0, phonPAUSE_VSHORT, phonPAUSE_SHORT, phonPAUSE, phonPAUSE_LONG, phonGLOTTALSTOP, phonPAUSE_LONG, phonPAUSE_LONG
 };
 
-extern int n_ph_list2;
-extern PHONEME_LIST2 ph_list2[N_PHONEME_LIST]; // first stage of text->phonemes
-
-static int SubstitutePhonemes(PHONEME_LIST *plist_out)
+static int SubstitutePhonemes(PHONEME_LIST *plist_out, int n_ph_list2, PHONEME_LIST2 *ph_list2)
 {
 	// Copy the phonemes list and perform any substitutions that are required for the
 	// current voice
@@ -48,28 +49,33 @@ static int SubstitutePhonemes(PHONEME_LIST *plist_out)
 	int k;
 	int replace_flags;
 	int n_plist_out = 0;
-	int word_end;
+	bool word_end;
 	PHONEME_LIST2 *plist2;
 	PHONEME_TAB *next = NULL;
+	int deleted_sourceix = -1;
 
 	for (ix = 0; (ix < n_ph_list2) && (n_plist_out < N_PHONEME_LIST); ix++) {
 		plist2 = &ph_list2[ix];
+		if (deleted_sourceix != -1) {
+			plist2->sourceix = deleted_sourceix;
+			deleted_sourceix = -1;
+		}
 
 		// don't do any substitution if the language has been temporarily changed
 		if (!(plist2->synthflags & SFLAG_SWITCHED_LANG)) {
 			if (ix < (n_ph_list2 -1))
 				next = phoneme_tab[ph_list2[ix+1].phcode];
 
-			word_end = 0;
+			word_end = false;
 			if ((plist2+1)->sourceix || ((next != 0) && (next->type == phPAUSE)))
-				word_end = 1;        // this phoneme is the end of a word
+				word_end = true; // this phoneme is the end of a word
 
 			// check whether a Voice has specified that we should replace this phoneme
 			for (k = 0; k < n_replace_phonemes; k++) {
 				if (plist2->phcode == replace_phonemes[k].old_ph) {
 					replace_flags = replace_phonemes[k].type;
 
-					if ((replace_flags & 1) && (word_end == 0))
+					if ((replace_flags & 1) && (word_end == false))
 						continue; // this replacement only occurs at the end of a word
 
 					if ((replace_flags & 2) && ((plist2->stresslevel & 0x7) > 3))
@@ -86,8 +92,10 @@ static int SubstitutePhonemes(PHONEME_LIST *plist_out)
 				}
 			}
 
-			if (plist2->phcode == 0)
+			if (plist2->phcode == 0) {
+				deleted_sourceix = plist2->sourceix;
 				continue; // phoneme has been replaced by NULL, so don't copy it
+			}
 		}
 
 		// copy phoneme into the output list
@@ -99,7 +107,7 @@ static int SubstitutePhonemes(PHONEME_LIST *plist_out)
 	return n_plist_out;
 }
 
-void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
+void MakePhonemeList(Translator *tr, int post_pause, bool start_sentence, int *n_ph_list2, PHONEME_LIST2 *ph_list2)
 {
 	int ix = 0;
 	int j;
@@ -117,9 +125,10 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 	int alternative;
 	int delete_count;
 	int word_start;
-	int inserted;
-	int deleted;
+	bool inserted;
+	bool deleted;
 	PHONEME_DATA phdata;
+	bool start_of_clause = true;
 
 	int n_ph_list3;
 	PHONEME_LIST *plist3;
@@ -132,11 +141,11 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 	memset(&worddata, 0, sizeof(worddata));
 	plist2 = ph_list2;
 	phlist = phoneme_list;
-	end_sourceix = plist2[n_ph_list2-1].sourceix;
+	end_sourceix = plist2[*n_ph_list2 - 1].sourceix;
 
 	// is the last word of the clause unstressed ?
 	max_stress = 0;
-	for (j = n_ph_list2-3; j >= 0; j--) {
+	for (j = *n_ph_list2 - 3; j >= 0; j--) {
 		// start with the last phoneme (before the terminating pauses) and move backwards
 		if ((plist2[j].stresslevel & 0x7f) > max_stress)
 			max_stress = plist2[j].stresslevel & 0x7f;
@@ -160,12 +169,18 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 	// look for switch of phoneme tables
 	delete_count = 0;
 	current_phoneme_tab = tr->phoneme_tab_ix;
-	for (j = 0; j < n_ph_list2; j++) {
+	int deleted_sourceix = -1;
+	for (j = 0; j < *n_ph_list2; j++) {
 		if (current_phoneme_tab != tr->phoneme_tab_ix)
 			plist2[j].synthflags |= SFLAG_SWITCHED_LANG;
 
-		if (delete_count > 0)
+		if (delete_count > 0) {
 			memcpy(&plist2[j-delete_count], &plist2[j], sizeof(plist2[0]));
+			if (deleted_sourceix != -1) {
+				plist2[j-delete_count].sourceix = deleted_sourceix;
+				deleted_sourceix = -1;
+			}
+		}
 
 		if (plist2[j].phcode == phonSWITCH) {
 			if ((!(plist2[j].synthflags & SFLAG_EMBEDDED)) && (
@@ -175,28 +190,30 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			        )) {
 				// delete this phonSWITCH if it's switching to the current phoneme table, or
 				// delete this phonSWITCH if its followed by another phonSWITCH
+				if (deleted_sourceix == -1 && plist2[j].sourceix != 0)
+					deleted_sourceix = plist2[j].sourceix;
 				delete_count++;
 			} else
 				current_phoneme_tab = plist2[j].tone_ph;
 		}
 
 	}
-	n_ph_list2 -= delete_count;
+	*n_ph_list2 -= delete_count;
 
 	if ((regression = tr->langopts.param[LOPT_REGRESSIVE_VOICING]) != 0) {
 		// set consonant clusters to all voiced or all unvoiced
 		// Regressive
 		int type;
-		int stop_propagation = 0;
+		bool stop_propagation = false;
 		voicing = 0;
 
-		for (j = n_ph_list2-1; j >= 0; j--) {
+		for (j = *n_ph_list2 - 1; j >= 0; j--) {
 			ph = phoneme_tab[plist2[j].phcode];
 			if (ph == NULL)
 				continue;
 
 			if (plist2[j].synthflags & SFLAG_SWITCHED_LANG) {
-				stop_propagation = 0;
+				stop_propagation = false;
 				voicing = 0;
 				if (regression & 0x100)
 					voicing = 1; // word-end devoicing
@@ -208,7 +225,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			if (regression & 0x2) {
 				// [v] amd [v;] don't cause regression, or [R^]
 				if (((ph->mnemonic & 0xff) == 'v') || ((ph->mnemonic & 0xff) == 'R')) {
-					stop_propagation = 1;
+					stop_propagation = true;
 					if (regression & 0x10)
 						voicing = 0;
 				}
@@ -234,7 +251,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			}
 			if (stop_propagation) {
 				voicing = 0;
-				stop_propagation = 0;
+				stop_propagation = false;
 			}
 
 			if (plist2[j].sourceix) {
@@ -251,7 +268,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 		}
 	}
 
-	n_ph_list3 = SubstitutePhonemes(ph_list3) - 2;
+	n_ph_list3 = SubstitutePhonemes(ph_list3, (int) *n_ph_list2, ph_list2) - 2;
 
 	for (j = 0; (j < n_ph_list3) && (ix < N_PHONEME_LIST-3);) {
 		if (ph_list3[j].sourceix) {
@@ -284,8 +301,8 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 	for (j = 0; insert_ph || ((j < n_ph_list3) && (ix < N_PHONEME_LIST-3)); j++) {
 		plist3 = &ph_list3[j];
 
-		inserted = 0;
-		deleted = 0;
+		inserted = false;
+		deleted = false;
 		if (insert_ph != 0) {
 			// we have a (linking) phoneme which we need to insert here
 			next = phoneme_tab[plist3->phcode];      // this phoneme, i.e. after the insert
@@ -310,7 +327,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			ph = phoneme_tab[insert_ph];
 			plist3->ph = ph;
 			insert_ph = 0;
-			inserted = 1; // don't insert the same phoneme repeatedly
+			inserted = true; // don't insert the same phoneme repeatedly
 		} else {
 			// otherwise get the next phoneme from the list
 			if (plist3->sourceix != 0)
@@ -338,7 +355,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			next = phoneme_tab[alternative];
 		}
 
-		if (((alternative = phdata.pd_param[pd_INSERTPHONEME]) > 0) && (inserted == 0)) {
+		if (((alternative = phdata.pd_param[pd_INSERTPHONEME]) > 0) && (inserted == false)) {
 			// PROBLEM: if we insert a phoneme before a vowel then we loose the stress.
 			PHONEME_TAB *ph2;
 			ph2 = ph;
@@ -368,7 +385,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			plist3->phcode = alternative;
 
 			if (alternative == 1)
-				deleted = 1; // NULL phoneme, discard
+				deleted = true; // NULL phoneme, discard
 			else {
 				if (ph->type == phVOWEL) {
 					plist3->synthflags |= SFLAG_SYLLABLE;
@@ -383,7 +400,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			}
 		}
 
-		if ((ph->type == phVOWEL) && (deleted == 0)) {
+		if ((ph->type == phVOWEL) && (deleted == false)) {
 			PHONEME_LIST *p;
 
 			// Check for consecutive unstressed syllables, even across word boundaries.
@@ -482,7 +499,7 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 		if ((insert_ph == 0) && (phdata.pd_param[pd_APPENDPHONEME] != 0))
 			insert_ph = phdata.pd_param[pd_APPENDPHONEME];
 
-		if (deleted == 0) {
+		if (deleted == false) {
 			phlist[ix].ph = ph;
 			phlist[ix].type = ph->type;
 			phlist[ix].env = PITCHfall; // default, can be changed in the "intonation" module
@@ -495,11 +512,16 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 
 			if (plist3->sourceix != 0) {
 				phlist[ix].sourceix = plist3->sourceix;
-				phlist[ix].newword = 1; // this phoneme is the start of a word
+				phlist[ix].newword = PHLIST_START_OF_WORD;
 
 				if (start_sentence) {
-					phlist[ix].newword = 5; // start of sentence + start of word
-					start_sentence = 0;
+					phlist[ix].newword |= PHLIST_START_OF_SENTENCE;
+					start_sentence = false;
+				}
+
+				if (start_of_clause) {
+					phlist[ix].newword |= PHLIST_START_OF_CLAUSE;
+					start_of_clause = false;
 				}
 			} else
 				phlist[ix].newword = 0;
@@ -522,7 +544,8 @@ void MakePhonemeList(Translator *tr, int post_pause, int start_sentence)
 			ix++;
 		}
 	}
-	phlist[ix].newword = 2; // end of clause
+
+	phlist[ix].newword = PHLIST_END_OF_CLAUSE;
 
 	phlist[ix].phcode = phonPAUSE;
 	phlist[ix].type = phPAUSE; // terminate with 2 Pause phonemes

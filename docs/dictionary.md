@@ -4,6 +4,7 @@
 - [Phoneme names](#phoneme-names)
 - [Pronunciation Rules](#pronunciation-rules)
   - [Rule Groups](#rule-groups)
+  - [Letter Groups](#letter-groups)
   - [Rules](#rules)
   - [Special Characters in \<phoneme string\>](#special-characters-in-phoneme-string)
   - [Special Characters in Both \<pre\> and \<post\> ](#special-characters-in-both-pre-and-post)
@@ -19,6 +20,7 @@
   - [Letter Names](#letter-names)
   - [Numbers](#numbers)
 - [Character Substitution](#character-substitution)
+- [(Re)definition of charater groups](#redefinition-of-charater-groups)
 
 ----------
 
@@ -55,17 +57,16 @@ The utility 'phonemes' are:
 | `=`    | put the primary stress on the preceding syllable |
 | `_:`   | short pause |
 | `_`    | a shorter pause |
-| `||`   | indicates a word boundary within a phoneme string |
-| `|`    | can be used to separate two adjacent characters, to prevent them from being considered as a multi-character phoneme mnemonic |
- 
+| <code>&#124;</code> | use to separate two adjacent characters, to prevent them from being considered as a single multi-character phoneme |
+| <code>&#124;&#124;</code> | indicates a word boundary within a phonetic string |
+
 It is not necessary to specify the stress of every syllable. Stress
 markers are only needed in order to change the effect of the language's
 default stress rule.
 
 The phonemes which are used to represent a language's sounds are based
-loosely on the Kirshenbaum ascii character representation of the
-International Phonetic Alphabet
-[www.kirshenbaum.net/IPA/ascii-ipa.pdf](http://www.kirshenbaum.net/IPA/ascii-ipa.pdf)
+loosely on the [Kirshenbaum (ASCII-IPA)](phonemes/kirshenbaum.md)
+representation of the International Phonetic Alphabet.
 
 Full list of commonly used phonemes can be found in the `phsource/phonemes`
 file.
@@ -97,11 +98,24 @@ The rules are organized in groups, each starting with a `.group` line:
   They would not be needed for a language which has regular spelling rules. The
   first character can only be an ascii character (less than 0x80).
 
+**notes about rule groups**
+
+When matching a word, firstly the 2-letter group for the two letters at
+the current position in the word (if such a group exists) is searched,
+and then the single-letter group. The highest scoring rule in either of
+those two groups is used.
+
 * `.group`
   A group for other characters which don't have their own group.
 
 * `.replace`
   See section [Character Substitution](#character-substitution).
+
+### Letter groups
+
+Specific group of rules is declaration of letter sequences with some common
+feature of letters for particular language. It may be used as a placeholder
+of prefixes/infixes of words (in prerules) or infixed/postfixes in (postrules).
 
 * `.L<nn>`
   Defines a group of letter sequences, any of which can match with `Lnn` in a
@@ -113,33 +127,40 @@ The rules are organized in groups, each starting with a `.group` line:
 
 There can be up to 200 items in one letter group.
 
-When matching a word, firstly the 2-letter group for the two letters at
-the current position in the word (if such a group exists) is searched,
-and then the single-letter group. The highest scoring rule in either of
-those two groups is used.
+When matching a word, firstly the group containing most letters is checked at
+the current position in the word (if such a group exists), then shorter ones
+till to the single-letter groups. The highest scoring rule of matching group is used.
 
-`~` Letter in letter group means, that there can be no letter in this group 
-    at the beginning or end of the word.
+`~` Letter in letter group means, that there can be no letter in this group
+    in the pre- or post- rule.
 
-_For example:_
+_Example with prerule group:_
 
 ```
 .L01 ~ b c
-
 .group a
   L01) a      i  // A
-       a (L01 u  // B
 ```
 following rules will match for words:
 
-|Word |Match|Spelling|
-|-----|-----|--------|
-|base |A    |bise    |
-|case |A    |cise    |
-|ace  |A    |ice     |
-|tab  |B    |tub     |
-|mac  |B    |tuc     |
-|tea  |B    |teu     |
+|Word |Phonetic spelling|
+|-----|-----------------|
+|base |bice             |
+|case |cice             |
+|ace  |ice              |
+
+_Example with postrule group:_
+
+```
+.L01 ~ b c
+.group a
+       a (L01 u
+```
+|Word |Phonetic spelling|
+|-----|-----------------|
+|tab  |tub              |
+|mac  |muc              |
+|tea  |teu              |
 
 ### Rules
 
@@ -147,16 +168,25 @@ Each rule is on separate line, and has the syntax:
 
 	[<pre>)] <match> [(<post>] <phoneme string>
 
-e.g.
+* characters in `<pre>)` group are already spelled and "consumed"
+* characters in `<match>` group are ones which will be spelled and "consumed"
+by best matching rule
+* characters in `(<post>` group will not be spelled and produced, but can be
+used as reference to choose matching rule
 
+Note that `<match>` group can be longer than name of character group, but cannot
+be shorter.
+
+Example:
 
 	.group o
-	       o        0    // "o" is pronounced as [0]
-	       oo       u:   // but "oo" is pronounced as [u:]
-	    b) oo (k    U
+	       o      0   // "o" is pronounced as [0], one letter consumed
+	       oo     u:  // but "oo" is pronounced as [u:], two letters consumed
+	    b) oo (k  U   // pronounced as [U], two letters consumed
+
 
 `oo` is pronounced as `[u:]`, but when also preceded by `b` and followed
-by `k`, it is pronounced `[U]`.
+by `k`, it is pronounced `[U]`. If 
 
 In the case of a single-letter group, the first character of `<match>`
 much be the group letter. In the case of a 2-letter group, the first two
@@ -189,10 +219,10 @@ translation rules and spoken with English phonemes.
 |-------------|-------------|
 | `_`         | Beginning or end of a word (or a hyphen). |
 | `-`         | Hyphen. |
-| `A`         | Any vowel (the set of vowel characters may be defined for a particular language). |
-| `C`         | Any consonant. |
-| `B H F G Y` | These may indicate other sets of characters (defined for a particular language). |
-| `L<nn>`     | Any of the sequence of characters defined as a letter group (see above). |
+| `A`         | Any vowel[<sup>1</sup>](#redefinition-of-charater-groups). |
+| `C`         | Any consonant [<sup>1</sup>](#redefinition-of-charater-groups). |
+| `B H F G Y` | These may indicate other sets of characters[<sup>1</sup>](#redefinition-of-charater-groups). |
+| `L<nn>`     | Any of the sequence of characters defined as a letter grup. |
 | `D`         | Any digit. |
 | `K`         | Not a vowel (i.e. a consonant or word boundary or non-alphabetic character). |
 | `X`         | There is no vowel until the word boundary. |
@@ -202,8 +232,7 @@ translation rules and spoken with English phonemes.
 | `\xxx`      | Character is written as by 3 digit octal value of `xxx`|
 | `@`         | One syllable (i.e. at least one vowel or diphthong) |
 
-The sets of letters indicated by `A`, `B`, `C`, `E`, `F` and `G` may be defined
-differently for each language.
+
 
 Examples of rules:
 ```
@@ -379,8 +408,8 @@ instead of, or as well as, the phonetic translation.
 | `$hasdot`            | Use this pronunciation if the word is followed by a dot. (This attribute also implies `$dot`). |
 | `$max3`              | Limit to 3 repetitions in pronunciation.|
 | `$text`              | Word translates to replacement text, not phonemes.|
-| `$verbf`             | The following word is probably is a verb. |
-| `$verbsf`            | The following word is probably is a if it has an "s" suffix. |
+| `$verbf`             | The following word is probably a verb. |
+| `$verbsf`            | The following word is probably a verb if it has an "s" suffix. |
 | `$nounf`             | The following word is probably not a verb. |
 | `$pastf`             | The following word is probably past tense. |
 | `$verb`              | Use this pronunciation if it's a verb, i.e. previously processed word had `$verbf` or `$verbsf` set.|
@@ -493,14 +522,27 @@ each language. The number fragments are given in the `*_list` file.
 ## Character Substitution
 
 Character substitutions can be specified by using a `.replace` section
-at the start of the `*_rules` file. Each line specified either one or
-two alphabetic characters to be replaced by another one or two
-alphabetic characters. This substitution is done to a word before it is
-translated using the spelling-to-phoneme rules. Only the lower-case
-version of the characters needs to be specified. e.g.
+at the start of the `*_rules` file. In each line multiple _source_ characters
+can be replaced by one or two characters. This substitution is done to a word
+_before_ word is searched in `*_list` or `*_listx` file and translated using
+the spelling-to-phoneme rules. Only the lower-case version of the characters
+needs to be specified. e.g.:
 
 	.replace
 	   ô   ő   // (Hungarian) allow the use of o-circumflex instead of o-double-accute
 	   û   ű
 	   cx  ĉ   // (Esperanto) allow "cx" as an alternative to c-circumflex
 	   ﬁ   fi  // replace a single character ligature by two characters
+
+## (Re)definition of charater groups
+
+The set of these vowel characters in `A` group and consonants in `C` group may be
+redefined for a particular language. Other sets of letters indicated by `B`, `E`, `F` and `G`
+usually have specific meaning for each particular language.
+
+(Re)definition of letter groups is done in [tr_languages.c](../src/libespeak-ng/tr_languages.c)
+file by calling `SetLetterBits()` function from (usually) `NewTranslator()` function.
+Note, that letters should be stored as array of chars, thus multibyte
+unicode letters should be transposed using `transpose_min` and `transpose_max` parameters
+of particular `Translator` structure, or using `SetLetterBitsUTF8()` function.
+
